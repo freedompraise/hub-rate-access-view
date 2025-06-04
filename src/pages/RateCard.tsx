@@ -4,8 +4,10 @@ import { useSearchParams } from "react-router-dom";
 import Header from "@/components/Header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const RateCard = () => {
   const [searchParams] = useSearchParams();
@@ -16,25 +18,41 @@ const RateCard = () => {
 
   useEffect(() => {
     if (token) {
-      // Simulate token validation - in real app this would call validate_rate_card_token
-      setTimeout(() => {
-        console.log("Validating token:", token);
-        // For demo purposes, accept any token
+      validateToken();
+    } else {
+      setIsValidToken(false);
+    }
+  }, [token]);
+
+  const validateToken = async () => {
+    try {
+      const { data, error } = await supabase.rpc('validate_rate_card_token', {
+        token_input: token
+      });
+
+      if (error) throw error;
+
+      if (data?.valid) {
         setIsValidToken(true);
-        setUserName("Demo User");
+        setUserName(data.full_name || "User");
         
-        // Mark token as accessed - in real app this would call mark_token_as_accessed
-        console.log("Marking token as accessed");
+        // Mark token as accessed
+        await supabase.rpc('mark_token_as_accessed', {
+          token_input: token
+        });
         
         toast({
           title: "Access Granted",
           description: "Welcome to The Kontent Hub rate card!",
         });
-      }, 1000);
-    } else {
+      } else {
+        setIsValidToken(false);
+      }
+    } catch (error: any) {
+      console.error('Token validation error:', error);
       setIsValidToken(false);
     }
-  }, [token, toast]);
+  };
 
   if (isValidToken === null) {
     return (
@@ -238,6 +256,11 @@ const RateCard = () => {
       <div className="pt-20 pb-16 px-6">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
+            <img 
+              src="/lovable-uploads/c85aa68f-ad21-41fb-a103-805c14e0490c.png" 
+              alt="The Kontent Hub Logo" 
+              className="w-20 h-20 mx-auto mb-6"
+            />
             <h1 className="text-4xl md:text-6xl font-montserrat font-bold text-royal-gold mb-4">
               THE KONTENT HUB
             </h1>

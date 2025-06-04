@@ -1,5 +1,6 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuth } from "@/components/AuthProvider";
+import Login from "@/components/Login";
 import Header from "@/components/Header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,88 +8,88 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 interface RateCardRequest {
   id: string;
-  fullName: string;
-  phoneNumber: string;
+  full_name: string;
+  phone_number: string;
   email?: string;
-  submittedAt: string;
-  isApproved: boolean;
+  submitted_at: string;
+  is_approved: boolean;
   token?: string;
-  tokenExpiresAt?: string;
-  wasAccessed: boolean;
-  accessedAt?: string;
+  token_expires_at?: string;
+  was_accessed: boolean;
+  accessed_at?: string;
 }
 
 const Admin = () => {
+  const { user, loading, signOut } = useAuth();
   const [searchTerm, setSearchTerm] = useState("");
+  const [requests, setRequests] = useState<RateCardRequest[]>([]);
+  const [loadingRequests, setLoadingRequests] = useState(true);
   const { toast } = useToast();
-  
-  // Mock data - in real app this would come from Supabase
-  const [requests, setRequests] = useState<RateCardRequest[]>([
-    {
-      id: "1",
-      fullName: "John Doe",
-      phoneNumber: "+234 805 123 4567",
-      email: "john@example.com",
-      submittedAt: "2024-06-04T10:30:00Z",
-      isApproved: false,
-      wasAccessed: false
-    },
-    {
-      id: "2",
-      fullName: "Jane Smith",
-      phoneNumber: "+234 806 987 6543",
-      email: "jane@business.com",
-      submittedAt: "2024-06-04T09:15:00Z",
-      isApproved: true,
-      token: "abc123-def456-ghi789",
-      tokenExpiresAt: "2024-06-05T09:15:00Z",
-      wasAccessed: true,
-      accessedAt: "2024-06-04T14:20:00Z"
-    },
-    {
-      id: "3",
-      fullName: "Mike Johnson",
-      phoneNumber: "+234 807 555 9999",
-      submittedAt: "2024-06-03T16:45:00Z",
-      isApproved: true,
-      token: "xyz789-uvw456-rst123",
-      tokenExpiresAt: "2024-06-04T16:45:00Z",
-      wasAccessed: false
+
+  useEffect(() => {
+    if (user) {
+      fetchRequests();
     }
-  ]);
+  }, [user]);
+
+  const fetchRequests = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('rate_card_requests')
+        .select('*')
+        .order('submitted_at', { ascending: false });
+
+      if (error) throw error;
+      setRequests(data || []);
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: "Failed to fetch requests",
+        variant: "destructive",
+      });
+    } finally {
+      setLoadingRequests(false);
+    }
+  };
 
   const handleApprove = async (requestId: string) => {
-    // In real app, this would call approve_rate_card_request RPC
-    const token = `token-${Date.now()}`;
-    const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
-    
-    setRequests(prev => prev.map(req => 
-      req.id === requestId 
-        ? { ...req, isApproved: true, token, tokenExpiresAt: expiresAt }
-        : req
-    ));
+    try {
+      const { data, error } = await supabase.rpc('approve_rate_card_request', {
+        request_id: requestId
+      });
 
-    toast({
-      title: "Request Approved",
-      description: "Token generated successfully. You can now send the WhatsApp message.",
-    });
+      if (error) throw error;
+
+      await fetchRequests();
+      
+      toast({
+        title: "Request Approved",
+        description: "Token generated successfully. You can now send the WhatsApp message.",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to approve request",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleCopyWhatsAppMessage = (request: RateCardRequest) => {
     if (!request.token) return;
     
-    const message = `Hi ${request.fullName}, here's your private access link to view our rate card:
-https://rates.thekontenthub.com/rate-card?token=${request.token}
+    const message = `Hi ${request.full_name}, here's your private access link to view our rate card:
+${window.location.origin}/rate-card?token=${request.token}
 It's valid for 24 hours only.`;
     
     navigator.clipboard.writeText(message);
     
-    // Open WhatsApp with the message
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${request.phoneNumber.replace(/[^\d]/g, '')}?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/${request.phone_number.replace(/[^\d]/g, '')}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
     
     toast({
@@ -97,14 +98,29 @@ It's valid for 24 hours only.`;
     });
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-midnight-black flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-royal-gold border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-white/80">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <Login />;
+  }
+
   const filteredRequests = requests.filter(req =>
-    req.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    req.phoneNumber.includes(searchTerm)
+    req.full_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    req.phone_number.includes(searchTerm)
   );
 
-  const pendingRequests = filteredRequests.filter(req => !req.isApproved);
-  const approvedRequests = filteredRequests.filter(req => req.isApproved);
-  const accessedRequests = filteredRequests.filter(req => req.wasAccessed);
+  const pendingRequests = filteredRequests.filter(req => !req.is_approved);
+  const approvedRequests = filteredRequests.filter(req => req.is_approved);
+  const accessedRequests = filteredRequests.filter(req => req.was_accessed);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleString();
@@ -121,16 +137,24 @@ It's valid for 24 hours only.`;
       
       <div className="pt-20 pb-16 px-6">
         <div className="container mx-auto max-w-7xl">
-          <div className="mb-8">
-            <h1 className="text-3xl font-montserrat font-bold text-royal-gold mb-4">
-              Admin Panel
-            </h1>
-            <p className="text-white/70">
-              Manage rate card access requests and send secure links to approved users.
-            </p>
+          <div className="mb-8 flex justify-between items-center">
+            <div>
+              <h1 className="text-3xl font-montserrat font-bold text-royal-gold mb-4">
+                Admin Panel
+              </h1>
+              <p className="text-white/70">
+                Manage rate card access requests and send secure links to approved users.
+              </p>
+            </div>
+            <Button
+              onClick={signOut}
+              variant="outline"
+              className="border-royal-gold text-royal-gold hover:bg-royal-gold hover:text-midnight-black"
+            >
+              Sign Out
+            </Button>
           </div>
 
-          {/* Search */}
           <div className="mb-6">
             <Input
               placeholder="Search by name or phone number..."
@@ -140,216 +164,223 @@ It's valid for 24 hours only.`;
             />
           </div>
 
-          <Tabs defaultValue="pending" className="space-y-6">
-            <TabsList className="bg-charcoal-gray border-royal-gold/30">
-              <TabsTrigger value="pending" className="text-white data-[state=active]:text-royal-gold">
-                Pending ({pendingRequests.length})
-              </TabsTrigger>
-              <TabsTrigger value="approved" className="text-white data-[state=active]:text-royal-gold">
-                Approved ({approvedRequests.length})
-              </TabsTrigger>
-              <TabsTrigger value="accessed" className="text-white data-[state=active]:text-royal-gold">
-                Accessed ({accessedRequests.length})
-              </TabsTrigger>
-              <TabsTrigger value="all" className="text-white data-[state=active]:text-royal-gold">
-                All ({filteredRequests.length})
-              </TabsTrigger>
-            </TabsList>
+          {loadingRequests ? (
+            <div className="text-center py-8">
+              <div className="w-8 h-8 border-4 border-royal-gold border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+              <p className="text-white/70">Loading requests...</p>
+            </div>
+          ) : (
+            <Tabs defaultValue="pending" className="space-y-6">
+              <TabsList className="bg-charcoal-gray border-royal-gold/30">
+                <TabsTrigger value="pending" className="text-white data-[state=active]:text-royal-gold">
+                  Pending ({pendingRequests.length})
+                </TabsTrigger>
+                <TabsTrigger value="approved" className="text-white data-[state=active]:text-royal-gold">
+                  Approved ({approvedRequests.length})
+                </TabsTrigger>
+                <TabsTrigger value="accessed" className="text-white data-[state=active]:text-royal-gold">
+                  Accessed ({accessedRequests.length})
+                </TabsTrigger>
+                <TabsTrigger value="all" className="text-white data-[state=active]:text-royal-gold">
+                  All ({filteredRequests.length})
+                </TabsTrigger>
+              </TabsList>
 
-            <TabsContent value="pending">
-              <div className="grid gap-4">
-                {pendingRequests.map((request) => (
-                  <Card key={request.id} className="bg-charcoal-gray border-royal-gold/20">
-                    <CardHeader>
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <CardTitle className="text-white font-montserrat">
-                            {request.fullName}
-                          </CardTitle>
-                          <p className="text-white/70">{request.phoneNumber}</p>
-                          {request.email && (
-                            <p className="text-white/50 text-sm">{request.email}</p>
-                          )}
-                        </div>
-                        <Badge variant="outline" className="border-yellow-500 text-yellow-500">
-                          Pending
-                        </Badge>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex justify-between items-center">
-                        <p className="text-white/60 text-sm">
-                          Submitted: {formatDate(request.submittedAt)}
-                        </p>
-                        <Button
-                          onClick={() => handleApprove(request.id)}
-                          className="bg-royal-gold hover:bg-button-hover text-midnight-black font-montserrat font-semibold"
-                        >
-                          Approve
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-                {pendingRequests.length === 0 && (
-                  <p className="text-white/60 text-center py-8">No pending requests</p>
-                )}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="approved">
-              <div className="grid gap-4">
-                {approvedRequests.map((request) => (
-                  <Card key={request.id} className="bg-charcoal-gray border-royal-gold/20">
-                    <CardHeader>
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <CardTitle className="text-white font-montserrat">
-                            {request.fullName}
-                          </CardTitle>
-                          <p className="text-white/70">{request.phoneNumber}</p>
-                          {request.email && (
-                            <p className="text-white/50 text-sm">{request.email}</p>
-                          )}
-                        </div>
-                        <div className="flex gap-2">
-                          <Badge 
-                            variant="outline" 
-                            className={`border-green-500 text-green-500 ${
-                              isTokenExpired(request.tokenExpiresAt) ? 'border-red-500 text-red-500' : ''
-                            }`}
-                          >
-                            {isTokenExpired(request.tokenExpiresAt) ? 'Expired' : 'Approved'}
+              <TabsContent value="pending">
+                <div className="grid gap-4">
+                  {pendingRequests.map((request) => (
+                    <Card key={request.id} className="bg-charcoal-gray border-royal-gold/20">
+                      <CardHeader>
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <CardTitle className="text-white font-montserrat">
+                              {request.full_name}
+                            </CardTitle>
+                            <p className="text-white/70">{request.phone_number}</p>
+                            {request.email && (
+                              <p className="text-white/50 text-sm">{request.email}</p>
+                            )}
+                          </div>
+                          <Badge variant="outline" className="border-yellow-500 text-yellow-500">
+                            Pending
                           </Badge>
-                          {request.wasAccessed && (
-                            <Badge variant="outline" className="border-blue-500 text-blue-500">
-                              Accessed
-                            </Badge>
-                          )}
                         </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        <div className="text-sm text-white/60">
-                          <p>Submitted: {formatDate(request.submittedAt)}</p>
-                          {request.tokenExpiresAt && (
-                            <p>Token expires: {formatDate(request.tokenExpiresAt)}</p>
-                          )}
-                          {request.accessedAt && (
-                            <p>Accessed: {formatDate(request.accessedAt)}</p>
-                          )}
-                        </div>
-                        
-                        {!isTokenExpired(request.tokenExpiresAt) && (
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex justify-between items-center">
+                          <p className="text-white/60 text-sm">
+                            Submitted: {formatDate(request.submitted_at)}
+                          </p>
                           <Button
-                            onClick={() => handleCopyWhatsAppMessage(request)}
-                            className="bg-deep-teal hover:bg-deep-teal/80 text-white font-montserrat font-semibold"
+                            onClick={() => handleApprove(request.id)}
+                            className="bg-royal-gold hover:bg-button-hover text-midnight-black font-montserrat font-semibold"
                           >
-                            Copy & Send via WhatsApp
+                            Approve
                           </Button>
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-                {approvedRequests.length === 0 && (
-                  <p className="text-white/60 text-center py-8">No approved requests</p>
-                )}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="accessed">
-              <div className="grid gap-4">
-                {accessedRequests.map((request) => (
-                  <Card key={request.id} className="bg-charcoal-gray border-royal-gold/20">
-                    <CardHeader>
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <CardTitle className="text-white font-montserrat">
-                            {request.fullName}
-                          </CardTitle>
-                          <p className="text-white/70">{request.phoneNumber}</p>
-                          {request.email && (
-                            <p className="text-white/50 text-sm">{request.email}</p>
-                          )}
                         </div>
-                        <Badge variant="outline" className="border-blue-500 text-blue-500">
-                          Accessed
-                        </Badge>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-sm text-white/60">
-                        <p>Submitted: {formatDate(request.submittedAt)}</p>
-                        <p>Accessed: {formatDate(request.accessedAt!)}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-                {accessedRequests.length === 0 && (
-                  <p className="text-white/60 text-center py-8">No accessed requests</p>
-                )}
-              </div>
-            </TabsContent>
+                      </CardContent>
+                    </Card>
+                  ))}
+                  {pendingRequests.length === 0 && (
+                    <p className="text-white/60 text-center py-8">No pending requests</p>
+                  )}
+                </div>
+              </TabsContent>
 
-            <TabsContent value="all">
-              <div className="grid gap-4">
-                {filteredRequests.map((request) => (
-                  <Card key={request.id} className="bg-charcoal-gray border-royal-gold/20">
-                    <CardHeader>
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <CardTitle className="text-white font-montserrat">
-                            {request.fullName}
-                          </CardTitle>
-                          <p className="text-white/70">{request.phoneNumber}</p>
-                          {request.email && (
-                            <p className="text-white/50 text-sm">{request.email}</p>
-                          )}
-                        </div>
-                        <div className="flex gap-2">
-                          <Badge 
-                            variant="outline" 
-                            className={`${
-                              !request.isApproved 
-                                ? 'border-yellow-500 text-yellow-500' 
-                                : isTokenExpired(request.tokenExpiresAt)
-                                ? 'border-red-500 text-red-500'
-                                : 'border-green-500 text-green-500'
-                            }`}
-                          >
-                            {!request.isApproved 
-                              ? 'Pending' 
-                              : isTokenExpired(request.tokenExpiresAt) 
-                              ? 'Expired' 
-                              : 'Approved'
-                            }
-                          </Badge>
-                          {request.wasAccessed && (
-                            <Badge variant="outline" className="border-blue-500 text-blue-500">
-                              Accessed
+              <TabsContent value="approved">
+                <div className="grid gap-4">
+                  {approvedRequests.map((request) => (
+                    <Card key={request.id} className="bg-charcoal-gray border-royal-gold/20">
+                      <CardHeader>
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <CardTitle className="text-white font-montserrat">
+                              {request.full_name}
+                            </CardTitle>
+                            <p className="text-white/70">{request.phone_number}</p>
+                            {request.email && (
+                              <p className="text-white/50 text-sm">{request.email}</p>
+                            )}
+                          </div>
+                          <div className="flex gap-2">
+                            <Badge 
+                              variant="outline" 
+                              className={`border-green-500 text-green-500 ${
+                                isTokenExpired(request.token_expires_at) ? 'border-red-500 text-red-500' : ''
+                              }`}
+                            >
+                              {isTokenExpired(request.token_expires_at) ? 'Expired' : 'Approved'}
                             </Badge>
+                            {request.was_accessed && (
+                              <Badge variant="outline" className="border-blue-500 text-blue-500">
+                                Accessed
+                              </Badge>
+                            )}
+                          </div>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-3">
+                          <div className="text-sm text-white/60">
+                            <p>Submitted: {formatDate(request.submitted_at)}</p>
+                            {request.token_expires_at && (
+                              <p>Token expires: {formatDate(request.token_expires_at)}</p>
+                            )}
+                            {request.accessed_at && (
+                              <p>Accessed: {formatDate(request.accessed_at!)}</p>
+                            )}
+                          </div>
+                          
+                          {!isTokenExpired(request.token_expires_at) && (
+                            <Button
+                              onClick={() => handleCopyWhatsAppMessage(request)}
+                              className="bg-deep-teal hover:bg-deep-teal/80 text-white font-montserrat font-semibold"
+                            >
+                              Copy & Send via WhatsApp
+                            </Button>
                           )}
                         </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-sm text-white/60">
-                        <p>Submitted: {formatDate(request.submittedAt)}</p>
-                        {request.tokenExpiresAt && (
-                          <p>Token expires: {formatDate(request.tokenExpiresAt)}</p>
-                        )}
-                        {request.accessedAt && (
-                          <p>Accessed: {formatDate(request.accessedAt)}</p>
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-          </Tabs>
+                      </CardContent>
+                    </Card>
+                  ))}
+                  {approvedRequests.length === 0 && (
+                    <p className="text-white/60 text-center py-8">No approved requests</p>
+                  )}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="accessed">
+                <div className="grid gap-4">
+                  {accessedRequests.map((request) => (
+                    <Card key={request.id} className="bg-charcoal-gray border-royal-gold/20">
+                      <CardHeader>
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <CardTitle className="text-white font-montserrat">
+                              {request.full_name}
+                            </CardTitle>
+                            <p className="text-white/70">{request.phone_number}</p>
+                            {request.email && (
+                              <p className="text-white/50 text-sm">{request.email}</p>
+                            )}
+                          </div>
+                          <Badge variant="outline" className="border-blue-500 text-blue-500">
+                            Accessed
+                          </Badge>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="text-sm text-white/60">
+                          <p>Submitted: {formatDate(request.submitted_at)}</p>
+                          <p>Accessed: {formatDate(request.accessed_at!)}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                  {accessedRequests.length === 0 && (
+                    <p className="text-white/60 text-center py-8">No accessed requests</p>
+                  )}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="all">
+                <div className="grid gap-4">
+                  {filteredRequests.map((request) => (
+                    <Card key={request.id} className="bg-charcoal-gray border-royal-gold/20">
+                      <CardHeader>
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <CardTitle className="text-white font-montserrat">
+                              {request.full_name}
+                            </CardTitle>
+                            <p className="text-white/70">{request.phone_number}</p>
+                            {request.email && (
+                              <p className="text-white/50 text-sm">{request.email}</p>
+                            )}
+                          </div>
+                          <div className="flex gap-2">
+                            <Badge 
+                              variant="outline" 
+                              className={`${
+                                !request.is_approved 
+                                  ? 'border-yellow-500 text-yellow-500' 
+                                  : isTokenExpired(request.token_expires_at)
+                                  ? 'border-red-500 text-red-500'
+                                  : 'border-green-500 text-green-500'
+                              }`}
+                            >
+                              {!request.is_approved 
+                                ? 'Pending' 
+                                : isTokenExpired(request.token_expires_at) 
+                                ? 'Expired' 
+                                : 'Approved'
+                              }
+                            </Badge>
+                            {request.was_accessed && (
+                              <Badge variant="outline" className="border-blue-500 text-blue-500">
+                                Accessed
+                              </Badge>
+                            )}
+                          </div>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="text-sm text-white/60">
+                          <p>Submitted: {formatDate(request.submitted_at)}</p>
+                          {request.token_expires_at && (
+                            <p>Token expires: {formatDate(request.token_expires_at)}</p>
+                          )}
+                          {request.accessed_at && (
+                            <p>Accessed: {formatDate(request.accessed_at)}</p>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+            </Tabs>
+          )}
         </div>
       </div>
     </div>

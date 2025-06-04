@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 interface AccessRequestModalProps {
   isOpen: boolean;
@@ -25,19 +26,24 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate API call - in real app this would call create_rate_card_request
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      console.log("Request submitted:", formData);
+      const { error } = await supabase.rpc('create_rate_card_request', {
+        full_name: formData.fullName,
+        phone_number: formData.phoneNumber,
+        email: formData.email || null
+      });
+
+      if (error) throw error;
+
       setIsSubmitted(true);
       toast({
         title: "Request Submitted!",
         description: "We'll review your request and contact you via WhatsApp.",
       });
-    } catch (error) {
+    } catch (error: any) {
       toast({
         title: "Error",
-        description: "Something went wrong. Please try again.",
+        description: error.message || "Something went wrong. Please try again.",
         variant: "destructive",
       });
     } finally {
