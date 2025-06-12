@@ -1,91 +1,51 @@
 
-import { useState } from "react";
 import Header from "@/components/Header";
-import AccessRequestModal from "@/components/AccessRequestModal";
+import ServicesSection from "@/components/ServicesSection";
+import WorksSection from "@/components/WorksSection";
+import RateCardSection from "@/components/RateCardSection";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
 
 const Index = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const scrollToServices = () => {
+    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
+    <div className="min-h-screen bg-white">
       <Header />
       
-      {/* Hero Section with brand gradient */}
-      <div className="relative pt-20 pb-16 px-6 bg-hero-gradient text-white">
-        <div className="relative z-10 container mx-auto text-center py-24">
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 animate-fade-in">
-            GET YOUR CUSTOMIZED
-          </h1>
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-8 animate-fade-in">
-            MARKETING STRATEGY RATES
+      {/* Hero Section - Navy Background */}
+      <section className="section-navy pt-20 pb-16 px-6 min-h-screen flex items-center">
+        <div className="container mx-auto text-center">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 animate-fade-in">
+            Igniting Brands with Creative Strategies
           </h1>
           
-          <p className="text-xl md:text-2xl text-white/90 font-sans max-w-3xl mx-auto mb-12 animate-fade-in">
-            Submit your details below. We'll send a WhatsApp link for secure access to our comprehensive rate card.
+          <p className="text-lg md:text-xl text-white/80 font-sans max-w-xl mx-auto mb-12 animate-fade-in">
+            From strategy to storytelling — we shape visibility with precision, creativity, and consistency.
           </p>
           
           <Button
-            onClick={() => setIsModalOpen(true)}
-            className="bg-white text-tkh-purple hover:bg-tkh-yellow hover:text-black text-lg px-12 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 animate-scale-in font-semibold"
+            onClick={scrollToServices}
+            className="btn-gradient text-lg px-8 py-4 animate-scale-in font-semibold"
           >
-            REQUEST ACCESS
+            Explore Our Services
           </Button>
-          
-          <div className="mt-16 animate-bounce">
-            <ArrowDown className="mx-auto text-white w-8 h-8" />
-          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Features Section */}
-      <div className="relative bg-white py-16 px-6">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="bg-white p-8 rounded-lg border border-border shadow-md hover-scale">
-              <div className="w-16 h-16 bg-tkh-yellow rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-black font-sans font-bold text-xl">1</span>
-              </div>
-              <h3 className="text-tkh-orange font-serif font-semibold text-xl mb-4">
-                Request Access
-              </h3>
-              <p className="text-black">
-                Fill out the simple form with your contact details to request access to our rate card.
-              </p>
-            </div>
-            
-            <div className="bg-white p-8 rounded-lg border border-border shadow-md hover-scale">
-              <div className="w-16 h-16 bg-tkh-teal rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-sans font-bold text-xl">2</span>
-              </div>
-              <h3 className="text-tkh-orange font-serif font-semibold text-xl mb-4">
-                WhatsApp Verification
-              </h3>
-              <p className="text-black">
-                Chat with us on WhatsApp for quick verification and personalized service.
-              </p>
-            </div>
-            
-            <div className="bg-white p-8 rounded-lg border border-border shadow-md hover-scale">
-              <div className="w-16 h-16 bg-tkh-purple rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-sans font-bold text-xl">3</span>
-              </div>
-              <h3 className="text-tkh-orange font-serif font-semibold text-xl mb-4">
-                Secure Access
-              </h3>
-              <p className="text-black">
-                Receive a secure, time-limited link to view our comprehensive marketing strategy rates.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Services Section - White Background */}
+      <ServicesSection />
 
-      <AccessRequestModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
+      {/* Works Section - Navy Background */}
+      <WorksSection />
+
+      {/* Rate Card Section - White Background */}
+      <RateCardSection />
+
+      {/* Footer - Navy Background */}
+      <Footer />
     </div>
   );
 };

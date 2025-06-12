@@ -12,11 +12,11 @@
 
     --primary: 251 59% 45%;     /* Purple base of gradient */
     --secondary: 49 100% 50%;   /* Yellow */
-    --accent: 0 87% 46%;        /* Red-orange */
+    --accent: 0 87% 46%;        /* Orange from brand guide */
     --info: 176 84% 84%;        /* Teal */
     --border: 220 14% 93%;
     --input: 210 20% 96%;
-    --ring: 0 87% 46%;
+    --ring: 251 59% 45%;        /* Purple instead of red */
     --radius: 0.5rem;
 
     --destructive: 0 87% 46%;
@@ -50,7 +50,7 @@
 
 @layer components {
   .btn-gradient {
-    @apply text-white font-semibold px-4 py-2 rounded shadow-md bg-hero-gradient hover:bg-cta-hover transition-all duration-300;
+    @apply text-white font-semibold px-6 py-3 rounded-lg shadow-md bg-hero-gradient hover:bg-cta-hover transition-all duration-300 transform hover:scale-105;
   }
 
   .btn-secondary {
@@ -74,10 +74,18 @@
   }
 
   .hero-section {
-    @apply bg-hero-gradient text-white;
+    @apply bg-tkh-navy text-white;
   }
 
   .info-section {
     @apply bg-info-gradient text-white;
+  }
+
+  .section-white {
+    @apply bg-white text-black;
+  }
+
+  .section-navy {
+    @apply bg-tkh-navy text-white;
   }
 }

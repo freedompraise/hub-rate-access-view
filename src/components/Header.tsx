@@ -1,10 +1,8 @@
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "./AuthProvider";
 
 const Header = () => {
-  const [isAdminVisible, setIsAdminVisible] = useState(false);
   const { user } = useAuth();
 
   return (
@@ -24,27 +22,41 @@ const Header = () => {
         <nav className="flex items-center space-x-6">
           <a 
             href="/" 
-            className="text-black hover:text-tkh-orange transition-colors font-sans"
+            className="text-black hover:text-tkh-purple transition-colors font-sans"
           >
             Home
           </a>
-          {(isAdminVisible || user) && (
+          <a 
+            href="#services" 
+            className="text-black hover:text-tkh-purple transition-colors font-sans"
+          >
+            Services
+          </a>
+          <a 
+            href="#work" 
+            className="text-black hover:text-tkh-purple transition-colors font-sans"
+          >
+            Work
+          </a>
+          <a 
+            href="#rate-card" 
+            className="text-black hover:text-tkh-purple transition-colors font-sans"
+          >
+            Request Rate Card
+          </a>
+          <a 
+            href="#contact" 
+            className="text-black hover:text-tkh-purple transition-colors font-sans"
+          >
+            Contact
+          </a>
+          {user && (
             <a 
               href="/admin" 
-              className="text-black hover:text-tkh-orange transition-colors font-sans"
+              className="text-black hover:text-tkh-purple transition-colors font-sans text-sm"
             >
               Admin
             </a>
-          )}
-          {!user && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsAdminVisible(!isAdminVisible)}
-              className="text-xs text-black/60 hover:text-tkh-orange"
-            >
-              {isAdminVisible ? "Hide" : "Show"} Admin
-            </Button>
           )}
         </nav>
       </div>

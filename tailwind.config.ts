@@ -19,11 +19,12 @@ export default {
 		},
 		extend: {
 			colors: {
-				// Core brand colors
+				// Core brand colors - NO RED
 				'tkh-purple': '#4830B8',
 				'tkh-yellow': '#FFD304',
-				'tkh-orange': '#DE1010',
+				'tkh-orange': '#DE1010', // This is red-orange from brand guide
 				'tkh-teal': '#23D7CB',
+				'tkh-navy': '#1e3a8a', // Dark blue for alternating sections
 				black: '#000000',
 				white: '#FFFFFF',
 				border: '#E5E7EB', // subtle UI borders
@@ -40,7 +41,7 @@ export default {
 					foreground: '#000000'
 				},
 				accent: {
-					DEFAULT: '#DE1010', // Orange
+					DEFAULT: '#DE1010', // Orange (from brand guide)
 					foreground: '#FFFFFF'
 				},
 				info: '#23D7CB', // Teal
@@ -53,7 +54,7 @@ export default {
 					foreground: '#6B7280'
 				},
 				input: '#F3F4F6',
-				ring: '#DE1010',
+				ring: '#4830B8', // Changed from red to purple
 			},
 			fontFamily: {
 				sans: ["Poppins", "sans-serif"],
