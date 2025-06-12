@@ -106,7 +106,7 @@ const RateCard = () => {
         <div className="container mx-auto py-8 max-w-4xl">
           <div className="text-center mb-12">
             <img 
-              src="/lovable-uploads/283ca45c-93b6-4e0d-b037-e991c94291dc.png" 
+              src="/logo/light.png" 
               alt="The Kontent Hub Logo" 
               className="w-20 h-20 mx-auto mb-6"
             />

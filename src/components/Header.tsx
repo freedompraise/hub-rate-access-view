@@ -1,5 +1,4 @@
 
-import { Button } from "@/components/ui/button";
 import { useAuth } from "./AuthProvider";
 
 const Header = () => {
@@ -10,13 +9,11 @@ const Header = () => {
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <img 
-            src="/lovable-uploads/283ca45c-93b6-4e0d-b037-e991c94291dc.png" 
+            src="/logo/dark.PNG" 
             alt="The Kontent Hub Logo" 
-            className="w-10 h-10"
+            className="w-12 h-12"
           />
-          <span className="text-tkh-orange font-serif font-semibold text-xl">
-            The Kontent Hub
-          </span>
+
         </div>
         
         <nav className="flex items-center space-x-6">

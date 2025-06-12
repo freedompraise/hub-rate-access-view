@@ -6,9 +6,9 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="flex items-center space-x-3 mb-6 md:mb-0">
             <img 
-              src="/lovable-uploads/283ca45c-93b6-4e0d-b037-e991c94291dc.png" 
+              src="/logo/light.png" 
               alt="The Kontent Hub Logo" 
-              className="w-8 h-8"
+              className="w-16 h-16"
             />
             <div>
               <span className="text-tkh-yellow font-serif font-semibold text-lg block">

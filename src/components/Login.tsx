@@ -41,7 +41,7 @@ const Login = () => {
       <Card className="bg-white border-border text-black max-w-md w-full mx-6 shadow-lg">
         <CardHeader className="text-center">
           <img 
-            src="/lovable-uploads/283ca45c-93b6-4e0d-b037-e991c94291dc.png" 
+            src="/logo/dark.PNG" 
             alt="The Kontent Hub Logo" 
             className="w-16 h-16 mx-auto mb-4"
           />
