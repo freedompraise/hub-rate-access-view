@@ -73,7 +73,7 @@
   }
 
   .hero-section {
-    @apply bg-tkh-navy text-white;
+    @apply bg-tkh-purple text-white;
   }
 
   .info-section {
@@ -85,6 +85,6 @@
   }
 
   .section-navy {
-    @apply bg-tkh-navy text-white;
+    @apply bg-tkh-purple text-white;
   }
 }

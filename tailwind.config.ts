@@ -19,7 +19,6 @@ export default {
 		},
 		extend: {
 			colors: {
-				// Core brand colors - NO RED
 				'tkh-purple': '#4830B8',
 				'tkh-yellow': '#FFD304',
 				'tkh-orange': '#DE1010', // This is red-orange from brand guide
@@ -60,9 +59,9 @@ export default {
 				sans: ["Poppins", "sans-serif"],
 				serif: ["Cinzel", "serif"],
 			},			backgroundImage: {
-				'hero-gradient': 'linear-gradient(90deg, #DE1010, #FFD304)',
+				'hero-gradient': 'linear-gradient(25deg, #DE1010, #FFD304)',
 				'info-gradient': 'linear-gradient(135deg, #23D7CB, #FFD304)',
-				'cta-hover': 'linear-gradient(90deg, #FFD304, #DE1010)',
+				'cta-hover': 'linear-gradient(135deg, #FFD304, #DE1010)',
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
 				"gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
 			},
