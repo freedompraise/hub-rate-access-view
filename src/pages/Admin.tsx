@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/components/AuthProvider';
 import { Button } from '@/components/ui/button';
@@ -9,19 +10,10 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import Login from '@/components/Login';
@@ -32,9 +24,13 @@ interface Request {
   full_name: string;
   phone_number: string;
   email: string | null;
-  created_at: string;
-  is_approved: boolean;
-  approved_at: string | null;
+  submitted_at: string | null;
+  is_approved: boolean | null;
+  token: string | null;
+  token_expires_at: string | null;
+  was_accessed: boolean | null;
+  accessed_at: string | null;
+  notes: string | null;
 }
 
 const Admin = () => {
@@ -42,6 +38,7 @@ const Admin = () => {
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState<'all' | 'pending' | 'approved'>('all');
   const [loading, setLoading] = useState(true);
+  const [approving, setApproving] = useState<string | null>(null);
   const { user, signOut } = useAuth();
   const { toast } = useToast();
 
@@ -57,7 +54,7 @@ const Admin = () => {
       const { data, error } = await supabase
         .from('rate_card_requests')
         .select('*')
-        .order('created_at', { ascending: false });
+        .order('submitted_at', { ascending: false });
 
       if (error) {
         console.error("Error fetching requests:", error);
@@ -75,11 +72,11 @@ const Admin = () => {
   };
 
   const handleApproval = async (id: string) => {
+    setApproving(id);
     try {
-      const { error } = await supabase
-        .from('rate_card_requests')
-        .update({ is_approved: true, approved_at: new Date().toISOString() })
-        .eq('id', id);
+      const { data, error } = await supabase.rpc('approve_rate_card_request', {
+        request_id: id
+      });
 
       if (error) {
         console.error("Error approving request:", error);
@@ -89,9 +86,17 @@ const Admin = () => {
           variant: "destructive",
         });
       } else {
+        // Update the local state with the approved request
         setRequests(prevRequests =>
           prevRequests.map(req =>
-            req.id === id ? { ...req, is_approved: true, approved_at: new Date().toISOString() } : req
+            req.id === id 
+              ? { 
+                  ...req, 
+                  is_approved: true, 
+                  token: data.token,
+                  token_expires_at: data.token_expires_at
+                } 
+              : req
           )
         );
         toast({
@@ -104,6 +109,29 @@ const Admin = () => {
       toast({
         title: "Error",
         description: error.message || "Failed to approve request.",
+        variant: "destructive",
+      });
+    } finally {
+      setApproving(null);
+    }
+  };
+
+  const copyAccessLink = async (request: Request) => {
+    if (!request.token) return;
+    
+    const link = `${window.location.origin}/rate-card?token=${request.token}`;
+    const message = `Hi ${request.full_name}, here's your private access link to view our rate card:\n${link}\nIt's valid for 24 hours only.`;
+    
+    try {
+      await navigator.clipboard.writeText(message);
+      toast({
+        title: "Copied!",
+        description: "WhatsApp message copied to clipboard.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to copy to clipboard.",
         variant: "destructive",
       });
     }
@@ -120,7 +148,7 @@ const Admin = () => {
     if (filter === 'pending') {
       matchesFilter = !req.is_approved;
     } else if (filter === 'approved') {
-      matchesFilter = req.is_approved;
+      matchesFilter = !!req.is_approved;
     }
 
     return matchesSearch && matchesFilter;
@@ -131,87 +159,88 @@ const Admin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Header />
       <div className="pt-20 px-6">
         <div className="container mx-auto py-8">
           <div className="flex justify-between items-center mb-8">
-            <h1 className="text-4xl font-serif font-bold text-foreground">Admin Dashboard</h1>
+            <h1 className="text-4xl font-cinzel font-bold text-black">Admin Dashboard</h1>
             <Button
               onClick={() => signOut()}
               variant="outline"
-              className="border-accent text-accent hover:bg-accent hover:text-white"
+              className="border-[#DE1010] text-[#DE1010] hover:bg-[#DE1010] hover:text-white"
             >
               Sign Out
             </Button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <Card className="bg-white border-secondary/20">
+            <Card className="bg-white border-gray-200 shadow-sm">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-tkh-black/60">Total Requests</p>
-                    <p className="text-2xl font-bold text-tkh-black">{requests.length}</p>
+                    <p className="text-sm font-medium text-gray-600">Total Requests</p>
+                    <p className="text-2xl font-bold text-black">{requests.length}</p>
                   </div>
-                  <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
-                    <span className="text-accent">📊</span>
+                  <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                    <span className="text-[#DE1010]">📊</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-secondary/20">
+            <Card className="bg-white border-gray-200 shadow-sm">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-tkh-black/60">Pending Approval</p>
-                    <p className="text-2xl font-bold text-tkh-black">
+                    <p className="text-sm font-medium text-gray-600">Pending Approval</p>
+                    <p className="text-2xl font-bold text-black">
                       {requests.filter(r => !r.is_approved).length}
                     </p>
                   </div>
-                  <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
-                    <span className="text-accent">⏳</span>
+                  <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                    <span className="text-[#FFD304]">⏳</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-secondary/20">
+            <Card className="bg-white border-gray-200 shadow-sm">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-tkh-black/60">Approved Today</p>
-                    <p className="text-2xl font-bold text-tkh-black">
+                    <p className="text-sm font-medium text-gray-600">Approved Today</p>
+                    <p className="text-2xl font-bold text-black">
                       {requests.filter(r => 
                         r.is_approved && 
-                        new Date(r.approved_at || '').toDateString() === new Date().toDateString()
+                        r.token_expires_at &&
+                        new Date(r.token_expires_at).toDateString() === new Date().toDateString()
                       ).length}
                     </p>
                   </div>
-                  <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
-                    <span className="text-accent">✅</span>
+                  <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                    <span className="text-[#23D7CB]">✅</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-4 gap-4">
             <Input
               type="text"
               placeholder="Search requests..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="bg-background border-input text-tkh-black focus:border-accent mb-2 md:mb-0"
+              className="bg-white border-gray-300 text-black focus:border-[#DE1010] max-w-md"
             />
             <div className="flex items-center space-x-2">
-              <Label htmlFor="filter" className="text-sm font-medium text-tkh-black">Filter:</Label>
+              <Label htmlFor="filter" className="text-sm font-medium text-black">Filter:</Label>
               <select
                 id="filter"
                 value={filter}
                 onChange={e => setFilter(e.target.value as typeof filter)}
-                className="bg-background border-input text-tkh-black focus:border-accent rounded px-3 py-2"
+                className="bg-white border-gray-300 text-black focus:border-[#DE1010] rounded px-3 py-2"
               >
                 <option value="all">All</option>
                 <option value="pending">Pending</option>
@@ -220,57 +249,74 @@ const Admin = () => {
             </div>
           </div>
 
-          <Table>
-            <TableCaption>A list of access requests for the rate card.</TableCaption>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="w-[200px]">Name</TableHead>
-                <TableHead>Phone Number</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Date Requested</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {loading ? (
+          <Card className="bg-white border-gray-200 shadow-sm">
+            <Table>
+              <TableCaption>A list of access requests for the rate card.</TableCaption>
+              <TableHeader>
                 <TableRow>
-                  <TableCell colSpan={6} className="text-center">Loading...</TableCell>
+                  <TableHead className="w-[200px]">Name</TableHead>
+                  <TableHead>Phone Number</TableHead>
+                  <TableHead>Email</TableHead>
+                  <TableHead>Date Requested</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
-              ) : filteredRequests.length === 0 ? (
-                <TableRow>
-                  <TableCell colSpan={6} className="text-center">No requests found.</TableCell>
-                </TableRow>
-              ) : (
-                filteredRequests.map(request => (
-                  <TableRow key={request.id}>
-                    <TableCell className="font-medium">{request.full_name}</TableCell>
-                    <TableCell>{request.phone_number}</TableCell>
-                    <TableCell>{request.email || 'N/A'}</TableCell>
-                    <TableCell>
-                      {new Date(request.created_at).toLocaleDateString()}
-                    </TableCell>
-                    <TableCell>
-                      {request.is_approved ? 'Approved' : 'Pending'}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      {!request.is_approved ? (
-                        <Button
-                          variant="secondary"
-                          size="sm"
-                          onClick={() => handleApproval(request.id)}
-                        >
-                          Approve
-                        </Button>
-                      ) : (
-                        <span className="text-green-500">Approved</span>
-                      )}
-                    </TableCell>
+              </TableHeader>
+              <TableBody>
+                {loading ? (
+                  <TableRow>
+                    <TableCell colSpan={6} className="text-center">Loading...</TableCell>
                   </TableRow>
-                ))
-              )}
-            </TableBody>
-          </Table>
+                ) : filteredRequests.length === 0 ? (
+                  <TableRow>
+                    <TableCell colSpan={6} className="text-center">No requests found.</TableCell>
+                  </TableRow>
+                ) : (
+                  filteredRequests.map(request => (
+                    <TableRow key={request.id}>
+                      <TableCell className="font-medium">{request.full_name}</TableCell>
+                      <TableCell>{request.phone_number}</TableCell>
+                      <TableCell>{request.email || 'N/A'}</TableCell>
+                      <TableCell>
+                        {request.submitted_at ? new Date(request.submitted_at).toLocaleDateString() : 'N/A'}
+                      </TableCell>
+                      <TableCell>
+                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                          request.is_approved 
+                            ? 'bg-green-100 text-green-800' 
+                            : 'bg-yellow-100 text-yellow-800'
+                        }`}>
+                          {request.is_approved ? 'Approved' : 'Pending'}
+                        </span>
+                      </TableCell>
+                      <TableCell className="text-right space-x-2">
+                        {!request.is_approved ? (
+                          <Button
+                            variant="default"
+                            size="sm"
+                            onClick={() => handleApproval(request.id)}
+                            disabled={approving === request.id}
+                            className="bg-[#DE1010] hover:bg-[#C00E0E] text-white"
+                          >
+                            {approving === request.id ? "Approving..." : "Approve"}
+                          </Button>
+                        ) : (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => copyAccessLink(request)}
+                            className="border-[#23D7CB] text-[#23D7CB] hover:bg-[#23D7CB] hover:text-white"
+                          >
+                            Copy Link
+                          </Button>
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  ))
+                )}
+              </TableBody>
+            </Table>
+          </Card>
         </div>
       </div>
     </div>
