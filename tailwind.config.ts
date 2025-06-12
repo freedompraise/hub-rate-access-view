@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,41 +19,52 @@ export default {
 		},
 		extend: {
 			colors: {
-				// Brand colors
+				// Core brand colors
+				'tkh-purple': '#4830B8',
+				'tkh-yellow': '#FFD304',
+				'tkh-orange': '#DE1010',
+				'tkh-teal': '#23D7CB',
+				black: '#000000',
+				white: '#FFFFFF',
+				border: '#E5E7EB', // subtle UI borders
+
+				// Semantic color mapping
+				background: '#FFFFFF',
+				foreground: '#000000',
 				primary: {
-					DEFAULT: "#4830B8", // Purple
-					foreground: "#FFFFFF"
+					DEFAULT: '#4830B8', // Purple
+					foreground: '#FFFFFF'
 				},
 				secondary: {
-					DEFAULT: "#FFD304", // Yellow
-					foreground: "#000000"
+					DEFAULT: '#FFD304', // Yellow
+					foreground: '#000000'
 				},
 				accent: {
-					DEFAULT: "#DE1010", // Orange/Red
-					foreground: "#FFFFFF"
+					DEFAULT: '#DE1010', // Orange
+					foreground: '#FFFFFF'
 				},
-				info: "#23D7CB",       // Teal
-				black: "#000000",
-				white: "#FFFFFF",
-				background: "#FFFFFF",
-				foreground: "#000000",
-
-				// Custom named access for usage
-				"tkh-purple": "#4830B8",
-				"tkh-yellow": "#FFD304",
-				"tkh-orange": "#DE1010",
-				"tkh-teal": "#23D7CB",
-				"tkh-black": "#000000",
-				"tkh-white": "#FFFFFF"
+				info: '#23D7CB', // Teal
+				destructive: {
+					DEFAULT: '#DE1010',
+					foreground: '#FFFFFF'
+				},
+				muted: {
+					DEFAULT: '#F9FAFB',
+					foreground: '#6B7280'
+				},
+				input: '#F3F4F6',
+				ring: '#DE1010',
 			},
 			fontFamily: {
 				sans: ["Poppins", "sans-serif"],
 				serif: ["Cinzel", "serif"],
 			},
 			backgroundImage: {
+				'hero-gradient': 'linear-gradient(90deg, #4830B8, #FFD304, #DE1010)',
+				'info-gradient': 'linear-gradient(135deg, #23D7CB, #FFD304)',
+				'cta-hover': 'linear-gradient(90deg, #DE1010, #FFD304)',
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-				"gradient-conic":
-					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+				"gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
 			},
 		},
 	},

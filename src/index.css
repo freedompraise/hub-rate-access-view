@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cinzel:wght@500;700&display=swap');
 
 @tailwind base;
@@ -6,94 +7,77 @@
 
 @layer base {
   :root {
-    /* Base Colors */
     --background: 0 0% 100%;
     --foreground: 0 0% 0%;
 
-    /* Cards and Containers */
+    --primary: 251 59% 45%;     /* Purple base of gradient */
+    --secondary: 49 100% 50%;   /* Yellow */
+    --accent: 0 87% 46%;        /* Red-orange */
+    --info: 176 84% 84%;        /* Teal */
+    --border: 220 14% 93%;
+    --input: 210 20% 96%;
+    --ring: 0 87% 46%;
+    --radius: 0.5rem;
+
+    --destructive: 0 87% 46%;
+    --destructive-foreground: 0 0% 100%;
+
+    --muted: 0 0% 98%;
+    --muted-foreground: 0 0% 42%;
+
     --card: 0 0% 100%;
     --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
-
-    /* Brand Colors */
-    --primary: 250 59% 45%;              /* Purple: #4830B8 */
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 49 100% 50%;            /* Yellow: #FFD304 */
-    --secondary-foreground: 0 0% 0%;
-
-    --accent: 0 87% 46%;                 /* Red-Orange: #DE1010 */
-    --accent-foreground: 0 0% 100%;
-
-    --info: 175 75% 50%;                 /* Teal: #23D7CB */
-
-    --destructive: 0 75% 50%;
-    --destructive-foreground: 0 0% 100%;
-
-    /* UI Elements */
-    --muted: 0 0% 97%;
-    --muted-foreground: 0 0% 35%;
-
-    --border: 0 0% 85%;
-    --input: 0 0% 90%;
-    --ring: 250 59% 45%;
-
-    /* Radius */
-    --radius: 0.5rem;
-
-    /* Sidebar (if used) */
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 0 0% 10%;
-
-    --sidebar-primary: 250 59% 45%;
-    --sidebar-primary-foreground: 0 0% 100%;
-
-    --sidebar-accent: 49 100% 50%;
-    --sidebar-accent-foreground: 0 0% 0%;
-
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 250 59% 45%;
   }
 }
 
 @layer base {
-  * {
-    @apply border;
-  }
-
   body {
     @apply bg-background text-foreground font-sans;
   }
 
-  h1, h2, h3, h4 {
-    @apply font-serif font-bold text-primary;
+  h1, h2, h3 {
+    @apply font-serif font-bold text-black;
+  }
+
+  /* Apply borders selectively to container elements */
+  .card, .border, [data-border="true"] {
+    @apply border-border;
+  }
+}
+
+@layer components {
+  .btn-gradient {
+    @apply text-white font-semibold px-4 py-2 rounded shadow-md bg-hero-gradient hover:bg-cta-hover transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-tkh-yellow text-black font-semibold py-2 px-4 rounded hover:bg-opacity-90 transition-colors;
+  }
+
+  .tag-yellow {
+    @apply bg-tkh-yellow text-black text-xs px-2 py-1 rounded;
+  }
+
+  .alert-info {
+    @apply bg-tkh-teal text-white px-4 py-3 rounded;
+  }
+
+  .gradient-text {
+    @apply bg-hero-gradient bg-clip-text text-transparent;
   }
 
   .hover-scale {
     @apply transition-transform duration-200 hover:scale-105;
   }
 
-  .gold-hover {
-    @apply transition-colors duration-300 hover:text-tkh-yellow;
-  }
-}
-
-@layer components {
-  .gradient-text {
-    @apply bg-gradient-to-r from-tkh-yellow to-tkh-orange bg-clip-text text-transparent;
+  .hero-section {
+    @apply bg-hero-gradient text-white;
   }
 
-  .btn-primary {
-    @apply bg-primary text-primary-foreground font-semibold py-2 px-4 rounded hover:bg-opacity-90 transition-colors;
-  }
-
-  .btn-secondary {
-    @apply bg-secondary text-secondary-foreground font-semibold py-2 px-4 rounded hover:bg-opacity-90 transition-colors;
-  }
-
-  .btn-accent {
-    @apply bg-accent text-accent-foreground font-semibold py-2 px-4 rounded hover:bg-opacity-90 transition-colors;
+  .info-section {
+    @apply bg-info-gradient text-white;
   }
 }

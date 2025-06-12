@@ -167,52 +167,52 @@ const Admin = () => {
       <div className="pt-20 px-6">
         <div className="container mx-auto py-8">
           <div className="flex justify-between items-center mb-8">
-            <h1 className="text-4xl font-cinzel font-bold text-black">Admin Dashboard</h1>
+            <h1 className="text-4xl font-serif font-bold text-black">Admin Dashboard</h1>
             <Button
               onClick={() => signOut()}
               variant="outline"
-              className="border-[#DE1010] text-[#DE1010] hover:bg-[#DE1010] hover:text-white"
+              className="border-tkh-orange text-tkh-orange hover:bg-tkh-orange hover:text-white"
             >
               Sign Out
             </Button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <Card className="bg-white border-gray-200 shadow-sm">
+            <Card className="bg-white border-border shadow-sm">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">Total Requests</p>
+                    <p className="text-sm font-medium text-black/60">Total Requests</p>
                     <p className="text-2xl font-bold text-black">{requests.length}</p>
                   </div>
-                  <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <span className="text-[#DE1010]">📊</span>
+                  <div className="w-12 h-12 bg-tkh-yellow/20 rounded-lg flex items-center justify-center">
+                    <span className="text-tkh-orange">📊</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-gray-200 shadow-sm">
+            <Card className="bg-white border-border shadow-sm">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">Pending Approval</p>
+                    <p className="text-sm font-medium text-black/60">Pending Approval</p>
                     <p className="text-2xl font-bold text-black">
                       {requests.filter(r => !r.is_approved).length}
                     </p>
                   </div>
-                  <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <span className="text-[#FFD304]">⏳</span>
+                  <div className="w-12 h-12 bg-tkh-yellow/20 rounded-lg flex items-center justify-center">
+                    <span className="text-tkh-yellow">⏳</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-gray-200 shadow-sm">
+            <Card className="bg-white border-border shadow-sm">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">Approved Today</p>
+                    <p className="text-sm font-medium text-black/60">Approved Today</p>
                     <p className="text-2xl font-bold text-black">
                       {requests.filter(r => 
                         r.is_approved && 
@@ -221,8 +221,8 @@ const Admin = () => {
                       ).length}
                     </p>
                   </div>
-                  <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <span className="text-[#23D7CB]">✅</span>
+                  <div className="w-12 h-12 bg-tkh-teal/20 rounded-lg flex items-center justify-center">
+                    <span className="text-tkh-teal">✅</span>
                   </div>
                 </div>
               </CardContent>
@@ -235,7 +235,7 @@ const Admin = () => {
               placeholder="Search requests..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="bg-white border-gray-300 text-black focus:border-[#DE1010] max-w-md"
+              className="bg-white border-border text-black focus:border-tkh-orange max-w-md"
             />
             <div className="flex items-center space-x-2">
               <Label htmlFor="filter" className="text-sm font-medium text-black">Filter:</Label>
@@ -243,7 +243,7 @@ const Admin = () => {
                 id="filter"
                 value={filter}
                 onChange={e => setFilter(e.target.value as typeof filter)}
-                className="bg-white border-gray-300 text-black focus:border-[#DE1010] rounded px-3 py-2"
+                className="bg-white border-border text-black focus:border-tkh-orange rounded px-3 py-2"
               >
                 <option value="all">All</option>
                 <option value="pending">Pending</option>
@@ -252,7 +252,7 @@ const Admin = () => {
             </div>
           </div>
 
-          <Card className="bg-white border-gray-200 shadow-sm">
+          <Card className="bg-white border-border shadow-sm">
             <Table>
               <TableCaption>A list of access requests for the rate card.</TableCaption>
               <TableHeader>
@@ -287,7 +287,7 @@ const Admin = () => {
                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                           request.is_approved 
                             ? 'bg-green-100 text-green-800' 
-                            : 'bg-yellow-100 text-yellow-800'
+                            : 'tag-yellow'
                         }`}>
                           {request.is_approved ? 'Approved' : 'Pending'}
                         </span>
@@ -299,7 +299,7 @@ const Admin = () => {
                             size="sm"
                             onClick={() => handleApproval(request.id)}
                             disabled={approving === request.id}
-                            className="bg-[#DE1010] hover:bg-[#C00E0E] text-white"
+                            className="bg-tkh-orange hover:bg-tkh-yellow hover:text-black text-white"
                           >
                             {approving === request.id ? "Approving..." : "Approve"}
                           </Button>
@@ -308,7 +308,7 @@ const Admin = () => {
                             variant="outline"
                             size="sm"
                             onClick={() => copyAccessLink(request)}
-                            className="border-[#23D7CB] text-[#23D7CB] hover:bg-[#23D7CB] hover:text-white"
+                            className="border-tkh-teal text-tkh-teal hover:bg-tkh-teal hover:text-white"
                           >
                             Copy Link
                           </Button>

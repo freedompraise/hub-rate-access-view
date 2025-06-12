@@ -68,7 +68,7 @@ const RateCard = () => {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-gray-200 border-t-[#DE1010] rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-16 h-16 border-4 border-border border-t-tkh-orange rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-black">Validating access...</p>
         </div>
       </div>
@@ -78,18 +78,18 @@ const RateCard = () => {
   if (error || !isValid) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
-        <Card className="bg-white border-gray-200 shadow-lg max-w-md mx-6">
+        <Card className="bg-white border-border shadow-lg max-w-md mx-6">
           <CardContent className="p-8 text-center">
             <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-[#DE1010] text-2xl">⚠️</span>
+              <span className="text-tkh-orange text-2xl">⚠️</span>
             </div>
-            <h2 className="text-xl font-cinzel font-bold text-[#DE1010] mb-2">Access Denied</h2>
-            <p className="text-gray-700 mb-6">
+            <h2 className="text-xl font-serif font-bold text-tkh-orange mb-2">Access Denied</h2>
+            <p className="text-black mb-6">
               {error || "Sorry, this access link has expired or is invalid. Please request a new access link."}
             </p>
             <Button 
               onClick={() => window.location.href = '/'}
-              className="bg-[#DE1010] hover:bg-[#C00E0E] text-white"
+              className="bg-tkh-orange hover:bg-tkh-yellow hover:text-black text-white transition-all duration-300"
             >
               Request New Access
             </Button>
@@ -110,117 +110,117 @@ const RateCard = () => {
               alt="The Kontent Hub Logo" 
               className="w-20 h-20 mx-auto mb-6"
             />
-            <h1 className="text-4xl md:text-5xl font-cinzel font-bold text-black mb-4">
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-black mb-4">
               Marketing Strategy Rate Card
             </h1>
             {userName && (
-              <p className="text-lg text-gray-700 mb-2">
-                Welcome, <span className="font-semibold text-[#DE1010]">{userName}</span>!
+              <p className="text-lg text-black mb-2">
+                Welcome, <span className="font-semibold text-tkh-orange">{userName}</span>!
               </p>
             )}
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-black max-w-2xl mx-auto">
               Comprehensive marketing solutions tailored to elevate your brand
             </p>
           </div>
 
           <div className="mb-8">
-            <h2 className="text-2xl font-cinzel font-semibold text-[#DE1010] mb-4">
+            <h2 className="text-2xl font-serif font-semibold text-tkh-orange mb-4">
               Our Services
             </h2>
-            <p className="text-gray-700">
+            <p className="text-black">
               We offer a range of marketing services designed to meet your specific needs.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            <Card className="bg-white border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+            <Card className="bg-white border-border shadow-sm hover:shadow-md transition-shadow">
               <CardContent className="p-6">
-                <h3 className="text-xl font-poppins font-semibold text-[#DE1010] mb-2">
+                <h3 className="text-xl font-sans font-semibold text-tkh-orange mb-2">
                   Social Media Management
                 </h3>
-                <p className="text-gray-700 mb-4">
+                <p className="text-black mb-4">
                   Engage your audience and grow your brand with our expert social media strategies.
                 </p>
-                <Badge className="bg-[#FFD304] text-black hover:bg-[#E6BE04]">
+                <Badge className="tag-yellow">
                   Starting from ₦150,000/month
                 </Badge>
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+            <Card className="bg-white border-border shadow-sm hover:shadow-md transition-shadow">
               <CardContent className="p-6">
-                <h3 className="text-xl font-poppins font-semibold text-[#DE1010] mb-2">
+                <h3 className="text-xl font-sans font-semibold text-tkh-orange mb-2">
                   Content Creation
                 </h3>
-                <p className="text-gray-700 mb-4">
+                <p className="text-black mb-4">
                   Drive traffic and establish authority with high-quality, engaging content.
                 </p>
-                <Badge className="bg-[#FFD304] text-black hover:bg-[#E6BE04]">
+                <Badge className="tag-yellow">
                   Starting from ₦75,000/piece
                 </Badge>
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+            <Card className="bg-white border-border shadow-sm hover:shadow-md transition-shadow">
               <CardContent className="p-6">
-                <h3 className="text-xl font-poppins font-semibold text-[#DE1010] mb-2">
+                <h3 className="text-xl font-sans font-semibold text-tkh-orange mb-2">
                   SEO Optimization
                 </h3>
-                <p className="text-gray-700 mb-4">
+                <p className="text-black mb-4">
                   Improve your search engine rankings and reach a wider audience.
                 </p>
-                <Badge className="bg-[#FFD304] text-black hover:bg-[#E6BE04]">
+                <Badge className="tag-yellow">
                   Starting from ₦120,000/month
                 </Badge>
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+            <Card className="bg-white border-border shadow-sm hover:shadow-md transition-shadow">
               <CardContent className="p-6">
-                <h3 className="text-xl font-poppins font-semibold text-[#DE1010] mb-2">
+                <h3 className="text-xl font-sans font-semibold text-tkh-orange mb-2">
                   Email Marketing
                 </h3>
-                <p className="text-gray-700 mb-4">
+                <p className="text-black mb-4">
                   Connect with your customers and boost sales through targeted email campaigns.
                 </p>
-                <Badge className="bg-[#FFD304] text-black hover:bg-[#E6BE04]">
+                <Badge className="tag-yellow">
                   Starting from ₦50,000/campaign
                 </Badge>
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+            <Card className="bg-white border-border shadow-sm hover:shadow-md transition-shadow">
               <CardContent className="p-6">
-                <h3 className="text-xl font-poppins font-semibold text-[#DE1010] mb-2">
+                <h3 className="text-xl font-sans font-semibold text-tkh-orange mb-2">
                   Brand Strategy & Design
                 </h3>
-                <p className="text-gray-700 mb-4">
+                <p className="text-black mb-4">
                   Develop a cohesive brand identity that resonates with your target audience.
                 </p>
-                <Badge className="bg-[#FFD304] text-black hover:bg-[#E6BE04]">
+                <Badge className="tag-yellow">
                   Starting from ₦200,000/project
                 </Badge>
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+            <Card className="bg-white border-border shadow-sm hover:shadow-md transition-shadow">
               <CardContent className="p-6">
-                <h3 className="text-xl font-poppins font-semibold text-[#DE1010] mb-2">
+                <h3 className="text-xl font-sans font-semibold text-tkh-orange mb-2">
                   Digital Advertising
                 </h3>
-                <p className="text-gray-700 mb-4">
+                <p className="text-black mb-4">
                   Maximize your ROI with targeted digital advertising campaigns across platforms.
                 </p>
-                <Badge className="bg-[#FFD304] text-black hover:bg-[#E6BE04]">
+                <Badge className="tag-yellow">
                   Starting from ₦100,000/month + ad spend
                 </Badge>
               </CardContent>
             </Card>
           </div>
 
-          <Card className="bg-gradient-to-r from-[#DE1010] to-[#C00E0E] text-white">
+          <Card className="bg-hero-gradient text-white shadow-lg">
             <CardContent className="p-8 text-center">
-              <h2 className="text-2xl font-cinzel font-semibold mb-4">
+              <h2 className="text-2xl font-serif font-semibold mb-4">
                 Ready to Get Started?
               </h2>
               <p className="text-white/90 mb-6 max-w-2xl mx-auto">
@@ -228,14 +228,14 @@ const RateCard = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 
-                  className="bg-white text-[#DE1010] hover:bg-gray-100"
+                  className="bg-white text-tkh-purple hover:bg-tkh-yellow hover:text-black transition-all duration-300"
                   onClick={() => window.open('https://wa.me/2349056979794?text=Hi%2C%20I%20just%20viewed%20your%20rate%20card%20and%20would%20like%20to%20discuss%20my%20marketing%20needs.', '_blank')}
                 >
                   Chat on WhatsApp
                 </Button>
                 <Button 
                   variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-[#DE1010]"
+                  className="border-white text-white hover:bg-white hover:text-tkh-purple"
                   onClick={() => window.location.href = 'mailto:hello@thekontenthub.com?subject=Rate Card Inquiry'}
                 >
                   Send Email
@@ -244,7 +244,7 @@ const RateCard = () => {
             </CardContent>
           </Card>
 
-          <div className="mt-8 text-center text-sm text-gray-500">
+          <div className="mt-8 text-center text-sm text-black/60">
             <p>This access link is valid for 24 hours from approval.</p>
           </div>
         </div>
