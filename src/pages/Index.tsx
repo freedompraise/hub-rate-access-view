@@ -8,16 +8,15 @@ import { ArrowDown } from "lucide-react";
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  return (
-    <div className="min-h-screen bg-hero-gradient relative overflow-hidden">
+  return (    <div className="min-h-screen bg-background relative overflow-hidden">
       <Header />
       
       {/* Hero Section */}
       <div className="relative pt-20 pb-16 px-6">
-        <div className="absolute inset-0 bg-charcoal-gray/80"></div>
+        <div className="absolute inset-0 bg-card/80"></div>
         
         <div className="relative z-10 container mx-auto text-center py-24">
-          <h1 className="text-5xl md:text-7xl font-montserrat font-bold text-royal-gold mb-6 animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-montserrat font-bold text-ring mb-6 animate-fade-in">
             GET YOUR CUSTOMIZED
           </h1>
           <h1 className="text-5xl md:text-7xl font-montserrat font-bold gradient-text mb-8 animate-fade-in">

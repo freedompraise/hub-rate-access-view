@@ -55,10 +55,9 @@ const RateCard = () => {
   };
 
   if (isValidToken === null) {
-    return (
-      <div className="min-h-screen bg-midnight-black flex items-center justify-center">
+    return (      <div className="min-h-screen bg-input flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-royal-gold border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-16 h-16 border-4 border-ring border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-white/80">Validating access...</p>
         </div>
       </div>
@@ -66,10 +65,9 @@ const RateCard = () => {
   }
 
   if (!isValidToken) {
-    return (
-      <div className="min-h-screen bg-midnight-black flex items-center justify-center">
+    return (      <div className="min-h-screen bg-input flex items-center justify-center">
         <div className="text-center max-w-md mx-auto px-6">
-          <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 bg-destructive rounded-full flex items-center justify-center mx-auto mb-4">
             <span className="text-white text-2xl">✗</span>
           </div>
           <h1 className="text-2xl font-montserrat font-bold text-white mb-4">
@@ -80,7 +78,7 @@ const RateCard = () => {
           </p>
           <a 
             href="/" 
-            className="inline-block bg-royal-gold text-midnight-black px-6 py-3 rounded-lg font-montserrat font-semibold hover:bg-button-hover transition-colors"
+            className="inline-block bg-ring text-input px-6 py-3 rounded-lg font-montserrat font-semibold hover:bg-ring/90 transition-colors"
           >
             Request New Access
           </a>
@@ -249,8 +247,7 @@ const RateCard = () => {
     }
   ];
 
-  return (
-    <div className="min-h-screen bg-midnight-black">
+  return (    <div className="min-h-screen bg-input">
       <Header />
       
       <div className="pt-20 pb-16 px-6">
@@ -261,7 +258,7 @@ const RateCard = () => {
               alt="The Kontent Hub Logo" 
               className="w-20 h-20 mx-auto mb-6"
             />
-            <h1 className="text-4xl md:text-6xl font-montserrat font-bold text-royal-gold mb-4">
+            <h1 className="text-4xl md:text-6xl font-montserrat font-bold text-ring mb-4">
               THE KONTENT HUB
             </h1>
             <h2 className="text-2xl md:text-3xl font-montserrat font-semibold text-white mb-2">
