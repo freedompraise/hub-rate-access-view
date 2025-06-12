@@ -86,6 +86,9 @@ const Admin = () => {
           variant: "destructive",
         });
       } else {
+        // Cast the data as the expected object type
+        const approvalData = data as { token: string; token_expires_at: string };
+        
         // Update the local state with the approved request
         setRequests(prevRequests =>
           prevRequests.map(req =>
@@ -93,8 +96,8 @@ const Admin = () => {
               ? { 
                   ...req, 
                   is_approved: true, 
-                  token: data.token,
-                  token_expires_at: data.token_expires_at
+                  token: approvalData.token,
+                  token_expires_at: approvalData.token_expires_at
                 } 
               : req
           )

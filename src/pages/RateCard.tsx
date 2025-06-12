@@ -38,9 +38,12 @@ const RateCard = () => {
         throw new Error("Invalid or expired access token.");
       }
 
-      if (validationData && validationData.valid) {
+      // Cast the data as the expected object type
+      const validation = validationData as { valid: boolean; full_name: string; request_id: string };
+
+      if (validation && validation.valid) {
         setIsValid(true);
-        setUserName(validationData.full_name);
+        setUserName(validation.full_name);
         
         // Mark token as accessed
         const { error: accessError } = await supabase
