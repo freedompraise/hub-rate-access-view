@@ -59,11 +59,10 @@ export default {
 			fontFamily: {
 				sans: ["Poppins", "sans-serif"],
 				serif: ["Cinzel", "serif"],
-			},
-			backgroundImage: {
-				'hero-gradient': 'linear-gradient(90deg, #4830B8, #FFD304, #DE1010)',
+			},			backgroundImage: {
+				'hero-gradient': 'linear-gradient(90deg, #DE1010, #FFD304)',
 				'info-gradient': 'linear-gradient(135deg, #23D7CB, #FFD304)',
-				'cta-hover': 'linear-gradient(90deg, #DE1010, #FFD304)',
+				'cta-hover': 'linear-gradient(90deg, #FFD304, #DE1010)',
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
 				"gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
 			},

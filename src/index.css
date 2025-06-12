@@ -48,9 +48,8 @@
   }
 }
 
-@layer components {
-  .btn-gradient {
-    @apply text-white font-semibold px-6 py-3 rounded-lg shadow-md bg-hero-gradient hover:bg-cta-hover transition-all duration-300 transform hover:scale-105;
+@layer components {  .btn-gradient {
+    @apply text-black font-semibold px-6 py-3 rounded-lg shadow-md bg-hero-gradient hover:bg-cta-hover transition-all duration-300 transform hover:scale-105;
   }
 
   .btn-secondary {
