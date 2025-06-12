@@ -8,15 +8,15 @@ const Header = () => {
   const { user } = useAuth();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-midnight-black/90 backdrop-blur-sm border-b border-charcoal-gray">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-tkh-black/90 backdrop-blur-sm border-b border-tkh-black/20">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <img 
-            src="/lovable-uploads/c85aa68f-ad21-41fb-a103-805c14e0490c.png" 
+            src="/lovable-uploads/283ca45c-93b6-4e0d-b037-e991c94291dc.png" 
             alt="The Kontent Hub Logo" 
             className="w-10 h-10"
           />
-          <span className="text-royal-gold font-montserrat font-semibold text-xl">
+          <span className="text-secondary font-serif font-semibold text-xl">
             The Kontent Hub
           </span>
         </div>
@@ -24,14 +24,14 @@ const Header = () => {
         <nav className="flex items-center space-x-6">
           <a 
             href="/" 
-            className="text-white/90 hover:text-royal-gold transition-colors font-montserrat"
+            className="text-white/90 hover:text-secondary transition-colors font-sans"
           >
             Home
           </a>
           {(isAdminVisible || user) && (
             <a 
               href="/admin" 
-              className="text-white/90 hover:text-royal-gold transition-colors font-montserrat"
+              className="text-white/90 hover:text-secondary transition-colors font-sans"
             >
               Admin
             </a>
@@ -41,7 +41,7 @@ const Header = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsAdminVisible(!isAdminVisible)}
-              className="text-xs text-white/60 hover:text-royal-gold"
+              className="text-xs text-white/60 hover:text-secondary"
             >
               {isAdminVisible ? "Hide" : "Show"} Admin
             </Button>
