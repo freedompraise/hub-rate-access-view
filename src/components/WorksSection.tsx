@@ -1,6 +1,5 @@
 
-const WorksSection = () => {
-  const videos = [
+const WorksSection = () => {  const videos = [
     {
       id: "UwtqiPKgiJc",
       title: "Creative Video 1"
@@ -8,6 +7,14 @@ const WorksSection = () => {
     {
       id: "k-2igx8aKCc", 
       title: "Creative Video 2"
+    },
+    {
+      id: "fsNJ9VyZc7s",
+      title: "Creative Video 3"
+    },
+    {
+      id: "cT72XKCrEjU",
+      title: "Creative Short"
     }
   ];
 
