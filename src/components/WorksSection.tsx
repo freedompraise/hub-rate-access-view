@@ -29,10 +29,10 @@ const WorksSection = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">
-            Our Creative in Action
+            Our Creative Work
           </h2>
           <p className="text-lg text-white/80 max-w-2xl mx-auto">
-            A few stories told in frames.
+           A look at the stories we’ve told through strategy, visuals, and content.
           </p>
         </div>
         

@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import ServicesSection from "@/components/ServicesSection";
 import WorksSection from "@/components/WorksSection";
 import RateCardSection from "@/components/RateCardSection";
+import BrandHelpSection from "@/components/BrandHelpSection";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 
@@ -35,6 +36,7 @@ const Index = () => {
         </div>
       </section>
 
+      <BrandHelpSection />
       {/* Services Section - White Background */}
       <ServicesSection />
 
