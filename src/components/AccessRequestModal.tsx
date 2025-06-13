@@ -12,11 +12,13 @@ interface AccessRequestModalProps {
   onClose: () => void;
 }
 
-const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
-  const [formData, setFormData] = useState({
+const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {  const [formData, setFormData] = useState({
     fullName: "",
+    email: "",
     phoneNumber: "",
-    email: ""
+    brandName: "",
+    instagramHandle: "",
+    helpNeeded: ""
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +28,7 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
     e.preventDefault();
     setIsLoading(true);
 
-    try {
+    try {      // TODO: Update Supabase RPC to include new fields (brandName, instagramHandle, helpNeeded)
       const { error } = await supabase.rpc('create_rate_card_request', {
         full_name: formData.fullName,
         phone_number: formData.phoneNumber,
@@ -50,15 +52,28 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
       setIsLoading(false);
     }
   };
-
   const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("Hi, I just requested access to view the rate card.");
-    window.open(`https://wa.me/2349056979794?text=${message}`, '_blank');
+    const message = encodeURIComponent(
+      `Hi, I would like to request access to view the rate card.\n\n` +
+      `Name: ${formData.fullName}\n` +
+      `Email: ${formData.email}\n` +
+      `Phone: ${formData.phoneNumber}\n` +
+      `Brand: ${formData.brandName}\n` +
+      `Instagram: ${formData.instagramHandle}\n` +
+      `Needs: ${formData.helpNeeded}`
+    );
+    window.open(`https://wa.me/2347025277328?text=${message}`, '_blank');
   };
-
   const handleClose = () => {
     setIsSubmitted(false);
-    setFormData({ fullName: "", phoneNumber: "", email: "" });
+    setFormData({
+      fullName: "",
+      email: "",
+      phoneNumber: "",
+      brandName: "",
+      instagramHandle: "",
+      helpNeeded: ""
+    });
     onClose();
   };
 
@@ -94,15 +109,14 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="bg-white border-border text-black max-w-md shadow-lg">
         <DialogHeader>
-          <DialogTitle className="text-tkh-orange font-serif font-semibold text-xl text-center">
-            Request Access to Rate Card
+          <DialogTitle className="text-tkh-orange font-serif text-xs text-center">
+            Please fill out the form below to request access to our rate card, and we'll get back to you shortly.
           </DialogTitle>
         </DialogHeader>
         
-        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-          <div className="space-y-2">
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4">          <div className="space-y-2">
             <Label htmlFor="fullName" className="text-black">
-              Full Name *
+              Name *
             </Label>
             <Input
               id="fullName"
@@ -110,10 +124,25 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
               required
               className="bg-white border-border text-black focus:border-tkh-orange"
-              placeholder="Enter your full name"
+              placeholder="Enter your name"
             />
           </div>
           
+          <div className="space-y-2">
+            <Label htmlFor="email" className="text-black">
+              Email *
+            </Label>
+            <Input
+              id="email"
+              type="email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              required
+              className="bg-white border-border text-black focus:border-tkh-orange"
+              placeholder="your@email.com"
+            />
+          </div>
+
           <div className="space-y-2">
             <Label htmlFor="phoneNumber" className="text-black">
               Phone Number *
@@ -127,18 +156,46 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
               placeholder="+234 xxx xxx xxxx"
             />
           </div>
-          
+
           <div className="space-y-2">
-            <Label htmlFor="email" className="text-black">
-              Email (Optional)
+            <Label htmlFor="brandName" className="text-black">
+              Brand Name *
             </Label>
             <Input
-              id="email"
-              type="email"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              id="brandName"
+              value={formData.brandName}
+              onChange={(e) => setFormData({ ...formData, brandName: e.target.value })}
+              required
               className="bg-white border-border text-black focus:border-tkh-orange"
-              placeholder="your@email.com"
+              placeholder="Enter your brand name"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="instagramHandle" className="text-black">
+              Instagram Handle *
+            </Label>
+            <Input
+              id="instagramHandle"
+              value={formData.instagramHandle}
+              onChange={(e) => setFormData({ ...formData, instagramHandle: e.target.value })}
+              required
+              className="bg-white border-border text-black focus:border-tkh-orange"
+              placeholder="@yourbrand"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="helpNeeded" className="text-black">
+              What do you need help with? *
+            </Label>
+            <Input
+              id="helpNeeded"
+              value={formData.helpNeeded}
+              onChange={(e) => setFormData({ ...formData, helpNeeded: e.target.value })}
+              required
+              className="bg-white border-border text-black focus:border-tkh-orange"
+              placeholder="Tell us about your needs"
             />
           </div>
           
