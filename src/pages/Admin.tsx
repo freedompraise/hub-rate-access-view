@@ -123,7 +123,7 @@ const Admin = () => {
     if (!request.token) return;
     
     const link = `${window.location.origin}/rate-card?token=${request.token}`;
-    const message = `Hi ${request.full_name}, here's your private access link to view our rate card:\n${link}\nIt's valid for 24 hours only.`;
+    const message = `Hi ${request.full_name}, here's your private access link to view our rate card:\n${link}\nIt's valid for 7 days only.`;
     
     try {
       await navigator.clipboard.writeText(message);

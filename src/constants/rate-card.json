@@ -1,0 +1,322 @@
+{
+  "marketing_strategy_packages": [
+    {
+      "title": "Social Media Strategy",
+      "variants": [
+        {
+          "market": "Nigeria Only",
+          "price": "₦300,000",
+          "duration": "3 months",
+          "inclusions": [
+            "3‑month social media plan tailored to Nigeria",
+            "Audience & competitor analysis",
+            "Platform‑specific content themes",
+            "Hashtag & engagement strategy",
+            "Campaign calendar & analytics setup"
+          ]
+        },
+        {
+          "market": "USA Only",
+          "price": "$250",
+          "duration": "3 months",
+          "inclusions": [
+            "3‑month social media plan tailored to USA",
+            "Audience profiling & competitor analysis",
+            "Platform‑specific content themes",
+            "Hashtag & engagement strategy",
+            "Campaign calendar & analytics setup"
+          ]
+        },
+        {
+          "market": "Nigeria + USA",
+          "price": "$500 / ₦800,000",
+          "duration": "3 months",
+          "inclusions": [
+            "Combined social media strategy for both markets",
+            "Market‑specific audience insights & campaigns",
+            "Dual platform content themes & engagement plans",
+            "Campaign calendar & tracking for both markets"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Digital Marketing Strategy",
+      "variants": [
+        {
+          "market": "Nigeria Only",
+          "price": "₦500,000",
+          "duration": "3 months",
+          "inclusions": [
+            "3‑month Digital Marketing Plan",
+            "SEO strategy & recommendations",
+            "Paid ads strategy (Google, Facebook, etc.)",
+            "Email marketing plan & automation",
+            "Multi‑channel budget and KPI framework",
+            "Campaign ideas & timelines"
+          ]
+        },
+        {
+          "market": "USA Only",
+          "price": "$350",
+          "duration": "3 months",
+          "inclusions": [
+            "3‑month Digital Marketing Plan tailored for US market",
+            "SEO & SEM strategy",
+            "Paid ad campaigns",
+            "Email & automation workflows",
+            "Multi‑channel budget & KPIs",
+            "Campaign roadmap & schedule"
+          ]
+        },
+        {
+          "market": "Nigeria + USA Combined",
+          "price": "$700 / ₦800,000",
+          "duration": "3 months",
+          "inclusions": [
+            "Integrated 3‑month Digital Marketing Plan for both markets",
+            "Market‑specific SEO, SEM & paid ads",
+            "Email marketing & automation for both markets",
+            "Multi‑channel budget & KPIs for each",
+            "Campaign calendar per market"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "All‑in‑One Marketing Strategy",
+      "description": "Includes Social Media Strategy + Digital Marketing Strategy + Product Marketing Strategy",
+      "variants": [
+        {
+          "market": "Nigeria Only",
+          "price": "₦1,000,000",
+          "duration": "3 months",
+          "inclusions": [
+            "Social Media: content themes, engagement, campaigns",
+            "Digital Marketing: SEO, PPC, email marketing, paid ads, multi‑channel budget & KPI",
+            "Product Marketing: product positioning, messaging, target personas, GTM plan, pricing & sales enablement"
+          ]
+        },
+        {
+          "market": "USA Only",
+          "price": "$800",
+          "duration": "3 months",
+          "inclusions": [
+            "Social Media Strategy for USA audience",
+            "Digital Marketing: paid ads, email campaigns, SEO, multi‑channel plans",
+            "Product Marketing: USA‑specific positioning, competitive analysis, GTM, pricing, sales enablement"
+          ]
+        },
+        {
+          "market": "Nigeria + USA Combined",
+          "price": "$1,200 / ₦1,600,000",
+          "duration": "3 months",
+          "inclusions": [
+            "Fully integrated strategy across both markets",
+            "Market‑specific social media, digital, and product marketing plans",
+            "Detailed audience profiling and campaign calendar per market",
+            "Multi‑channel paid ads & email marketing strategies",
+            "Dual‑market GTM and sales enablement plans"
+          ]
+        }
+      ]
+    }
+  ],
+  "marketing_strategy_terms": [
+    "Delivery for Social Media Strategy: 5–7 business days after questionnaire and initial meeting",
+    "Delivery for Digital Marketing Strategy: 7–10 business days after questionnaire and initial meeting",
+    "Delivery for Full Marketing Strategy: 14–18 business days after questionnaire and initial meeting",
+    "Timeline starts once full payment is received and client materials provided",
+    "100% payment upfront, non‑refundable once work begins",
+    "50% strategy fee deducted from execution invoice if executed within 14 days of delivery",
+    "Client has 14 days from delivery to decide on execution",
+    "Up to two rounds of revisions included within 7 days of delivery",
+    "Timely provision of materials and feedback required",
+    "All information shared remains confidential",
+    "No refunds after work has started; cancellation before commencement subject to administrative fees",
+    "Client owns final deliverable upon full payment; agency may use anonymized samples for marketing",
+    "Agency not liable for specific outcomes; governed by applicable law"
+  ],
+  "social_media_management": {
+    "title": "Social Media Management Package",
+    "price": "₦750,000/month",
+    "best_for": "Brands seeking strong organic presence without heavy ad spend",
+    "inclusions": [
+      "Dedicated Social Media Manager",
+      "Instagram & TikTok management",
+      "Daily response to comments, DMs, and reviews",
+      "Monthly content calendar with visuals and captions",
+      "Custom hashtag strategy",
+      "Community management and sentiment monitoring",
+      "Monthly campaigns, giveaways, promotions",
+      "Basic influencer outreach (fees separate)",
+      "Monthly analytics & reporting",
+      "Weekly strategy sessions"
+    ],
+    "terms": [
+      "₦750,000 payable monthly in advance (70% before start, 30% in second month)",
+      "Minimum 3‑month contract",
+      "Early termination forfeits prepaid fees",
+      "Only Instagram & TikTok included; other platforms billed separately",
+      "Client provides assets; agency does not supply models or locations",
+      "Paid ad budgets and influencer fees separate",
+      "Weekly and monthly review sessions"
+    ]
+  },
+  "conversion_based_strategy": {
+    "title": "Conversion‑Based Marketing Strategy",
+    "price": "₦1,500,000/month",
+    "best_for": "Brands focused on ROI, retention, and sales growth",
+    "inclusions": [
+      "All Social Media Management inclusions",
+      "Instagram & TikTok ad management (creative, targeting, tracking)",
+      "Influencer campaign management (fees separate)",
+      "Email marketing (4 campaigns/month)",
+      "Sales & promo campaign planning",
+      "Weekly strategy sessions"
+    ],
+    "terms": [
+      "₦1,500,000 payable monthly in advance (70% before start, 30% in second month)",
+      "Minimum 6‑month contract",
+      "Client funds ad spend and influencer fees",
+      "Additional platforms billed separately",
+      "No provision for models or shoot locations",
+      "Paid ad campaigns recommended for best results"
+    ]
+  },
+  "reel_strategy_production": {
+    "title": "Reel Strategy & Production",
+    "variants": [
+      {
+        "type": "Phone‑Shot Reels",
+        "price": "₦500,000 for 10 reels",
+        "description": "Single shoot session",
+        "inclusions": [
+          "Creative direction",
+          "Scriptwriting",
+          "Professional editing"
+        ],
+        "terms": [
+          "Advance payment required",
+          "Minimum booking: 5 reels",
+          "Client provides models or pays separate fees",
+          "Props and locations not included",
+          "All reels filmed in one session"
+        ]
+      },
+      {
+        "type": "Camera‑Shot Reels",
+        "price": "₦400,000 per reel or ₦600,000 for 5",
+        "inclusions": [
+          "High‑quality studio production",
+          "Creative setup",
+          "Post‑production"
+        ]
+      },
+      {
+        "type": "3‑Month Retainer (Camera)",
+        "price": "₦1,500,000",
+        "inclusions": [
+          "15 videos over 3 months",
+          "Up to 3 shoot sessions",
+          "Full production services"
+        ]
+      },
+      {
+        "type": "3‑Month Retainer (Phone)",
+        "price": "₦1,400,000",
+        "inclusions": [
+          "10 reels/month",
+          "Up to 3 shoot sessions",
+          "Creative planning support"
+        ]
+      }
+    ]
+  },
+  "template_kits": [
+    {
+      "title": "Template Kit – Instagram Only",
+      "price": "₦750,000",
+      "duration": "3 months",
+      "inclusions": [
+        "Custom branded static templates",
+        "1‑month content calendar",
+        "30 targeted hashtags"
+      ],
+      "terms": [
+        "Upfront payment required",
+        "No refunds",
+        "Services to be used within 90 days"
+      ]
+    },
+    {
+      "title": "Template Kit – Instagram + LinkedIn",
+      "price": "₦1,000,000",
+      "duration": "3 months",
+      "inclusions": [
+        "Custom static templates for both platforms",
+        "Content calendars",
+        "Tailored hashtags"
+      ],
+      "terms": [
+        "Upfront payment required",
+        "No refunds",
+        "Services to be used within 90 days"
+      ]
+    },
+    {
+      "title": "Template Kit + Reels Combo",
+      "price": "₦500,000/month",
+      "inclusions": [
+        "Template kit inclusions",
+        "5 phone‑shot reels (scripted & edited)"
+      ],
+      "terms": [
+        "Minimum 3‑month commitment",
+        "Upfront payment, non‑refundable",
+        "Client posts content themselves",
+        "Models, props, locations billed separately"
+      ]
+    }
+  ],
+  "campaign_shoot": {
+    "title": "Video & Photography Campaign Shoot",
+    "steps": [
+      {
+        "phase": "Strategy & Planning",
+        "price": "₦300,000",
+        "inclusions": [
+          "Creative campaign concept",
+          "Launch plan",
+          "Activation strategy",
+          "Moodboards & shot list"
+        ]
+      },
+      {
+        "phase": "Execution",
+        "price_from": "₦1,200,000",
+        "location_coverage": [
+          "Lagos",
+          "Abuja",
+          "Port Harcourt",
+          "North America (on request)"
+        ],
+        "inclusions": [
+          "Full‑day production (photo + video)",
+          "Team & talent coordination",
+          "Post‑production editing & retouching",
+          "10–15 final assets"
+        ]
+      }
+    ],
+    "terms": [
+      "Strategy fee: 100% upfront, non‑refundable",
+      "Production fees: 70% upfront, 30% on delivery",
+      "₦150,000 strategy fee deduction if execution within 14 days",
+      "1 round of revision per asset included",
+      "Cancellation before production: up to 30% fee",
+      "Client owns final IP upon full payment",
+      "Agency may use anonymized samples for portfolio"
+    ]
+  }
+}
