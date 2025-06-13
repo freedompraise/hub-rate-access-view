@@ -23,7 +23,7 @@ export default {
 				'tkh-yellow': '#FFD304',
 				'tkh-orange': '#DE1010', // This is red-orange from brand guide
 				'tkh-teal': '#23D7CB',
-				'tkh-navy': '#1e3a8a', // Dark blue for alternating sections
+				'tkh-navy': '#02084b', // Dark blue for alternating sections
 				black: '#000000',
 				white: '#FFFFFF',
 				border: '#E5E7EB', // subtle UI borders

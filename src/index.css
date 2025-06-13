@@ -85,6 +85,6 @@
   }
 
   .section-navy {
-    @apply bg-tkh-purple text-white;
+    @apply bg-tkh-navy text-white;
   }
 }
