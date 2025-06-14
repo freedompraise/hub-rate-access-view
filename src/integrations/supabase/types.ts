@@ -12,9 +12,12 @@ export type Database = {
       rate_card_requests: {
         Row: {
           accessed_at: string | null
+          brand_name: string | null
           email: string | null
           full_name: string
+          help_needed: string | null
           id: string
+          instagram_handle: string | null
           is_approved: boolean | null
           notes: string | null
           phone_number: string
@@ -25,9 +28,12 @@ export type Database = {
         }
         Insert: {
           accessed_at?: string | null
+          brand_name?: string | null
           email?: string | null
           full_name: string
+          help_needed?: string | null
           id?: string
+          instagram_handle?: string | null
           is_approved?: boolean | null
           notes?: string | null
           phone_number: string
@@ -38,9 +44,12 @@ export type Database = {
         }
         Update: {
           accessed_at?: string | null
+          brand_name?: string | null
           email?: string | null
           full_name?: string
+          help_needed?: string | null
           id?: string
+          instagram_handle?: string | null
           is_approved?: boolean | null
           notes?: string | null
           phone_number?: string
@@ -61,7 +70,16 @@ export type Database = {
         Returns: Json
       }
       create_rate_card_request: {
-        Args: { full_name: string; phone_number: string; email: string }
+        Args:
+          | { full_name: string; phone_number: string; email: string }
+          | {
+              full_name: string
+              phone_number: string
+              email: string
+              brand_name?: string
+              instagram_handle?: string
+              help_needed?: string
+            }
         Returns: undefined
       }
       mark_token_as_accessed: {

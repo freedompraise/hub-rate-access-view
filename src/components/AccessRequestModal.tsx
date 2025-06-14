@@ -12,7 +12,8 @@ interface AccessRequestModalProps {
   onClose: () => void;
 }
 
-const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {  const [formData, setFormData] = useState({
+const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
+  const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phoneNumber: "",
@@ -28,11 +29,14 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {  
     e.preventDefault();
     setIsLoading(true);
 
-    try {      // TODO: Update Supabase RPC to include new fields (brandName, instagramHandle, helpNeeded)
+    try {
       const { error } = await supabase.rpc('create_rate_card_request', {
         full_name: formData.fullName,
         phone_number: formData.phoneNumber,
-        email: formData.email || null
+        email: formData.email || null,
+        brand_name: formData.brandName || null,
+        instagram_handle: formData.instagramHandle || null,
+        help_needed: formData.helpNeeded || null
       });
 
       if (error) throw error;
@@ -52,6 +56,7 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {  
       setIsLoading(false);
     }
   };
+
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent(
       `Hi, I would like to request access to view the rate card.\n\n` +
@@ -64,6 +69,7 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {  
     );
     window.open(`https://wa.me/2347025277328?text=${message}`, '_blank');
   };
+
   const handleClose = () => {
     setIsSubmitted(false);
     setFormData({
@@ -114,7 +120,8 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {  
           </DialogTitle>
         </DialogHeader>
         
-        <form onSubmit={handleSubmit} className="space-y-4 mt-4">          <div className="space-y-2">
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+          <div className="space-y-2">
             <Label htmlFor="fullName" className="text-black">
               Name *
             </Label>

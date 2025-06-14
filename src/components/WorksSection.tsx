@@ -21,16 +21,16 @@ const WorksSection = () => {
   ];
 
   const photos = [
-    { id: "1qN-ebsOlfDjat9Ltv3W5nvzG1P7tJ9Eo" },
-    { id: "1kY509BSqrz6doZ6IOgfag5q2JWKHIubD" },
-    { id: "1J4yFdSYjEHApGrhrwUP84STHQeiW8Qmj" },
-    { id: "14mOWC5aXHciUv-QQzfJzZals-SMmqmu-" },
-    { id: "1eHn4NIOErlarZCve0KgX7dt-HEPZRZGg" },
-    { id: "1yGyLNjUgpHjPuSDnkt_9vQBK9I30EO-H" },
-    { id: "1bYgbAIAbCVU-gcgfl8sWQlN2S2G3ux9a" },
-    { id: "1XPpDzD3zTQ0zjrtGRHw0GjprLjRTaozq" },
-    { id: "1KteZgHvHskXYV_lI_zZkzbaP7cxGdsjg" }
-    // { id: "1fSFMdVlk4KlWTH8eKYLH8XNH8RsLfcAD" }
+    { id: "1", src: "/photography/1.webp", alt: "Photography work 1" },
+    { id: "2", src: "/photography/2.webp", alt: "Photography work 2" },
+    { id: "3", src: "/photography/3.webp", alt: "Photography work 3" },
+    { id: "4", src: "/photography/4.webp", alt: "Photography work 4" },
+    { id: "5", src: "/photography/5.webp", alt: "Photography work 5" },
+    { id: "6", src: "/photography/6.webp", alt: "Photography work 6" },
+    { id: "7", src: "/photography/7.webp", alt: "Photography work 7" },
+    { id: "8", src: "/photography/8.webp", alt: "Photography work 8" },
+    { id: "9", src: "/photography/9.webp", alt: "Photography work 9" },
+    { id: "10", src: "/photography/10.webp", alt: "Photography work 10" }
   ];
 
   return (
@@ -41,7 +41,7 @@ const WorksSection = () => {
             Our Creative Work
           </h2>
           <p className="text-lg text-white/80 max-w-2xl mx-auto">
-           A look at the stories we’ve told through strategy, visuals, and content.
+           A look at the stories we've told through strategy, visuals, and content.
           </p>
         </div>
         
@@ -63,19 +63,19 @@ const WorksSection = () => {
             ))}
           </div>
         </div>
-          {/* Photography Section */}
+        
+        {/* Photography Section */}
         <div>
           <h3 className="text-2xl font-serif font-semibold text-white mb-8 text-center">
             Photography
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {photos.map((video, index) => (
-              <div key={index} className="aspect-video">
-                <iframe
-                  src={`https://drive.google.com/file/d/${video.id}/preview`}
-                  allow="autoplay"
-                  className="w-full h-full rounded-lg"
-                  allowFullScreen
+            {photos.map((photo) => (
+              <div key={photo.id} className="aspect-square overflow-hidden rounded-lg">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
             ))}
