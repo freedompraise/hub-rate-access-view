@@ -355,7 +355,7 @@ const RateCard = () => {
           </Card>
 
           <div className="mt-8 text-center text-sm text-black/60">
-            <p>This access link is valid for 7 days from approval.</p>
+            <p>This access link is valid for 72 hours from approval.</p>
           </div>
         </div>
       </div>
