@@ -24,6 +24,9 @@ interface Request {
   full_name: string;
   phone_number: string;
   email: string | null;
+  brand_name: string | null;
+  instagram_handle: string | null;
+  help_needed: string | null;
   submitted_at: string | null;
   is_approved: boolean | null;
   token: string | null;
@@ -145,7 +148,9 @@ const Admin = () => {
     const matchesSearch =
       req.full_name.toLowerCase().includes(searchTerm) ||
       req.phone_number.toLowerCase().includes(searchTerm) ||
-      (req.email?.toLowerCase().includes(searchTerm) ?? false);
+      (req.email?.toLowerCase().includes(searchTerm) ?? false) ||
+      (req.brand_name?.toLowerCase().includes(searchTerm) ?? false) ||
+      (req.instagram_handle?.toLowerCase().includes(searchTerm) ?? false);
 
     let matchesFilter = true;
     if (filter === 'pending') {
@@ -257,10 +262,13 @@ const Admin = () => {
               <TableCaption>A list of access requests for the rate card.</TableCaption>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="w-[200px]">Name</TableHead>
-                  <TableHead>Phone Number</TableHead>
+                  <TableHead className="w-[150px]">Name</TableHead>
+                  <TableHead>Phone</TableHead>
                   <TableHead>Email</TableHead>
-                  <TableHead>Date Requested</TableHead>
+                  <TableHead>Brand</TableHead>
+                  <TableHead>Instagram</TableHead>
+                  <TableHead>Help Needed</TableHead>
+                  <TableHead>Date</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
@@ -268,11 +276,11 @@ const Admin = () => {
               <TableBody>
                 {loading ? (
                   <TableRow>
-                    <TableCell colSpan={6} className="text-center">Loading...</TableCell>
+                    <TableCell colSpan={9} className="text-center">Loading...</TableCell>
                   </TableRow>
                 ) : filteredRequests.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={6} className="text-center">No requests found.</TableCell>
+                    <TableCell colSpan={9} className="text-center">No requests found.</TableCell>
                   </TableRow>
                 ) : (
                   filteredRequests.map(request => (
@@ -280,6 +288,11 @@ const Admin = () => {
                       <TableCell className="font-medium">{request.full_name}</TableCell>
                       <TableCell>{request.phone_number}</TableCell>
                       <TableCell>{request.email || 'N/A'}</TableCell>
+                      <TableCell>{request.brand_name || 'N/A'}</TableCell>
+                      <TableCell>{request.instagram_handle || 'N/A'}</TableCell>
+                      <TableCell className="max-w-[200px] truncate" title={request.help_needed || 'N/A'}>
+                        {request.help_needed || 'N/A'}
+                      </TableCell>
                       <TableCell>
                         {request.submitted_at ? new Date(request.submitted_at).toLocaleDateString() : 'N/A'}
                       </TableCell>
