@@ -30,7 +30,7 @@ const WorksSection = () => {
     { id: "7", src: "/photography/7.webp", alt: "Photography work 7" },
     { id: "8", src: "/photography/8.webp", alt: "Photography work 8" },
     { id: "9", src: "/photography/9.webp", alt: "Photography work 9" },
-    { id: "10", src: "/photography/10.webp", alt: "Photography work 10" }
+    // { id: "10", src: "/photography/10.webp", alt: "Photography work 10" }
   ];
 
   return (
