@@ -1,5 +1,7 @@
 
-const WorksSection = () => {  const videos = [
+const WorksSection = () => {  
+  
+  const videos = [
     {
       id: "UwtqiPKgiJc",
       title: "Creative Video 1"
@@ -18,7 +20,7 @@ const WorksSection = () => {  const videos = [
     }
   ];
 
-  const driveVideos = [
+  const photos = [
     { id: "1qN-ebsOlfDjat9Ltv3W5nvzG1P7tJ9Eo" },
     { id: "1kY509BSqrz6doZ6IOgfag5q2JWKHIubD" },
     { id: "1J4yFdSYjEHApGrhrwUP84STHQeiW8Qmj" },
@@ -67,7 +69,7 @@ const WorksSection = () => {  const videos = [
             Photography
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {driveVideos.map((video, index) => (
+            {photos.map((video, index) => (
               <div key={index} className="aspect-video">
                 <iframe
                   src={`https://drive.google.com/file/d/${video.id}/preview`}
