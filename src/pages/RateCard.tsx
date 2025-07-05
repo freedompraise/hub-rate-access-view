@@ -141,45 +141,63 @@ const RateCard = () => {
       <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
         Social Media Management
       </h2>
-      <Card className="p-3 sm:p-4 md:p-6">
-        <CardHeader className="px-0 pb-2 md:pb-4">
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-0">
-            <div>
-              <CardTitle className="text-lg md:text-xl font-serif break-words">{rateCardData.social_media_management.title}</CardTitle>
-              <CardDescription className="mt-1 text-xs md:text-sm">Best for: {rateCardData.social_media_management.best_for}</CardDescription>
-            </div>
-            <p className="text-lg md:text-xl font-bold text-tkh-orange">{rateCardData.social_media_management.price}</p>
-          </div>
-        </CardHeader>
-        <CardContent className="px-0">
-          <Accordion type="single" collapsible>
-            <AccordionItem value="inclusions">
-              <AccordionTrigger className="text-xs md:text-sm">Package Inclusions</AccordionTrigger>
-              <AccordionContent>
-                <ul className="space-y-2">
-                  {rateCardData.social_media_management.inclusions.map((inc, i) => (
-                    <li key={i} className="flex items-start text-xs md:text-sm">
-                      <span className="text-tkh-orange mr-2">•</span><span className="break-words">{inc}</span>
-                    </li>
-                  ))}
-                </ul>
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="terms">
-              <AccordionTrigger className="text-xs md:text-sm">Terms & Conditions</AccordionTrigger>
-              <AccordionContent>
-                <ul className="space-y-2">
-                  {rateCardData.social_media_management.terms.map((term, i) => (
-                    <li key={i} className="flex items-start text-xs md:text-sm">
-                      <span className="text-tkh-orange mr-2">•</span><span className="break-words">{term}</span>
-                    </li>
-                  ))}
-                </ul>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </CardContent>
-      </Card>
+      <Tabs defaultValue={rateCardData.social_media_management.options[0].option} className="w-full">
+        <TabsList className="mb-4 flex flex-wrap gap-2 w-full">
+          {rateCardData.social_media_management.options.map((opt, idx) => (
+            <TabsTrigger
+              key={opt.option}
+              value={opt.option}
+              className="flex-1 min-w-[120px] text-xs md:text-sm px-3 py-1 rounded-full border border-tkh-orange data-[state=active]:bg-tkh-orange data-[state=active]:text-white text-center"
+              style={{ maxWidth: '220px' }}
+            >
+              {opt.option.replace('Option ', '')}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+        {rateCardData.social_media_management.options.map((opt, idx) => (
+          <TabsContent key={opt.option} value={opt.option} className="w-full">
+            <Card className="p-3 sm:p-4 md:p-6">
+              <CardHeader className="px-0 pb-2 md:pb-4">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-0">
+                  <div>
+                    <CardTitle className="text-lg md:text-xl font-serif break-words">{opt.option.replace('Option ', '')}</CardTitle>
+                    <CardDescription className="mt-1 text-xs md:text-sm">Best for: {opt.best_for}</CardDescription>
+                  </div>
+                  <p className="text-lg md:text-xl font-bold text-tkh-orange">{opt.price}</p>
+                </div>
+              </CardHeader>
+              <CardContent className="px-0">
+                <Accordion type="single" collapsible>
+                  <AccordionItem value="inclusions">
+                    <AccordionTrigger className="text-xs md:text-sm">Package Inclusions</AccordionTrigger>
+                    <AccordionContent>
+                      <ul className="space-y-2">
+                        {opt.inclusions.map((inc, i) => (
+                          <li key={i} className="flex items-start text-xs md:text-sm">
+                            <span className="text-tkh-orange mr-2">•</span><span className="break-words">{inc}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="terms">
+                    <AccordionTrigger className="text-xs md:text-sm">Terms & Conditions</AccordionTrigger>
+                    <AccordionContent>
+                      <ul className="space-y-2">
+                        {opt.terms.map((term, i) => (
+                          <li key={i} className="flex items-start text-xs md:text-sm">
+                            <span className="text-tkh-orange mr-2">•</span><span className="break-words">{term}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        ))}
+      </Tabs>
     </section>
   );
 

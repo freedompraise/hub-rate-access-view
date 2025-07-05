@@ -12,13 +12,18 @@ declare module '@/constants/rate-card.json' {
     variants: MarketingStrategyVariant[];
   }
 
-  interface SocialMediaManagement {
-    title: string;
-    price: string;
-    best_for: string;
-    inclusions: string[];
-    terms: string[];
-  }
+interface SocialMediaManagementOption {
+  option: string;
+  price: string;
+  best_for: string;
+  inclusions: string[];
+  terms: string[];
+}
+
+interface SocialMediaManagement {
+  title: string;
+  options: SocialMediaManagementOption[];
+}
 
   interface ReelVariant {
     type: string;

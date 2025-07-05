@@ -139,28 +139,65 @@
   ],
   "social_media_management": {
     "title": "Social Media Management Package",
-    "price": "₦750,000/month",
-    "best_for": "Brands seeking strong organic presence without heavy ad spend",
-    "inclusions": [
-      "Dedicated Social Media Manager",
-      "Instagram & TikTok management",
-      "Daily response to comments, DMs, and reviews",
-      "Monthly content calendar with visuals and captions",
-      "Custom hashtag strategy",
-      "Community management and sentiment monitoring",
-      "Monthly campaigns, giveaways, promotions",
-      "Basic influencer outreach (fees separate)",
-      "Monthly analytics & reporting",
-      "Weekly strategy sessions"
-    ],
-    "terms": [
-      "₦750,000 payable monthly in advance (70% before start, 30% in second month)",
-      "Minimum 3‑month contract",
-      "Early termination forfeits prepaid fees",
-      "Only Instagram & TikTok included; other platforms billed separately",
-      "Client provides assets; agency does not supply models or locations",
-      "Paid ad budgets and influencer fees separate",
-      "Weekly and monthly review sessions"
+    "options": [
+      {
+        "option": "Option A: Social Media Management",
+        "price": "₦750,000/month",
+        "best_for": "Brands seeking to establish a strong brand presence and engage with customers organically, without relying heavily on AD spend.",
+        "inclusions": [
+          "Dedicated Social Media Manager: Oversees daily activities, brand consistency, and client communication.",
+          "Instagram & TikTok management: Posting, monitoring, community engagement.",
+          "Daily response to comments, DMs, and reviews.",
+          "Monthly content calendar (posts, stories, campaigns).",
+          "Visually engaging, brand-aligned photos, graphics, and captions.",
+          "Custom hashtag strategy to boost organic reach.",
+          "Community management and sentiment monitoring.",
+          "Professional and prompt replies to comments and DMs.",
+          "Monitoring brand mentions and sentiment.",
+          "Monthly campaigns, giveaways, promotions planning and execution.",
+          "Basic influencer outreach included (influencer fees separate).",
+          "Monthly analytics & reporting: engagement, growth, reach, insights.",
+          "Recommendations for ongoing optimization.",
+          "Weekly strategy sessions: Weekly calls/meetings to review, brainstorm, and refine strategy."
+        ],
+        "terms": [
+          "₦750,000 payable monthly in advance. 70% of the total project fee is due before the project commences, and the remaining 30% balance is due at the beginning of the second month.",
+          "Service begins once payment is confirmed.",
+          "Minimum contract period is 3 months, renewable thereafter monthly.",
+          "Early termination before 3 months will forfeit any prepaid fees.",
+          "Package includes management of Instagram and TikTok accounts only. Management of additional platforms (e.g., LinkedIn, Facebook) requires extra payment.",
+          "Content is created using client-provided assets or generic sources. The agency does not provide locations, models, or talent for shoots. Clients must arrange and cover any such costs.",
+          "Basic influencer outreach included; influencer fees billed separately.",
+          "Paid advertising budgets and management fees are separate and based on client goals.",
+          "Monthly performance reports provided.",
+          "Weekly strategy sessions to review and optimize campaigns.",
+          "Timely feedback and content approvals required.",
+          "Client provides all brand assets and coordinates any shoot logistics.",
+          "Paid ads recommended to boost reach; budgets and management are separate.",
+          "Extra services or platforms beyond this package incur additional fees."
+        ]
+      },
+      {
+        "option": "Option B: Conversion-Based Marketing Strategy",
+        "price": "₦1,500,000/month",
+        "best_for": "Brands focused on ROI, customer retention, and sales growth.",
+        "inclusions": [
+          "Everything in Option 1 (Social Media Management): Instagram & TikTok management, content planning, community engagement, campaign execution, reporting.",
+          "Ad Management: Strategy, targeting, creatives & performance tracking for Instagram & TikTok Ads. (Ad spend is not included)",
+          "Influencer Marketing Management: Influencer research, negotiation & coordination. (Influencer fees not included)",
+          "Email Marketing: Up to 4 custom campaigns per month for sales, updates & retention.",
+          "Sales & Promo Campaigns: Monthly activations like discounts, giveaways, and limited-time offers.",
+          "Weekly Strategy Sessions: Brainstorming calls to optimize strategy, content, and conversions."
+        ],
+        "terms": [
+          "₦1,500,000/month",
+          "Minimum 6-month contract",
+          "Client handles cost of ad spend & influencer partnerships",
+          "No provision for models or shoot location",
+          "Additional platforms (e.g., LinkedIn, YouTube) billed separately",
+          "We strongly recommend monthly paid ad campaigns for best results"
+        ]
+      }
     ]
   },
   "conversion_based_strategy": {
