@@ -47,12 +47,26 @@ declare module '@/constants/rate-card.json' {
     terms: string[];
   }
 
+  interface KreatorInvestment {
+    type: string;
+    price: string;
+  }
+
+  interface TKHKreators {
+    title: string;
+    description: string;
+    investments: KreatorInvestment[];
+    terms: string[];
+    note: string;
+  }
+
   interface RateCardData {
     marketing_strategy_packages: MarketingStrategyPackage[];
     marketing_strategy_terms: string[];
     social_media_management: SocialMediaManagement;
     reel_strategy_production: ReelStrategyProduction;
     campaign_shoot: CampaignShoot;
+    tkh_kreators: TKHKreators;
   }
 
   const value: RateCardData;
