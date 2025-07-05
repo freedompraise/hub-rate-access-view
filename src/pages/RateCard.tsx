@@ -73,40 +73,42 @@ const RateCard = () => {
   };
 
   const MarketingStrategySection = () => (
-    <section className="mb-16">
-      <h2 className="text-2xl md:text-3xl font-serif font-bold text-black mb-6">
+    <section className="mb-12">
+      <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
         Marketing Strategy Packages
       </h2>
-      <div className="grid gap-8">
+      <div className="grid gap-6 md:gap-8">
         {rateCardData.marketing_strategy_packages.map((package_, index) => (
-          <Card key={index}>
-            <CardHeader>
-              <CardTitle className="text-xl font-serif">{package_.title}</CardTitle>
-              {package_.description && <CardDescription>{package_.description}</CardDescription>}
+          <Card key={index} className="border-border p-3 sm:p-4 md:p-6">
+            <CardHeader className="px-0 pb-2 md:pb-4">
+              <CardTitle className="text-lg md:text-xl font-serif break-words">{package_.title}</CardTitle>
+              {package_.description && <CardDescription className="text-xs md:text-sm mt-1">{package_.description}</CardDescription>}
             </CardHeader>
-            <CardContent>
-              <Tabs defaultValue={package_.variants[0].market}>
-                <TabsList className="mb-4">
+            <CardContent className="px-0">
+              <Tabs defaultValue={package_.variants[0].market} className="w-full">
+                <TabsList className="mb-3 md:mb-4 flex flex-wrap gap-2">
                   {package_.variants.map((variant, vIndex) => (
-                    <TabsTrigger key={vIndex} value={variant.market}>{variant.market}</TabsTrigger>
+                    <TabsTrigger key={vIndex} value={variant.market} className="text-xs md:text-sm px-2 py-1 md:px-3 md:py-2">
+                      {variant.market}
+                    </TabsTrigger>
                   ))}
                 </TabsList>
                 {package_.variants.map((variant, vIndex) => (
-                  <TabsContent key={vIndex} value={variant.market}>
-                    <div className="space-y-4">
-                      <div className="flex items-baseline justify-between">
-                        <h4 className="text-lg font-semibold">{variant.market}</h4>
-                        <div className="text-right">
-                          <p className="text-xl font-bold text-tkh-orange">{variant.price}</p>
+                  <TabsContent key={vIndex} value={variant.market} className="pt-1">
+                    <div className="space-y-3 md:space-y-4">
+                      <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-0">
+                        <h4 className="text-base md:text-lg font-semibold break-words">{variant.market}</h4>
+                        <div className="text-right sm:text-left">
+                          <p className="text-lg md:text-xl font-bold text-tkh-orange">{variant.price}</p>
                           {variant.duration && (
-                            <p className="text-sm text-gray-600">{variant.duration}</p>
+                            <p className="text-xs md:text-sm text-gray-600">{variant.duration}</p>
                           )}
                         </div>
                       </div>
                       <ul className="space-y-2">
                         {variant.inclusions.map((inc, i) => (
-                          <li key={i} className="flex items-start">
-                            <span className="text-tkh-orange mr-2">•</span><span>{inc}</span>
+                          <li key={i} className="flex items-start text-xs md:text-sm">
+                            <span className="text-tkh-orange mr-2">•</span><span className="break-words">{inc}</span>
                           </li>
                         ))}
                       </ul>
@@ -120,11 +122,11 @@ const RateCard = () => {
       </div>
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" className="mt-4">View Terms & Conditions</Button>
+          <Button variant="outline" className="mt-4 w-full sm:w-auto text-xs md:text-sm">View Terms & Conditions</Button>
         </DialogTrigger>
-        <DialogContent className="max-w-2xl">
+        <DialogContent className="max-w-xs sm:max-w-md md:max-w-2xl">
           <DialogHeader><DialogTitle>Marketing Strategy Terms & Conditions</DialogTitle></DialogHeader>
-          <div className="max-h-[60vh] overflow-y-auto space-y-2 text-sm">
+          <div className="max-h-[60vh] overflow-y-auto space-y-2 text-xs md:text-sm px-1 md:px-0">
             {rateCardData.marketing_strategy_terms.map((term, index) => (
               <p key={index} className="text-justify leading-relaxed">{term}</p>
             ))}
@@ -135,41 +137,41 @@ const RateCard = () => {
   );
 
   const SocialMediaSection = () => (
-    <section className="mb-16">
-      <h2 className="text-2xl md:text-3xl font-serif font-bold text-black mb-6">
+    <section className="mb-12">
+      <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
         Social Media Management
       </h2>
-      <Card>
-        <CardHeader>
-          <div className="flex justify-between items-baseline">
+      <Card className="p-3 sm:p-4 md:p-6">
+        <CardHeader className="px-0 pb-2 md:pb-4">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-0">
             <div>
-              <CardTitle className="text-xl font-serif">{rateCardData.social_media_management.title}</CardTitle>
-              <CardDescription className="mt-1">Best for: {rateCardData.social_media_management.best_for}</CardDescription>
+              <CardTitle className="text-lg md:text-xl font-serif break-words">{rateCardData.social_media_management.title}</CardTitle>
+              <CardDescription className="mt-1 text-xs md:text-sm">Best for: {rateCardData.social_media_management.best_for}</CardDescription>
             </div>
-            <p className="text-xl font-bold text-tkh-orange">{rateCardData.social_media_management.price}</p>
+            <p className="text-lg md:text-xl font-bold text-tkh-orange">{rateCardData.social_media_management.price}</p>
           </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-0">
           <Accordion type="single" collapsible>
             <AccordionItem value="inclusions">
-              <AccordionTrigger>Package Inclusions</AccordionTrigger>
+              <AccordionTrigger className="text-xs md:text-sm">Package Inclusions</AccordionTrigger>
               <AccordionContent>
                 <ul className="space-y-2">
                   {rateCardData.social_media_management.inclusions.map((inc, i) => (
-                    <li key={i} className="flex items-start">
-                      <span className="text-tkh-orange mr-2">•</span><span>{inc}</span>
+                    <li key={i} className="flex items-start text-xs md:text-sm">
+                      <span className="text-tkh-orange mr-2">•</span><span className="break-words">{inc}</span>
                     </li>
                   ))}
                 </ul>
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="terms">
-              <AccordionTrigger>Terms & Conditions</AccordionTrigger>
+              <AccordionTrigger className="text-xs md:text-sm">Terms & Conditions</AccordionTrigger>
               <AccordionContent>
                 <ul className="space-y-2">
                   {rateCardData.social_media_management.terms.map((term, i) => (
-                    <li key={i} className="flex items-start">
-                      <span className="text-tkh-orange mr-2">•</span><span>{term}</span>
+                    <li key={i} className="flex items-start text-xs md:text-sm">
+                      <span className="text-tkh-orange mr-2">•</span><span className="break-words">{term}</span>
                     </li>
                   ))}
                 </ul>
@@ -182,34 +184,34 @@ const RateCard = () => {
   );
 
   const ReelsSection = () => (
-    <section className="mb-16">
-      <h2 className="text-2xl md:text-3xl font-serif font-bold text-black mb-6">
+    <section className="mb-12">
+      <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
         Reel Strategy & Production
       </h2>
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {rateCardData.reel_strategy_production.variants.map((variant, i) => (
-          <Card key={i}>
-            <CardHeader>
-              <CardTitle className="text-lg font-serif">{variant.type}</CardTitle>
-              <p className="text-xl font-bold text-tkh-orange">{variant.price}</p>
+          <Card key={i} className="p-3 sm:p-4 md:p-6">
+            <CardHeader className="px-0 pb-2 md:pb-4">
+              <CardTitle className="text-base md:text-lg font-serif break-words">{variant.type}</CardTitle>
+              <p className="text-lg md:text-xl font-bold text-tkh-orange">{variant.price}</p>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-0">
               <ul className="space-y-2">
                 {variant.inclusions?.map((inc, j) => (
-                  <li key={j} className="flex items-start">
-                    <span className="text-tkh-orange mr-2">•</span><span>{inc}</span>
+                  <li key={j} className="flex items-start text-xs md:text-sm">
+                    <span className="text-tkh-orange mr-2">•</span><span className="break-words">{inc}</span>
                   </li>
                 ))}
               </ul>
               {variant.terms && (
                 <Accordion type="single" collapsible className="mt-4">
                   <AccordionItem value="terms">
-                    <AccordionTrigger>Terms</AccordionTrigger>
+                    <AccordionTrigger className="text-xs md:text-sm">Terms</AccordionTrigger>
                     <AccordionContent>
                       <ul className="space-y-2">
                         {variant.terms.map((term, j) => (
-                          <li key={j} className="flex items-start">
-                            <span className="text-tkh-orange mr-2">•</span><span>{term}</span>
+                          <li key={j} className="flex items-start text-xs md:text-sm">
+                            <span className="text-tkh-orange mr-2">•</span><span className="break-words">{term}</span>
                           </li>
                         ))}
                       </ul>
@@ -225,33 +227,33 @@ const RateCard = () => {
   );
 
   const CampaignSection = () => (
-    <section className="mb-16">
-      <h2 className="text-2xl md:text-3xl font-serif font-bold text-black mb-6">
+    <section className="mb-12">
+      <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
         Campaign Shoots
       </h2>
       <div className="space-y-6">
         {rateCardData.campaign_shoot.steps.map((step, i) => (
-          <Card key={i}>
-            <CardHeader>
-              <div className="flex justify-between items-baseline">
-                <CardTitle className="text-xl font-serif">{step.phase}</CardTitle>
-                <p className="text-xl font-bold text-tkh-orange">{step.price || `From ${step.price_from}`}</p>
+          <Card key={i} className="p-3 sm:p-4 md:p-6">
+            <CardHeader className="px-0 pb-2 md:pb-4">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-0">
+                <CardTitle className="text-lg md:text-xl font-serif break-words">{step.phase}</CardTitle>
+                <p className="text-lg md:text-xl font-bold text-tkh-orange">{step.price || `From ${step.price_from}`}</p>
               </div>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-0">
               <ul className="space-y-2">
                 {step.inclusions?.map((inc, j) => (
-                  <li key={j} className="flex items-start">
-                    <span className="text-tkh-orange mr-2">•</span><span>{inc}</span>
+                  <li key={j} className="flex items-start text-xs md:text-sm">
+                    <span className="text-tkh-orange mr-2">•</span><span className="break-words">{inc}</span>
                   </li>
                 ))}
               </ul>
               {step.location_coverage && (
                 <div className="mt-4">
-                  <p className="font-semibold mb-2">Available Locations:</p>
+                  <p className="font-semibold mb-2 text-xs md:text-sm">Available Locations:</p>
                   <div className="flex flex-wrap gap-2">
                     {step.location_coverage.map((loc, k) => (
-                      <Badge key={k} variant="secondary">{loc}</Badge>
+                      <Badge key={k} variant="secondary" className="text-xs md:text-sm px-2 py-1">{loc}</Badge>
                     ))}
                   </div>
                 </div>
@@ -261,13 +263,13 @@ const RateCard = () => {
         ))}
         <Dialog>
           <DialogTrigger asChild>
-            <Button variant="outline">View Campaign Terms</Button>
+            <Button variant="outline" className="w-full sm:w-auto text-xs md:text-sm">View Campaign Terms</Button>
           </DialogTrigger>
-          <DialogContent className="max-w-2xl">
+          <DialogContent className="max-w-xs sm:max-w-md md:max-w-2xl">
             <DialogHeader>
               <DialogTitle>Campaign Shoot Terms & Conditions</DialogTitle>
             </DialogHeader>
-            <div className="max-h-[60vh] overflow-y-auto space-y-2 text-sm">
+            <div className="max-h-[60vh] overflow-y-auto space-y-2 text-xs md:text-sm px-1 md:px-0">
               {rateCardData.campaign_shoot.terms.map((term, i) => (
                 <p key={i} className="text-justify leading-relaxed">{term}</p>
               ))}

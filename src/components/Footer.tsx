@@ -15,7 +15,7 @@ const Footer = () => {
                 The Kontent Hub
               </span>
               <span className="text-white/80 text-sm">
-                Igniting Brands with Creative Strategies
+                Elevating Brands with Creative Strategies
               </span>
             </div>
           </div>

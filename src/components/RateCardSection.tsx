@@ -16,8 +16,8 @@ const RateCardSection = () => {
           Ready to Make Your Brand Impossible to Ignore?
         </h2>
         <p className="text-lg text-black/70 max-w-3xl mx-auto mb-8">
-          Book a strategy session with Becca, our visionary Creative and Marketing Lead.
-          Together, we'll craft a plan that makes your brand impossible to ignore.
+          Book a strategy session with Becca, our Creative and Marketing Lead.
+          Together, we'll craft a plan that makes your brand stand out.
         </p>
         
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">

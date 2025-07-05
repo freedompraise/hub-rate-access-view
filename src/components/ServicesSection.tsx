@@ -4,7 +4,7 @@ const ServicesSection = () => {
     {
       icon: "�",
       title: "Marketing & Campaign Strategy",
-      description: "We build marketing roadmaps that align with your goals, connect with your audience, and deliver measurable results.",
+      description: "We build marketing roadmaps that match your goals, connect with your audience, and deliver measurable results.",
       investment: "Minimum Investment: ₦300,000 / $250"
     },
     {
@@ -16,7 +16,7 @@ const ServicesSection = () => {
     {
       icon: "🎬",
       title: "Reel Production & Strategy",
-      description: "We create high-performing, attention-grabbing short-form video content (Reels) that aligns with your brand voice and marketing goals.",
+      description: "We create engaging, high-performing short-form video content (Reels) that complements your brand voice and marketing goals.",
       investment: "Minimum Investment: ₦500,000 / $400"
     },
     {
