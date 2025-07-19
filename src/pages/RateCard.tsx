@@ -147,9 +147,9 @@ const RateCard = () => {
   const SocialMediaSection = () => (
     <section className="mb-12">
       <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
-        Social Media Management
+        Social Media Marketing
       </h2>
-      {/* Mobile-friendly dropdown for Social Media Management options */}
+      {/* Mobile-friendly dropdown for Social Media Marketing options */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="mb-4 w-full sm:w-auto text-xs md:text-sm flex justify-between items-center">

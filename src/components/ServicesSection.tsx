@@ -5,13 +5,13 @@ const ServicesSection = () => {
       icon: "�",
       title: "Marketing & Campaign Strategy",
       description: "We build marketing roadmaps that match your goals, connect with your audience, and deliver measurable results.",
-      investment: "Minimum Investment: ₦300,000 / $250"
+      investment: "Minimum Investment: ₦500,000 / $400"
     },
     {
       icon: "📱",
-      title: "Social Media Management",
+      title: "Social Media Marketing",
       description: "We handle your day-to-day content planning, posting, engagement, and growth strategy to keep your brand consistent and relevant online.",
-      investment: "Minimum Investment: ₦750,000 / $700"
+      investment: "Minimum Investment: ₦750,000 / $1000"
     },
     {
       icon: "🎬",
@@ -22,7 +22,7 @@ const ServicesSection = () => {
     {
       icon: "🎨",
       title: "Template Kit Package",
-      description: "A strategic, fully-branded visual system (templates for social, flyers, etc.) designed for self-managed brands who want to stay consistent and professional.",
+      description: "This package includes both the visuals and the strategy - giving you everything you need to plan, design, and post confidently.",
       investment: "Minimum Investment: ₦300,000 / $250"
     },
     {

@@ -138,10 +138,10 @@
     "Agency not liable for specific outcomes; governed by applicable law"
   ],
   "social_media_management": {
-    "title": "Social Media Management Package",
+    "title": "Social Media Marketing Package",
     "options": [
       {
-        "option": "Option A: Social Media Management",
+        "option": "Option A: Social Media Marketing",
         "price": "₦750,000/month",
         "best_for": "Brands seeking to establish a strong brand presence and engage with customers organically, without relying heavily on AD spend.",
         "inclusions": [
@@ -182,7 +182,7 @@
         "price": "₦1,500,000/month",
         "best_for": "Brands focused on ROI, customer retention, and sales growth.",
         "inclusions": [
-          "Everything in Option 1 (Social Media Management): Instagram & TikTok management, content planning, community engagement, campaign execution, reporting.",
+          "Everything in Option 1 (Social Media Marketing): Instagram & TikTok management, content planning, community engagement, campaign execution, reporting.",
           "Ad Management: Strategy, targeting, creatives & performance tracking for Instagram & TikTok Ads. (Ad spend is not included)",
           "Influencer Marketing Management: Influencer research, negotiation & coordination. (Influencer fees not included)",
           "Email Marketing: Up to 4 custom campaigns per month for sales, updates & retention.",
@@ -205,7 +205,7 @@
     "price": "₦1,500,000/month",
     "best_for": "Brands focused on ROI, retention, and sales growth",
     "inclusions": [
-      "All Social Media Management inclusions",
+      "All Social Media Marketing inclusions",
       "Instagram & TikTok ad management (creative, targeting, tracking)",
       "Influencer campaign management (fees separate)",
       "Email marketing (4 campaigns/month)",
@@ -365,7 +365,7 @@
         "price": "Starting at ₦100,000"
       },
       {
-        "type": "Social Media Management",
+        "type": "Social Media Marketing",
         "price": "Starting at ₦250,000"
       }
     ],
