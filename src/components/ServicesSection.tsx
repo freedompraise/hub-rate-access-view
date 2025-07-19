@@ -30,6 +30,12 @@ const ServicesSection = () => {
       title: "Videography & Photography Campaign Shoot",
       description: "From brand shoots to campaign visuals — we plan, shoot, and deliver content that tells your story beautifully and effectively.",
       investment: "Minimum Investment: ₦500,000 / $500"
+    },
+    {
+      icon: "🤝",
+      title: "Work with TKH kREATORS",
+      description: "Looking to collaborate with beginner or early-stage trained creatives such as content creators or social media managers? This package connects you with vetted kREATORS ready to support your brand.",
+      investment: "Content Creation: Starting at ₦100,000 | Social Media Marketing: Starting at ₦250,000"
     }
   ];
 

@@ -334,49 +334,6 @@ const RateCard = () => {
     </section>
   );
 
-  const KreatorsSection = () => (
-    <section className="mb-12">
-      <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
-        {rateCardData.tkh_kreators.title}
-      </h2>
-      <Card className="p-3 sm:p-4 md:p-6">
-        <CardHeader className="px-0 pb-2 md:pb-4">
-          {/* Removed duplicate CardTitle for accessibility and linter compliance */}
-          <CardDescription className="text-xs md:text-sm mb-2">{rateCardData.tkh_kreators.description}</CardDescription>
-        </CardHeader>
-        <CardContent className="px-0">
-          <div className="mb-4">
-            <h3 className="font-semibold text-tkh-orange text-base md:text-lg mb-2">💼 Package Investment</h3>
-            <ul className="space-y-2">
-              {rateCardData.tkh_kreators.investments.map((inv, i) => (
-                <li key={i} className="flex flex-col sm:flex-row sm:items-center text-xs md:text-sm">
-                  <span className="font-semibold mr-2">{inv.type}:</span>
-                  <span className="text-tkh-orange font-bold">{inv.price}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <Accordion type="single" collapsible>
-            <AccordionItem value="terms">
-              <AccordionTrigger className="text-xs md:text-sm">📌 Terms & Conditions</AccordionTrigger>
-              <AccordionContent>
-                <ul className="space-y-2">
-                  {rateCardData.tkh_kreators.terms.map((term, i) => (
-                    <li key={i} className="flex items-start text-xs md:text-sm">
-                      <span className="text-tkh-orange mr-2">•</span><span className="break-words">{term}</span>
-                    </li>
-                  ))}
-                </ul>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-          <div className="mt-4 text-xs md:text-sm text-black/80 italic">
-            {rateCardData.tkh_kreators.note}
-          </div>
-        </CardContent>
-      </Card>
-    </section>
-  );
 
   if (loading) {
     return (
@@ -437,7 +394,7 @@ const RateCard = () => {
           <ConversionBasedMarketingSection />
           <ReelsSection />
           <CampaignSection />
-          <KreatorsSection />
+          {/* <KreatorsSection /> */}
 
           <Card className="bg-hero-gradient text-white shadow-lg mt-10">
             <CardContent className="p-8 text-center">

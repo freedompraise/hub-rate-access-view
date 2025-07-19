@@ -350,33 +350,6 @@
       "Client owns final IP upon full payment",
       "Agency may use anonymized samples for portfolio"
     ]
-  },
-  "tkh_kreators": {
-    "title": "Work with TKH kREATORS",
-    "description": "Looking to collaborate with beginner or early-stage trained creatives such as content creators or social media managers? This package connects you with vetted kREATORS ready to support your brand.",
-    "investments": [
-      {
-        "type": "Content Creation",
-        "price": "Starting at ₦100,000"
-      },
-      {
-        "type": "Social Media Marketing",
-        "price": "Starting at ₦250,000"
-      }
-    ],
-    "terms": [
-      "kREATOR Outsourcing Only: This package gives you access to trained kREATORS. The agency is not involved in project execution. If you want the agency to oversee and manage the project, you must opt for our Full Agency Package.",
-      "Full Upfront Payment Required: All projects must be paid in full before onboarding begins.",
-      "Onboarding Timeline: It typically takes 10–14 working days to search, onboard and assign the right kREATOR to your project.",
-      "Clear Scope of Work: A well-defined scope of work is required before the project begins. This helps manage deliverables and timelines properly.",
-      "Revision Policy: Each kREATOR provides 1–2 rounds of revisions per deliverable. Extra revisions may incur additional fees.",
-      "Communication Protocol: You’ll communicate directly with your assigned kREATOR. The agency does not mediate unless you're on the Full Agency Package.",
-      "Availability Notice: kREATORS are freelance professionals—not full-time staff. Kindly set realistic expectations for timelines and workload.",
-      "No Refund Policy: Once a kREATOR has been assigned and work has commenced, payments are non-refundable.",
-      "Content Ownership: You own full rights to content after final approval and full payment. Until then, the content remains the property of the kREATOR or agency.",
-      "No Mid-Project Reassignments: kREATORS cannot be swapped mid-project unless agreed upon due to a breach or non-performance.",
-      "Timely Feedback: To keep projects on track, clients must provide feedback within 48–72 hours of content submission."
-    ],
-    "note": "This package is perfect for brands that want affordable, entry-level support while understanding the limits and strengths of working with beginner creatives. Want the agency to manage the entire process from start to finish? Ask about our Full Agency Package."
   }
+  
 }
