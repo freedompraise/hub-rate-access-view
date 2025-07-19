@@ -65,10 +65,28 @@ interface SocialMediaManagement {
     note: string;
   }
 
+
+  interface SocialMediaMarketingPackage {
+    title: string;
+    price: string;
+    best_for: string;
+    inclusions: string[];
+    terms: string[];
+  }
+
+  interface ConversionBasedMarketingStrategyPackage {
+    title: string;
+    price: string;
+    best_for: string;
+    inclusions: string[];
+    terms: string[];
+  }
+
   interface RateCardData {
     marketing_strategy_packages: MarketingStrategyPackage[];
     marketing_strategy_terms: string[];
-    social_media_management: SocialMediaManagement;
+    social_media_marketing: SocialMediaMarketingPackage;
+    conversion_based_marketing_strategy: ConversionBasedMarketingStrategyPackage;
     reel_strategy_production: ReelStrategyProduction;
     campaign_shoot: CampaignShoot;
     tkh_kreators: TKHKreators;
