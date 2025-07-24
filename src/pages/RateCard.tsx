@@ -132,11 +132,135 @@ const RateCard = () => {
           <Button variant="outline" className="mt-4 w-full sm:w-auto text-xs md:text-sm">View Terms & Conditions</Button>
         </DialogTrigger>
         <DialogContent className="max-w-xs sm:max-w-md md:max-w-2xl">
-          <DialogHeader><DialogTitle>Marketing Strategy Terms & Conditions</DialogTitle></DialogHeader>
-          <div className="max-h-[60vh] overflow-y-auto space-y-2 text-xs md:text-sm px-1 md:px-0">
-            {rateCardData.marketing_strategy_terms.map((term, index) => (
-              <p key={index} className="text-justify leading-relaxed">{term}</p>
-            ))}
+          <DialogHeader>
+            <DialogTitle>Marketing Strategy Terms & Conditions</DialogTitle>
+          </DialogHeader>
+          <div className="max-h-[60vh] overflow-y-auto px-1 md:px-0">
+            <div className="prose max-w-none p-6 bg-white rounded-lg shadow">
+              <h2 className="font-bold text-2xl mb-4">
+                Terms and Conditions for Marketing Strategy Packages
+              </h2>
+              <ol className="list-decimal list-inside space-y-4">
+                <li>
+                  <strong>Scope of Work</strong>
+                  <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                    <li>
+                      <strong>Deliverables depend on the package selected:</strong>
+                      <ul className="list-disc list-inside ml-6 mt-1 space-y-1">
+                        <li>
+                          <strong>Social Media Strategy:</strong> 5–7 business days delivery
+                        </li>
+                        <li>
+                          <strong>Digital Marketing Strategy:</strong> 7–10 business days delivery
+                        </li>
+                        <li>
+                          <strong>Full Marketing Strategy (Social Media + Digital + Product Marketing):</strong>{' '}
+                          14–18 business days delivery
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      Strategies include detailed analysis, customer profiling, campaign ideas,
+                      budgets, timelines, and KPIs for 3 months.
+                    </li>
+                    <li>Execution services are separate and will be quoted independently.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Project Timeline</strong>
+                  <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                    <li>Timelines start once full payment is received and all client materials are provided.</li>
+                    <li>Timely client feedback is required to keep the project on schedule.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Payment Terms</strong>
+                  <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                    <li>100% payment upfront is required before work begins.</li>
+                    <li>The fee is non-refundable once work has commenced.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Strategy Fee Deduction for Execution</strong>
+                  <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                    <li>
+                      If the client decides to execute the strategy with the agency within 14 days
+                      of delivery, 50% of the strategy fee will be deducted from the first month’s
+                      execution invoice.
+                    </li>
+                    <li>
+                      If the client decides after 14 days, the full strategy fee will be charged in
+                      addition to execution fees.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Client Decision Timeline</strong>
+                  <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                    <li>Client has 14 calendar days from delivery to decide on execution.</li>
+                    <li>
+                      No response within 14 days will be treated as a decision not to proceed, and
+                      the full strategy fee remains due.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Revisions</strong>
+                  <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                    <li>Up to two rounds of revisions included, to be requested within 7 days of delivery.</li>
+                    <li>Additional revisions charged separately.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Client Responsibilities</strong>
+                  <ul className="list-disc list-inside ml-6 mt-2">
+                    <li>
+                      Timely provision of materials, data, and feedback is expected to avoid delays.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Confidentiality</strong>
+                  <ul className="list-disc list-inside ml-6 mt-2">
+                    <li>Both parties will keep shared information confidential.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Cancellation and Refunds</strong>
+                  <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                    <li>No refunds after work has started.</li>
+                    <li>
+                      Cancellation before project commencement eligible for refund minus
+                      administrative fees.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Intellectual Property</strong>
+                  <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                    <li>Client owns the final deliverable after full payment.</li>
+                    <li>
+                      Agency may use anonymized samples for marketing unless otherwise agreed.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Limitation of Liability</strong>
+                  <ul className="list-disc list-inside ml-6 mt-2">
+                    <li>Agency does not guarantee specific outcomes from the strategy.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Governing Law</strong>
+                  <ul className="list-disc list-inside ml-6 mt-2">
+                    <li>
+                      Agreement governed by applicable law based on client location or mutual
+                      agreement.
+                    </li>
+                  </ul>
+                </li>
+              </ol>
+            </div>
           </div>
         </DialogContent>
       </Dialog>
@@ -175,13 +299,75 @@ const RateCard = () => {
             <AccordionItem value="terms">
               <AccordionTrigger className="text-xs md:text-sm">Terms & Conditions</AccordionTrigger>
               <AccordionContent>
-                <ul className="space-y-2">
-                  {rateCardData.social_media_marketing.terms.map((term, i) => (
-                    <li key={i} className="flex items-start text-xs md:text-sm">
-                      <span className="text-tkh-orange mr-2">•</span><span className="break-words">{term}</span>
+                <div className="prose max-w-none p-6 bg-white rounded-lg shadow">
+                  <h2 className="font-bold text-2xl mb-4">
+                    Terms and Conditions for Social Media Marketing Package
+                  </h2>
+                  <ol className="list-decimal list-inside space-y-4">
+                    <li>
+                      <strong>Payment</strong>
+                      <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>The package fee of ₦750,000 is payable monthly in advance.</li>
+                        <li>Payment can be made in two installments: 70% before project commencement and 30% at the beginning of the second month.</li>
+                        <li>Service begins once payment is confirmed.</li>
+                      </ul>
                     </li>
-                  ))}
-                </ul>
+                    <li>
+                      <strong>Contract Duration</strong>
+                      <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>Minimum contract period is 3 months, renewable monthly thereafter.</li>
+                        <li>Early termination before 3 months forfeits any prepaid fees.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Scope of Service</strong>
+                      <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>Includes management of Instagram and TikTok accounts only.</li>
+                        <li>Management of additional platforms (e.g., LinkedIn, Facebook) requires extra payment.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Content Creation</strong>
+                      <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>Content is created using client-provided assets or generic sources.</li>
+                        <li>The agency does not provide locations, models, or talent; clients must arrange and cover these costs.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Campaigns & Influencers</strong>
+                      <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>Basic influencer outreach included; influencer fees billed separately.</li>
+                        <li>Paid advertising budgets and management fees are separate and based on client goals.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Reporting & Communication</strong>
+                      <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>Monthly performance reports provided.</li>
+                        <li>Weekly strategy sessions to review and optimize campaigns.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Client Responsibilities</strong>
+                      <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>Timely feedback and content approvals required.</li>
+                        <li>Client provides all brand assets and coordinates any shoot logistics.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Ads & Visibility</strong>
+                      <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>Paid ads recommended to boost reach; budgets and management are separate.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Additional Services</strong>
+                      <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>Extra services or platforms beyond this package incur additional fees.</li>
+                      </ul>
+                    </li>
+                  </ol>
+                </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -222,13 +408,44 @@ const RateCard = () => {
             <AccordionItem value="terms">
               <AccordionTrigger className="text-xs md:text-sm">Terms & Conditions</AccordionTrigger>
               <AccordionContent>
-                <ul className="space-y-2">
-                  {rateCardData.conversion_based_marketing_strategy.terms.map((term, i) => (
-                    <li key={i} className="flex items-start text-xs md:text-sm">
-                      <span className="text-tkh-orange mr-2">•</span><span className="break-words">{term}</span>
+                <div className="prose max-w-none p-6 bg-white rounded-lg shadow">
+                  <h2 className="font-bold text-2xl mb-4">
+                    Terms and Conditions for Conversion-Based Marketing Strategy Package
+                  </h2>
+                  <ol className="list-decimal list-inside space-y-4">
+                    <li>
+                      <strong>Monthly Fee</strong>
+                      <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>₦1,500,000 per month.</li>
+                      </ul>
                     </li>
-                  ))}
-                </ul>
+                    <li>
+                      <strong>Contract Duration</strong>
+                      <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>Minimum 6-month commitment.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Client-Managed Costs</strong>
+                      <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>Client covers ad spend and influencer partnership fees.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Service Scope</strong>
+                      <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>No models or shoot locations provided; sourcing billed separately.</li>
+                        <li>Additional platforms (e.g., LinkedIn, YouTube) incur extra fees.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Recommendations</strong>
+                      <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                        <li>Monthly paid ad campaigns strongly recommended for optimal results.</li>
+                      </ul>
+                    </li>
+                  </ol>
+                </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -257,25 +474,61 @@ const RateCard = () => {
                   </li>
                 ))}
               </ul>
-              {variant.terms && (
-                <Accordion type="single" collapsible className="mt-4">
-                  <AccordionItem value="terms">
-                    <AccordionTrigger className="text-xs md:text-sm">Terms</AccordionTrigger>
-                    <AccordionContent>
-                      <ul className="space-y-2">
-                        {variant.terms.map((term, j) => (
-                          <li key={j} className="flex items-start text-xs md:text-sm">
-                            <span className="text-tkh-orange mr-2">•</span><span className="break-words">{term}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              )}
             </CardContent>
           </Card>
         ))}
+      </div>
+      <div className="mt-8">
+        <Accordion type="single" collapsible>
+          <AccordionItem value="terms">
+            <AccordionTrigger className="text-xs md:text-sm">Terms & Conditions</AccordionTrigger>
+            <AccordionContent>
+              <div className="prose max-w-none p-6 bg-white rounded-lg shadow">
+                <h2 className="font-bold text-2xl mb-4">
+                  Terms and Conditions for Reel Strategy & Production Service
+                </h2>
+                <ol className="list-decimal list-inside space-y-4">
+                  <li>
+                    <strong>Advance Payment</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Full payment required before the shoot session.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Minimum Booking</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Minimum of 5 reels per shoot session.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Shoot Session</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>All reels filmed in a single session; no separate shoot days.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Models & Talent</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Client must provide models; sourcing by agency billed separately.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Props & Locations</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Wardrobe, props, and special locations are not included.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Deliverables</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Final reels delivered ready-to-post; client handles publishing.</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     </section>
   );
@@ -323,10 +576,70 @@ const RateCard = () => {
             <DialogHeader>
               <DialogTitle>Campaign Shoot Terms & Conditions</DialogTitle>
             </DialogHeader>
-            <div className="max-h-[60vh] overflow-y-auto space-y-2 text-xs md:text-sm px-1 md:px-0">
-              {rateCardData.campaign_shoot.terms.map((term, i) => (
-                <p key={i} className="text-justify leading-relaxed">{term}</p>
-              ))}
+            <div className="max-h-[60vh] overflow-y-auto px-1 md:px-0">
+              <div className="prose max-w-none p-6 bg-white rounded-lg shadow">
+                <h2 className="font-bold text-2xl mb-4">
+                  Terms and Conditions for Video & Photography Campaign Shoot
+                </h2>
+                <ol className="list-decimal list-inside space-y-4">
+                  <li>
+                    <strong>Scope of Work</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>₦300,000 covers campaign concept, shoot plan, and activation strategy; execution quoted separately.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Timeline</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Strategy phase: 7–10 business days.</li>
+                      <li>Shoot execution timeline provided after sign-off and payment.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Payment Terms</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Strategy fee of ₦300,000 is 100% upfront and non-refundable once work begins.</li>
+                      <li>Production fees: 70% upfront, 30% upon content delivery.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Strategy Fee Deduction</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>If shoot is executed within 14 days of strategy delivery, ₦150,000 will be deducted from production fee.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Client Responsibilities</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Provide timely approvals, brand assets, and feedback to avoid delays.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Revisions</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>One round of revision per asset included; additional edits billed separately.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Cancellation & Refunds</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Cancellations before production incur up to 30% fee; no refunds once production begins.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Intellectual Property</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Client owns final edited photos and videos upon full payment; agency may use select visuals for portfolio unless agreed otherwise.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Limitation of Liability</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Agency ensures high-quality production but does not guarantee performance metrics like reach or conversions.</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
             </div>
           </DialogContent>
         </Dialog>
