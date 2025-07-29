@@ -647,6 +647,92 @@ const RateCard = () => {
     </section>
   );
 
+  const TemplateKitSection = () => (
+    <section className="mb-12">
+      <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
+        Template Kits
+      </h2>
+      <div className="grid gap-6 md:gap-8">
+        {rateCardData.template_kits.map((kit, index) => (
+          <Card key={index} className="border-border p-3 sm:p-4 md:p-6">
+            <CardHeader className="px-0 pb-2 md:pb-4">
+              <CardTitle className="text-lg md:text-xl font-serif break-words">{kit.title}</CardTitle>
+              <CardDescription className="text-xs md:text-sm mt-1">{kit.duration}</CardDescription>
+            </CardHeader>
+            <CardContent className="px-0">
+              <div className="space-y-3 md:space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-0">
+                  <h4 className="text-base md:text-lg font-semibold break-words">{kit.title}</h4>
+                  <div className="text-right sm:text-left">
+                    <p className="text-lg md:text-xl font-bold text-tkh-orange">{kit.price}</p>
+                  </div>
+                </div>
+                <ul className="space-y-2">
+                  {kit.inclusions.map((inc, i) => (
+                    <li key={i} className="flex items-start text-xs md:text-sm">
+                      <span className="text-tkh-orange mr-2">•</span><span className="break-words">{inc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+      <div className="mt-8">
+        <Accordion type="single" collapsible>
+          <AccordionItem value="terms">
+            <AccordionTrigger className="text-xs md:text-sm">Terms & Conditions</AccordionTrigger>
+            <AccordionContent>
+              <div className="prose max-w-none p-6 bg-white rounded-lg shadow">
+                <h2 className="font-bold text-2xl mb-4">
+                  Terms and Conditions for Template Kits
+                </h2>
+                <ol className="list-decimal list-inside space-y-4">
+                  <li>
+                    <strong>Payment</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Full payment is required upfront to access the template kits.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Access Duration</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Access to the template kits is granted for 30 days from the date of purchase.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Usage Rights</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Templates are for personal use only and cannot be resold or redistributed.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Modification</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Templates can be modified to fit your personal brand, but the original files remain the property of The Kontent Hub.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Support</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Email support is available for 30 days post-purchase for any template-related queries.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Refunds</strong>
+                    <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                      <li>Due to the digital nature of the product, refunds are not available once the purchase is complete.</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </div>
+    </section>
+  );
 
   if (loading) {
     return (
@@ -707,6 +793,7 @@ const RateCard = () => {
           <ConversionBasedMarketingSection />
           <ReelsSection />
           <CampaignSection />
+          <TemplateKitSection />
           {/* <KreatorsSection /> */}
 
           <Card className="bg-hero-gradient text-white shadow-lg mt-10">
