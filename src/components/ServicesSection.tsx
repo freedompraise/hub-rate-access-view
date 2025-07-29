@@ -22,7 +22,7 @@ const ServicesSection = () => {
     {
       icon: "🎨",
       title: "Template Kit Package",
-      description: "This package includes both the visuals and the strategy - giving you everything you need to plan, design, and post confidently.",
+      description: "A strategic, fully-branded content and design system for self-managed brands who want to show up consistently, professionally, and with ease. $300 N300,000. This package includes both the visuals and the strategy - giving you everything you need to plan, design, and post confidently.",
       investment: "Minimum Investment: ₦300,000 / $250"
     },
     {
