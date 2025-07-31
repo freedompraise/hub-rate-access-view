@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/components/AuthProvider';
 import { Button } from '@/components/ui/button';
@@ -18,6 +17,7 @@ import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import Login from '@/components/Login';
 import Header from '@/components/Header';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 interface Request {
   id: string;
@@ -119,6 +119,39 @@ const Admin = () => {
       });
     } finally {
       setApproving(null);
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!window.confirm("Are you sure you want to delete this request?")) return;
+
+    try {
+      const { error } = await supabase
+        .from('rate_card_requests')
+        .delete()
+        .eq('id', id);
+
+      if (error) {
+        console.error("Error deleting request:", error);
+        toast({
+          title: "Error",
+          description: "Failed to delete request.",
+          variant: "destructive",
+        });
+      } else {
+        setRequests(prevRequests => prevRequests.filter(req => req.id !== id));
+        toast({
+          title: "Success",
+          description: "Request deleted successfully!",
+        });
+      }
+    } catch (error: any) {
+      console.error("Error during deletion:", error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to delete request.",
+        variant: "destructive",
+      });
     }
   };
 
@@ -305,27 +338,35 @@ const Admin = () => {
                           {request.is_approved ? 'Approved' : 'Pending'}
                         </span>
                       </TableCell>
-                      <TableCell className="text-right space-x-2">
-                        {!request.is_approved ? (
-                          <Button
-                            variant="default"
-                            size="sm"
-                            onClick={() => handleApproval(request.id)}
-                            disabled={approving === request.id}
-                            className="bg-tkh-orange hover:bg-tkh-yellow hover:text-black text-white"
-                          >
-                            {approving === request.id ? "Approving..." : "Approve"}
-                          </Button>
-                        ) : (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => copyAccessLink(request)}
-                            className="border-tkh-teal text-tkh-teal hover:bg-tkh-teal hover:text-white"
-                          >
-                            Copy Link
-                          </Button>
-                        )}
+                      <TableCell className="text-right">
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="border-gray-500 text-gray-500 hover:bg-gray-500 hover:text-white"
+                            >
+                              ...
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            {!request.is_approved ? (
+                              <DropdownMenuItem
+                                onClick={() => handleApproval(request.id)}
+                                disabled={approving === request.id}
+                              >
+                                {approving === request.id ? "Approving..." : "Approve"}
+                              </DropdownMenuItem>
+                            ) : (
+                              <DropdownMenuItem onClick={() => copyAccessLink(request)}>
+                                Copy Link
+                              </DropdownMenuItem>
+                            )}
+                            <DropdownMenuItem onClick={() => handleDelete(request.id)} className="text-red-500">
+                              Delete
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
                       </TableCell>
                     </TableRow>
                   ))
