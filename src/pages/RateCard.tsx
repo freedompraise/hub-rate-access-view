@@ -585,7 +585,7 @@ const RateCard = () => {
                   <li>
                     <strong>Scope of Work</strong>
                     <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
-                      <li>₦300,000 covers campaign concept, shoot plan, and activation strategy; execution quoted separately.</li>
+                      <li>₦500,000 covers campaign concept, shoot plan, and activation strategy; execution quoted separately.</li>
                     </ul>
                   </li>
                   <li>
@@ -598,7 +598,7 @@ const RateCard = () => {
                   <li>
                     <strong>Payment Terms</strong>
                     <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
-                      <li>Strategy fee of ₦300,000 is 100% upfront and non-refundable once work begins.</li>
+                      <li>Strategy fee of ₦500,000 is 100% upfront and non-refundable once work begins.</li>
                       <li>Production fees: 70% upfront, 30% upon content delivery.</li>
                     </ul>
                   </li>
