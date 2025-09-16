@@ -18,6 +18,7 @@ import { supabase } from '@/integrations/supabase/client';
 import Login from '@/components/Login';
 import Header from '@/components/Header';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import Papa from 'papaparse';
 
 interface Request {
   id: string;
@@ -42,6 +43,8 @@ const Admin = () => {
   const [filter, setFilter] = useState<'all' | 'pending' | 'approved'>('all');
   const [loading, setLoading] = useState(true);
   const [approving, setApproving] = useState<string | null>(null);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const { user, signOut } = useAuth();
   const { toast } = useToast();
 
@@ -176,6 +179,46 @@ const Admin = () => {
     }
   };
 
+  const handleExport = () => {
+    let dataToExport = filteredRequests;
+
+    if (startDate && endDate) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      end.setHours(23, 59, 59, 999); // Include the whole end day
+
+      dataToExport = dataToExport.filter(req => {
+        if (!req.submitted_at) return false;
+        const submittedDate = new Date(req.submitted_at);
+        return submittedDate >= start && submittedDate <= end;
+      });
+    }
+
+    if (dataToExport.length === 0) {
+      toast({
+        title: "No data to export",
+        description: "Please adjust your filters or date range.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const csv = Papa.unparse(dataToExport);
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    link.setAttribute("download", "rate-card-requests.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    toast({
+      title: "Export successful",
+      description: "CSV file has been downloaded.",
+    });
+  };
+
   const filteredRequests = requests.filter(req => {
     const searchTerm = search.toLowerCase();
     const matchesSearch =
@@ -288,6 +331,31 @@ const Admin = () => {
                 <option value="approved">Approved</option>
               </select>
             </div>
+            <div className="flex items-center space-x-2">
+              <Label htmlFor="startDate" className="text-sm font-medium text-black">From:</Label>
+              <Input
+                id="startDate"
+                type="date"
+                value={startDate}
+                onChange={e => setStartDate(e.target.value)}
+                className="bg-white border-border text-black focus:border-tkh-orange"
+              />
+              <Label htmlFor="endDate" className="text-sm font-medium text-black">To:</Label>
+              <Input
+                id="endDate"
+                type="date"
+                value={endDate}
+                onChange={e => setEndDate(e.target.value)}
+                className="bg-white border-border text-black focus:border-tkh-orange"
+              />
+            </div>
+            <Button
+              onClick={handleExport}
+              variant="outline"
+              className="border-tkh-teal text-tkh-teal hover:bg-tkh-teal hover:text-white"
+            >
+              Export CSV
+            </Button>
           </div>
 
           <Card className="bg-white border-border shadow-sm">
@@ -344,7 +412,7 @@ const Admin = () => {
                             <Button
                               variant="outline"
                               size="sm"
-                              className="border-gray-500 text-gray-500 hover:bg-gray-500 hover:text-white"
+                              className="bopacrder-gray-500 text-gray-500 hover:bg-gray-500 hover:text-white"
                             >
                               ...
                             </Button>
