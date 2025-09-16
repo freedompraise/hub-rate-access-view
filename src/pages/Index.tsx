@@ -28,10 +28,11 @@ const Index = () => {
           </p>
           
           <Button
-            onClick={scrollToServices}
+            onClick={() => window.open("https://www.canva.com/design/DAGyB5Rd3VE/MiZycaNOEuCzOk4yfb6tGg/edit", "_blank")}
+            
             className="btn-gradient text-lg px-8 py-4 animate-scale-in font-semibold"
           >
-            Explore Our Services
+            View Our Portfolio
           </Button>
         </div>
       </section>
