@@ -41,7 +41,7 @@ const Index = () => {
       <ServicesSection />
 
       {/* Works Section - Navy Background */}
-      <WorksSection />
+      {/* <WorksSection /> */}
 
       {/* Rate Card Section - White Background */}
       <RateCardSection />
