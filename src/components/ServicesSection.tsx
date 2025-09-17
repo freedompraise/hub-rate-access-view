@@ -22,8 +22,8 @@ const ServicesSection = () => {
     {
       icon: "✨",
       title: "Kreator Activation Service",
-      description: "Our full-service creator management solution connects your brand with talented content creators to produce authentic, high-performing content that drives real engagement and results.",
-      investment: "Starting from: ₦1M - ₦10M+"
+      description: "We manage the entire creator campaign process—from strategy and scouting to execution and reporting—connecting your brand with vetted creators to produce authentic, high-performing content that drives real engagement.",
+      investment: "Packages: ₦1M - ₦1.5M (Starter) | ₦3M - ₦5M (Growth) | ₦10M+ (Premium)"
     },
     {
       icon: "🎨",
