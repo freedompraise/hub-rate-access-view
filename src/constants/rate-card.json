@@ -265,6 +265,65 @@
       }
     ]
   },
+  "fashion_brand_reels": {
+    "title": "Fashion Brand Reel Creation",
+    "description": "Premium content creation tailored to showcase your fashion pieces effectively on social media. All content is professionally directed and edited.",
+    "sections": [
+      {
+        "title": "Phone Shot Packages",
+        "subtitle": "Shot with high-quality smartphones",
+        "packages": [
+          {
+            "name": "Package 1",
+            "price": "₦250,000",
+            "features": [
+              "5 Professional Videos",
+              "Up to 10 outfits included",
+              "Additional outfits charged separately"
+            ]
+          },
+          {
+            "name": "Package 2",
+            "price": "₦500,000",
+            "features": [
+              "10 Professional Videos",
+              "Up to 15–20 outfits included",
+              "Additional outfits charged separately"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Camera Shot Package",
+        "subtitle": "Shot with a professional camera for elevated quality",
+        "packages": [
+          {
+            "name": "Premium Package",
+            "price": "₦600,000",
+            "features": [
+              "5 Professional Videos",
+              "Custom styling and direction",
+              "Best for premium or campaign content"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Campaigns & Custom Projects",
+        "description": "Need a full campaign or something beyond reels? We offer custom packages tailored to your specific needs and deliverables. Let's create something iconic together."
+      }
+    ],
+    "important_notes": [
+      {
+        "title": "Outfit Limits",
+        "points": [
+          "5-video package – maximum 10 outfits",
+          "10-video package – maximum 15–20 outfits",
+          "Any additional pieces beyond the limits will attract an extra charge"
+        ]
+      }
+    ]
+  },
   "template_kits": [
     {
       "title": "Template Kit – Instagram Only",

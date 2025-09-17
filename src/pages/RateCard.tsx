@@ -459,7 +459,9 @@ const RateCard = () => {
       <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
         Reel Strategy & Production
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      {/* General Reel Packages */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         {rateCardData.reel_strategy_production.variants.map((variant, i) => (
           <Card key={i} className="p-3 sm:p-4 md:p-6">
             <CardHeader className="px-0 pb-2 md:pb-4">
@@ -478,6 +480,135 @@ const RateCard = () => {
           </Card>
         ))}
       </div>
+
+      {/* Fashion Brand Reels */}
+      <Card className="p-6 mt-8">
+        <CardHeader className="px-0">
+          <CardTitle className="text-xl font-serif">Fashion Brand Reel Creation</CardTitle>
+          <CardDescription className="text-base">
+            Premium content creation tailored to showcase your fashion pieces effectively on social media. 
+            All content is professionally directed and edited.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="px-0 pt-6">
+          <div className="space-y-8">
+            {/* Phone Shot Packages */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4 pb-2 border-b">
+                Phone Shot Packages 
+                <span className="block text-sm font-normal text-muted-foreground mt-1">
+                  Shot with high-quality smartphones
+                </span>
+              </h3>
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="border rounded-lg p-4">
+                  <div className="flex justify-between items-start mb-3">
+                    <h4 className="font-medium">Package 1</h4>
+                    <span className="text-tkh-orange font-bold">₦250,000</span>
+                  </div>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange">•</span>
+                      <span>5 Professional Videos</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange">•</span>
+                      <span>Up to 10 outfits included</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange">•</span>
+                      <span>Additional outfits charged separately</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="border rounded-lg p-4">
+                  <div className="flex justify-between items-start mb-3">
+                    <h4 className="font-medium">Package 2</h4>
+                    <span className="text-tkh-orange font-bold">₦500,000</span>
+                  </div>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange">•</span>
+                      <span>10 Professional Videos</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange">•</span>
+                      <span>Up to 15–20 outfits included</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange">•</span>
+                      <span>Additional outfits charged separately</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Camera Shot Package */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4 pb-2 border-b">
+                Camera Shot Package
+                <span className="block text-sm font-normal text-muted-foreground mt-1">
+                  Shot with a professional camera for elevated quality
+                </span>
+              </h3>
+              <div className="border rounded-lg p-4 max-w-md">
+                <div className="flex justify-between items-start mb-3">
+                  <h4 className="font-medium">Premium Package</h4>
+                  <span className="text-tkh-orange font-bold">₦600,000</span>
+                </div>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex gap-2">
+                    <span className="text-tkh-orange">•</span>
+                    <span>5 Professional Videos</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-tkh-orange">•</span>
+                    <span>Custom styling and direction</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-tkh-orange">•</span>
+                    <span>Best for premium or campaign content</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Custom Projects */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4 pb-2 border-b">Campaigns & Custom Projects</h3>
+              <p className="text-muted-foreground">
+                Need a full campaign or something beyond reels? We offer custom packages tailored to 
+                your specific needs and deliverables. Let's create something iconic together.
+              </p>
+            </div>
+
+            {/* Important Notes */}
+            <div className="bg-gray-50 rounded-lg p-4">
+              <h4 className="font-bold mb-3">Important Notes</h4>
+              <div className="text-sm space-y-2">
+                <p className="font-medium">Outfit Limits:</p>
+                <ul className="space-y-1">
+                  <li className="flex gap-2">
+                    <span className="text-tkh-orange">•</span>
+                    <span>5-video package – maximum 10 outfits</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-tkh-orange">•</span>
+                    <span>10-video package – maximum 15–20 outfits</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-tkh-orange">•</span>
+                    <span>Any additional pieces beyond the limits will attract an <strong>extra charge</strong></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Terms & Conditions */}
       <div className="mt-8">
         <Accordion type="single" collapsible>
           <AccordionItem value="terms">
