@@ -22,7 +22,7 @@ const Footer = () => {
           
           <nav className="flex items-center space-x-6">
             <a 
-              href="/" 
+              href="#hero" 
               className="text-white hover:text-tkh-yellow transition-colors font-sans"
             >
               Home
@@ -40,7 +40,7 @@ const Footer = () => {
               Rate Card
             </a>
             <a 
-              href="https://instagram.com/thekontenthub" 
+              href="https://www.instagram.com/thekontenthub_/?hl=en" 
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-tkh-yellow transition-colors font-sans"
