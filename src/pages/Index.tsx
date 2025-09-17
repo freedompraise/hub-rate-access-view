@@ -17,7 +17,7 @@ const Index = () => {
       <Header />
       
       {/* Hero Section - Navy Background */}
-      <section className="section-navy pt-20 pb-16 px-6 min-h-screen flex items-center">
+      <section className="section-navy pt-20 pb-16 px-6 min-h-screen flex items-center" id="hero">
         <div className="container mx-auto text-center">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 animate-fade-in">
             Igniting Brands with Creative Strategies

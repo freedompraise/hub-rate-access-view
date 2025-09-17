@@ -18,7 +18,7 @@ const Header = () => {
         
         <nav className="flex items-center space-x-6">
           <a 
-            href="/" 
+            href="#hero" 
             className="text-black hover:text-tkh-purple transition-colors font-sans"
           >
             Home
@@ -29,14 +29,14 @@ const Header = () => {
           >
             Services
           </a>
-          <a 
+          {/* <a 
             href="#work" 
             className="text-black hover:text-tkh-purple transition-colors font-sans"
           >
             Work
-          </a>
+          </a> */}
           <a 
-            href="#rate-card" 
+            href="#contact" 
             className="text-black hover:text-tkh-purple transition-colors font-sans"
           >
             Request Rate Card
