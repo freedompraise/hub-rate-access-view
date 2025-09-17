@@ -17,6 +17,7 @@ const brandLogos = [
   'brands/sooyah_bistro.JPG',
   'brands/spring_stiches.PNG',
   'brands/tribe_lagos.PNG',
+  'brands/payaza.GIF'
 ];
 
 const FeaturedBrands = () => {
