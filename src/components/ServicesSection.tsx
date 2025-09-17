@@ -20,9 +20,15 @@ const ServicesSection = () => {
       investment: "Minimum Investment: ₦500,000 / $400"
     },
     {
+      icon: "✨",
+      title: "Kreator Activation Service",
+      description: "Our full-service creator management solution connects your brand with talented content creators to produce authentic, high-performing content that drives real engagement and results.",
+      investment: "Starting from: ₦1M - ₦10M+"
+    },
+    {
       icon: "🎨",
       title: "Template Kit Package",
-      description: "A strategic, fully-branded content and design system for self-managed brands who want to show up consistently, professionally, and with ease. $300 N300,000. This package includes both the visuals and the strategy - giving you everything you need to plan, design, and post confidently.",
+      description: "A strategic, fully-branded content and design system for self-managed brands who want to show up consistently, professionally, and with ease. This package includes both the visuals and the strategy - giving you everything you need to plan, design, and post confidently.",
       investment: "Minimum Investment: ₦300,000 / $250"
     },
     {

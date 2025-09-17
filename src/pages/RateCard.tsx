@@ -925,7 +925,262 @@ const RateCard = () => {
           <ReelsSection />
           <CampaignSection />
           <TemplateKitSection />
-          {/* <KreatorsSection /> */}
+          
+          {/* Kreator Activation Service */}
+          <section className="mb-12">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
+              Kreator Activation Service
+            </h2>
+            <Card className="p-6">
+              <CardHeader className="px-0">
+                  <CardDescription className="text-base">
+                    Our Creator Activation service helps brands leverage the power of <strong>talented content creators</strong> to produce <strong>authentic, high-performing content</strong> that drives engagement, awareness, and conversions. We manage the <strong>entire process</strong>—from strategy and creator scouting to campaign execution and reporting—so your brand gets <strong>measurable results</strong> without the hassle.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="px-0 pt-6 space-y-8">
+                  {/* What We Do Section */}
+                  <div>
+                    <h3 className="text-lg font-semibold mb-4">What We Do:</h3>
+                    <ul className="space-y-3">
+                      <li className="flex gap-2">
+                        <span className="text-tkh-orange font-bold">•</span>
+                        <div>
+                          <span className="font-medium">Strategic Planning:</span> We design <strong>data-driven campaigns</strong> aligned with your brand goals, audience, and product.
+                        </div>
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-tkh-orange font-bold">•</span>
+                        <div>
+                          <span className="font-medium">Creator Scouting:</span> We identify and onboard the <strong>perfect creators</strong> for your niche and target audience.
+                        </div>
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-tkh-orange font-bold">•</span>
+                        <div>
+                          <span className="font-medium">Campaign Execution:</span> From content briefs to approvals, we manage <strong>every step</strong> of the production process.
+                        </div>
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-tkh-orange font-bold">•</span>
+                        <div>
+                          <span className="font-medium">Content Delivery:</span> Creators produce <strong>professional-grade</strong> Reels, TikToks, photos, and other content assets ready for posting.
+                        </div>
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-tkh-orange font-bold">•</span>
+                        <div>
+                          <span className="font-medium">Performance Tracking:</span> We provide <strong>comprehensive reports</strong> on reach, engagement, and overall campaign insights.
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Why Choose Us Section */}
+                  <div>
+                    <h3 className="text-lg font-semibold mb-4">Why Choose Us:</h3>
+                    <ul className="space-y-3">
+                      <li className="flex gap-2">
+                        <span className="text-tkh-orange font-bold">•</span>
+                        <span>We work <strong>exclusively with creators</strong>, ensuring authentic and relatable content rather than generic influencer shoutouts.</span>
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-tkh-orange font-bold">•</span>
+                        <span>Our campaigns are <strong>results-driven</strong>, designed to maximize ROI for your brand.</span>
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-tkh-orange font-bold">•</span>
+                        <span><strong>Full-service management</strong> saves your team time and effort while delivering professional content.</span>
+                      </li>
+                    </ul>
+                  </div>                {/* Service Tiers */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Service Tiers</h3>
+                  <p className="text-muted-foreground mb-6">(We can adjust based on client budget)</p>
+                  
+                  <div className="grid gap-6 md:grid-cols-3">
+                    {/* Starter Tier */}
+                    <Card className="p-4">
+                      <CardHeader className="px-0">
+                        <CardTitle className="text-lg">Starter Activation</CardTitle>
+                        <CardDescription className="text-lg font-bold text-tkh-orange">₦1M – ₦1.5M</CardDescription>
+                      </CardHeader>
+                      <CardContent className="px-0">
+                        <ul className="space-y-2">
+                          <li className="flex gap-2">
+                            <span className="text-tkh-orange">•</span>
+                            <span>3–4 micro-creators</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span className="text-tkh-orange">•</span>
+                            <span>2–3 campaign content pieces (Reels, TikToks, Posts)</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span className="text-tkh-orange">•</span>
+                            <span>Campaign strategy + execution</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span className="text-tkh-orange">•</span>
+                            <span>Performance report (reach, engagement, conversions)</span>
+                          </li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+
+                    {/* Growth Tier */}
+                    <Card className="p-4">
+                      <CardHeader className="px-0">
+                        <CardTitle className="text-lg">Growth Activation</CardTitle>
+                        <CardDescription className="text-lg font-bold text-tkh-orange">₦3M – ₦5M</CardDescription>
+                      </CardHeader>
+                      <CardContent className="px-0">
+                        <ul className="space-y-2">
+                          <li className="flex gap-2">
+                            <span className="text-tkh-orange">•</span>
+                            <span>Mix of macro, micro & nano creators (6–10 total)</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span className="text-tkh-orange">•</span>
+                            <span>Campaign content pack (video series, reels, carousel posts)</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span className="text-tkh-orange">•</span>
+                            <span>Campaign management + influencer negotiations</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span className="text-tkh-orange">•</span>
+                            <span>End-to-end reporting with insights + recommendations</span>
+                          </li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+
+                    {/* Premium Tier */}
+                    <Card className="p-4">
+                      <CardHeader className="px-0">
+                        <CardTitle className="text-lg">Premium Brand Activation</CardTitle>
+                        <CardDescription className="text-lg font-bold text-tkh-orange">₦10M+</CardDescription>
+                      </CardHeader>
+                      <CardContent className="px-0">
+                        <ul className="space-y-2">
+                          <li className="flex gap-2">
+                            <span className="text-tkh-orange">•</span>
+                            <span>1–2 macro/celebrity influencers + 10+ micro creators</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span className="text-tkh-orange">•</span>
+                            <span>Multi-platform campaign (IG, TikTok)</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span className="text-tkh-orange">•</span>
+                            <span>Dedicated campaign manager</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span className="text-tkh-orange">•</span>
+                            <span>Live event/PR activation add-on (optional)</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span className="text-tkh-orange">•</span>
+                            <span>Full post-campaign analytics report</span>
+                          </li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+
+                <div className="mt-8">
+                  <Accordion type="single" collapsible>
+                    <AccordionItem value="terms">
+                      <AccordionTrigger className="text-xs md:text-sm">Terms & Conditions</AccordionTrigger>
+                      <AccordionContent>
+                        <div className="prose max-w-none p-6 bg-white rounded-lg shadow">
+                          <h2 className="font-bold text-2xl mb-4">
+                            Terms and Conditions for Kreator Activation Service
+                          </h2>
+                          <ol className="list-decimal list-inside space-y-4">
+                            {/* Payment Terms */}
+                            <li>
+                              <strong>Payment Terms</strong>
+                              <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                                <li>100% upfront payment is required before campaign commencement. ✅</li>
+                              </ul>
+                            </li>
+
+                            {/* Creator Selection & Availability */}
+                            <li>
+                              <strong>Creator Selection & Availability</strong>
+                              <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                                <li>We maintain exclusive partnerships with our creator network for authentic content creation.</li>
+                                <li>Creator availability and pricing are subject to change until final booking confirmation.</li>
+                                <li>We provide 2 alternative options if a creator becomes unavailable.</li>
+                              </ul>
+                            </li>
+
+                            {/* Campaign Timeline */}
+                            <li>
+                              <strong>Campaign Timeline & Delivery</strong>
+                              <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                                <li>Campaign execution begins within 7 working days of payment confirmation.</li>
+                                <li>Content delivery schedule will be provided in the campaign brief.</li>
+                                <li>Performance report delivered within 7 working days of campaign completion.</li>
+                              </ul>
+                            </li>
+
+                            {/* Content Rights */}
+                            <li>
+                              <strong>Content Rights & Usage</strong>
+                              <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                                <li>Brands can reshare creator content on their channels for 30 days.</li>
+                                <li>Extended usage rights for paid ads, print, or billboards require additional licensing.</li>
+                                <li>Content cannot be edited or modified without prior approval.</li>
+                              </ul>
+                            </li>
+
+                            {/* Cancellation Policy */}
+                            <li>
+                              <strong>Cancellation & Refunds</strong>
+                              <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                                <li>Cancellation within 7 days of kickoff: 50% non-refundable.</li>
+                                <li>No refunds available after creator booking (rescheduling possible).</li>
+                              </ul>
+                            </li>
+
+                            {/* Performance & Results */}
+                            <li>
+                              <strong>Performance & Results</strong>
+                              <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                                <li>We guarantee high-quality content delivery and comprehensive reporting.</li>
+                                <li>Actual performance metrics (reach, engagement, conversions) may vary based on market factors.</li>
+                                <li>We maintain transparent communication throughout the campaign.</li>
+                              </ul>
+                            </li>
+
+                            {/* Quality Assurance */}
+                            <li>
+                              <strong>Quality Assurance</strong>
+                              <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                                <li>All content undergoes professional review before delivery.</li>
+                                <li>One round of revisions included; additional revisions may incur extra charges.</li>
+                              </ul>
+                            </li>
+
+                            {/* Confidentiality */}
+                            <li>
+                              <strong>Confidentiality</strong>
+                              <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
+                                <li>We maintain strict confidentiality of all brand information.</li>
+                                <li>Campaign details remain private unless mutual agreement for public sharing.</li>
+                              </ul>
+                            </li>
+                          </ol>
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
+              </CardContent>
+            </Card>
+          </section>
 
           <Card className="bg-hero-gradient text-white shadow-lg mt-10">
             <CardContent className="p-8 text-center">
