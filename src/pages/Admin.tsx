@@ -18,6 +18,7 @@ import { supabase } from '@/integrations/supabase/client';
 import Login from '@/components/Login';
 import Header from '@/components/Header';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import Papa from 'papaparse';
 
 interface Request {
@@ -48,6 +49,7 @@ const Admin = () => {
   const [approving, setApproving] = useState<string | null>(null);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [modalContent, setModalContent] = useState<{ title: string; content: string | null } | null>(null);
   const { user, signOut } = useAuth();
   const { toast } = useToast();
 
@@ -401,10 +403,22 @@ const Admin = () => {
                       <TableCell>{request.email || 'N/A'}</TableCell>
                       <TableCell>{request.brand_name || 'N/A'}</TableCell>
                       <TableCell>{request.instagram_handle || 'N/A'}</TableCell>
-                      <TableCell className="max-w-[200px] truncate" title={request.help_needed || 'N/A'}>
+                      <TableCell 
+                        className="max-w-[200px] truncate cursor-pointer hover:text-tkh-orange"
+                        onClick={() => setModalContent({
+                          title: 'Help Needed',
+                          content: request.help_needed
+                        })}
+                      >
                         {request.help_needed || 'N/A'}
                       </TableCell>
-                      <TableCell className="max-w-[200px] truncate" title={request.about_business || 'N/A'}>
+                      <TableCell 
+                        className="max-w-[200px] truncate cursor-pointer hover:text-tkh-orange"
+                        onClick={() => setModalContent({
+                          title: 'About Business',
+                          content: request.about_business
+                        })}
+                      >
                         {request.about_business || 'N/A'}
                       </TableCell>
                       <TableCell className="max-w-[150px] truncate" title={request.service_interest || 'N/A'}>
@@ -461,6 +475,17 @@ const Admin = () => {
               </TableBody>
             </Table>
           </Card>
+
+          <Dialog open={!!modalContent} onOpenChange={() => setModalContent(null)}>
+            <DialogContent className="max-w-[600px]">
+              <DialogHeader>
+                <DialogTitle>{modalContent?.title}</DialogTitle>
+              </DialogHeader>
+              <div className="mt-4 text-sm whitespace-pre-wrap">
+                {modalContent?.content || 'N/A'}
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </div>
