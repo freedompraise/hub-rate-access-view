@@ -82,14 +82,55 @@ interface SocialMediaManagement {
     terms: string[];
   }
 
+  interface TemplateKit {
+    title: string;
+    price: string;
+    duration: string;
+    inclusions: string[];
+    terms: string[];
+  }
+
+  interface FashionBrandPackage {
+    name: string;
+    price: string;
+    features: string[];
+  }
+
+  interface FashionBrandSection {
+    title: string;
+    subtitle?: string;
+    description?: string;
+    packages?: FashionBrandPackage[];
+  }
+
+  interface FashionBrandReels {
+    title: string;
+    description: string;
+    sections: FashionBrandSection[];
+    important_notes: {
+      title: string;
+      points: string[];
+    }[];
+  }
+
+  interface ConversionBasedStrategy {
+    title: string;
+    price: string;
+    best_for: string;
+    inclusions: string[];
+    terms: string[];
+  }
+
   interface RateCardData {
     marketing_strategy_packages: MarketingStrategyPackage[];
     marketing_strategy_terms: string[];
     social_media_marketing: SocialMediaMarketingPackage;
     conversion_based_marketing_strategy: ConversionBasedMarketingStrategyPackage;
+    conversion_based_strategy: ConversionBasedStrategy;
     reel_strategy_production: ReelStrategyProduction;
+    fashion_brand_reels: FashionBrandReels;
+    template_kits: TemplateKit[];
     campaign_shoot: CampaignShoot;
-    tkh_kreators: TKHKreators;
   }
 
   const value: RateCardData;

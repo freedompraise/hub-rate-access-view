@@ -64,15 +64,18 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
   };
 
   const handleWhatsAppClick = () => {
-    const message = encodeURIComponent(
-      `Hi, I would like to request access to view the rate card.\n\n` +
-      `Name: ${formData.fullName}\n` +
-      `Email: ${formData.email}\n` +
-      `Phone: ${formData.phoneNumber}\n` +
-      `Brand: ${formData.brandName}\n` +
-      `Instagram: ${formData.instagramHandle}\n` +
-      `Needs: ${formData.helpNeeded}`
-    );
+      const message = encodeURIComponent(
+        `Hi, I would like to request access to view the rate card.\n\n` +
+        `Name: ${formData.fullName}\n` +
+        `Email: ${formData.email}\n` +
+        `Phone: ${formData.phoneNumber}\n` +
+        `Brand: ${formData.brandName}\n` +
+        `Instagram: ${formData.instagramHandle}\n` +
+        `Needs: ${formData.helpNeeded}\n` +
+        `About Business: ${formData.aboutBusiness}\n` +
+        `Service Interest: ${formData.serviceInterest}\n` +
+        `Additional Info: ${formData.additionalInfo}`
+      );
     window.open(`https://wa.me/2347025277328?text=${message}`, '_blank');
   };
 
@@ -84,7 +87,10 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
       phoneNumber: "",
       brandName: "",
       instagramHandle: "",
-      helpNeeded: ""
+      helpNeeded: "",
+      aboutBusiness: "",
+      additionalInfo: "",
+      serviceInterest: ""
     });
     onClose();
   };
@@ -211,10 +217,61 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
               placeholder="Tell us about your needs"
             />
           </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="aboutBusiness" className="text-black">
+              About your business *
+            </Label>
+            <Input
+              id="aboutBusiness"
+              value={formData.aboutBusiness}
+              onChange={(e) => setFormData({ ...formData, aboutBusiness: e.target.value })}
+              required
+              className="bg-white border-border text-black focus:border-tkh-orange"
+              placeholder="Tell us about your business"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="serviceInterest" className="text-black">
+              Which service are you interested in? *
+            </Label>
+            <select
+              id="serviceInterest"
+              value={formData.serviceInterest}
+              onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
+              required
+              className="w-full px-3 py-2 bg-white border border-border text-black rounded-md focus:border-tkh-orange focus:outline-none"
+            >
+              <option value="">Select a service</option>
+              <option value="Go to Market Strategy">Go to Market Strategy</option>
+              <option value="Social Media Marketing Management">Social Media Marketing Management</option>
+              <option value="Reel production Strategy">Reel production Strategy</option>
+              <option value="Reel creation">Reel creation</option>
+              <option value="Template Kit">Template Kit</option>
+              <option value="Videography and Photography">Videography and Photography</option>
+              <option value="Creators Activation">Creators Activation</option>
+              <option value="Working with Kreators">Working with Kreators</option>
+              <option value="Event Marketing">Event Marketing</option>
+            </select>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="additionalInfo" className="text-black">
+              Anything else you would like to share?
+            </Label>
+            <Input
+              id="additionalInfo"
+              value={formData.additionalInfo}
+              onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
+              className="bg-white border-border text-black focus:border-tkh-orange"
+              placeholder="Additional information (optional)"
+            />
+          </div>
           
           <Button
             type="submit"
-            disabled={isLoading || !formData.fullName || !formData.phoneNumber}
+            disabled={isLoading || !formData.fullName || !formData.phoneNumber || !formData.email || !formData.brandName || !formData.instagramHandle || !formData.helpNeeded || !formData.aboutBusiness || !formData.serviceInterest}
             className="w-full btn-gradient font-sans font-semibold uppercase transition-all duration-300 mt-6"
           >
             {isLoading ? "Submitting..." : "Submit & Chat on WhatsApp"}

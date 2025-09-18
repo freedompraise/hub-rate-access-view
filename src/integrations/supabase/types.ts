@@ -86,6 +86,17 @@ export type Database = {
       create_rate_card_request: {
         Args:
           | {
+              about_business?: string
+              additional_info?: string
+              brand_name?: string
+              email: string
+              full_name: string
+              help_needed?: string
+              instagram_handle?: string
+              phone_number: string
+              service_interest?: string
+            }
+          | {
               brand_name?: string
               email: string
               full_name: string
