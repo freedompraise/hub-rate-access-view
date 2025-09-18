@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -98,7 +99,7 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
   if (isSubmitted) {
     return (
       <Dialog open={isOpen} onOpenChange={handleClose}>
-        <DialogContent className="bg-white border-border text-black max-w-md shadow-lg">
+        <DialogContent className="bg-white border-border text-black max-w-md max-h-[90vh] shadow-lg overflow-y-auto">
           <div className="text-center py-6">
             <div className="w-16 h-16 bg-tkh-yellow rounded-full flex items-center justify-center mx-auto mb-4">
               <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
@@ -125,7 +126,7 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="bg-white border-border text-black max-w-md shadow-lg">
+      <DialogContent className="bg-white border-border text-black max-w-md max-h-[90vh] shadow-lg overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-tkh-orange font-serif text-xs text-center">
             Please fill out the form below to request access to our rate card, and we'll get back to you shortly.
@@ -222,12 +223,12 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
             <Label htmlFor="aboutBusiness" className="text-black">
               About your business *
             </Label>
-            <Input
+            <Textarea
               id="aboutBusiness"
               value={formData.aboutBusiness}
               onChange={(e) => setFormData({ ...formData, aboutBusiness: e.target.value })}
               required
-              className="bg-white border-border text-black focus:border-tkh-orange"
+              className="bg-white border-border text-black focus:border-tkh-orange min-h-[80px] resize-none"
               placeholder="Tell us about your business"
             />
           </div>
@@ -260,11 +261,11 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
             <Label htmlFor="additionalInfo" className="text-black">
               Anything else you would like to share?
             </Label>
-            <Input
+            <Textarea
               id="additionalInfo"
               value={formData.additionalInfo}
               onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
-              className="bg-white border-border text-black focus:border-tkh-orange"
+              className="bg-white border-border text-black focus:border-tkh-orange min-h-[60px] resize-none"
               placeholder="Additional information (optional)"
             />
           </div>
