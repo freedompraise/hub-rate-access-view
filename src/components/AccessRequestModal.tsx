@@ -19,7 +19,10 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
     phoneNumber: "",
     brandName: "",
     instagramHandle: "",
-    helpNeeded: ""
+    helpNeeded: "",
+    aboutBusiness: "",
+    additionalInfo: "",
+    serviceInterest: ""
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +39,10 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
         email: formData.email || null,
         brand_name: formData.brandName || null,
         instagram_handle: formData.instagramHandle || null,
-        help_needed: formData.helpNeeded || null
+        help_needed: formData.helpNeeded || null,
+        about_business: formData.aboutBusiness || null,
+        additional_info: formData.additionalInfo || null,
+        service_interest: formData.serviceInterest || null
       });
 
       if (error) throw error;
