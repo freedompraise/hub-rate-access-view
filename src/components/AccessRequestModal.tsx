@@ -20,7 +20,6 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
     phoneNumber: "",
     brandName: "",
     instagramHandle: "",
-    helpNeeded: "",
     aboutBusiness: "",
     additionalInfo: "",
     serviceInterest: ""
@@ -40,7 +39,7 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
         email: formData.email || null,
         brand_name: formData.brandName || null,
         instagram_handle: formData.instagramHandle || null,
-        help_needed: formData.helpNeeded || null,
+        help_needed: null, // Field is no longer used
         about_business: formData.aboutBusiness || null,
         additional_info: formData.additionalInfo || null,
         service_interest: formData.serviceInterest || null
@@ -72,7 +71,7 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
         `Phone: ${formData.phoneNumber}\n` +
         `Brand: ${formData.brandName}\n` +
         `Instagram: ${formData.instagramHandle}\n` +
-        `Needs: ${formData.helpNeeded}\n` +
+        // `Needs: ${formData.helpNeeded}\n` +
         `About Business: ${formData.aboutBusiness}\n` +
         `Service Interest: ${formData.serviceInterest}\n` +
         `Additional Info: ${formData.additionalInfo}`
@@ -88,7 +87,7 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
       phoneNumber: "",
       brandName: "",
       instagramHandle: "",
-      helpNeeded: "",
+      // helpNeeded: "", // Field is no longer used
       aboutBusiness: "",
       additionalInfo: "",
       serviceInterest: ""
@@ -204,7 +203,7 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
               placeholder="@yourbrand"
             />
           </div>
-
+{/* 
           <div className="space-y-2">
             <Label htmlFor="helpNeeded" className="text-black">
               What do you need help with? *
@@ -217,7 +216,7 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
               className="bg-white border-border text-black focus:border-tkh-orange"
               placeholder="Tell us about your needs"
             />
-          </div>
+          </div> */}
 
           <div className="space-y-2">
             <Label htmlFor="aboutBusiness" className="text-black">
@@ -254,6 +253,7 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
               <option value="Creators Activation">Creators Activation</option>
               <option value="Working with Kreators">Working with Kreators</option>
               <option value="Event Marketing">Event Marketing</option>
+              <option value="Digital Marketing">Digital Marketing</option>
             </select>
           </div>
 
@@ -272,7 +272,7 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
           
           <Button
             type="submit"
-            disabled={isLoading || !formData.fullName || !formData.phoneNumber || !formData.email || !formData.brandName || !formData.instagramHandle || !formData.helpNeeded || !formData.aboutBusiness || !formData.serviceInterest}
+            disabled={isLoading || !formData.fullName || !formData.phoneNumber || !formData.email || !formData.brandName || !formData.instagramHandle || !formData.aboutBusiness || !formData.serviceInterest}
             className="w-full btn-gradient font-sans font-semibold uppercase transition-all duration-300 mt-6"
           >
             {isLoading ? "Submitting..." : "Submit & Chat on WhatsApp"}

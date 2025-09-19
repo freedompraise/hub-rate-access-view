@@ -232,7 +232,6 @@ const Admin = () => {
       (req.email?.toLowerCase().includes(searchTerm) ?? false) ||
       (req.brand_name?.toLowerCase().includes(searchTerm) ?? false) ||
       (req.instagram_handle?.toLowerCase().includes(searchTerm) ?? false) ||
-      (req.help_needed?.toLowerCase().includes(searchTerm) ?? false) ||
       (req.about_business?.toLowerCase().includes(searchTerm) ?? false) ||
       (req.service_interest?.toLowerCase().includes(searchTerm) ?? false) ||
       (req.additional_info?.toLowerCase().includes(searchTerm) ?? false);
@@ -377,7 +376,6 @@ const Admin = () => {
                   <TableHead>Email</TableHead>
                   <TableHead>Brand</TableHead>
                   <TableHead>Instagram</TableHead>
-                  <TableHead>Help Needed</TableHead>
                   <TableHead>About Business</TableHead>
                   <TableHead>Service Interest</TableHead>
                   <TableHead>Additional Info</TableHead>
@@ -403,15 +401,6 @@ const Admin = () => {
                       <TableCell>{request.email || 'N/A'}</TableCell>
                       <TableCell>{request.brand_name || 'N/A'}</TableCell>
                       <TableCell>{request.instagram_handle || 'N/A'}</TableCell>
-                      <TableCell 
-                        className="max-w-[200px] truncate cursor-pointer hover:text-tkh-orange"
-                        onClick={() => setModalContent({
-                          title: 'Help Needed',
-                          content: request.help_needed
-                        })}
-                      >
-                        {request.help_needed || 'N/A'}
-                      </TableCell>
                       <TableCell 
                         className="max-w-[200px] truncate cursor-pointer hover:text-tkh-orange"
                         onClick={() => setModalContent({
