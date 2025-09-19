@@ -80,7 +80,7 @@ const RateCard = () => {
   };
 
   const MarketingStrategySection = () => (
-    <section className="mb-12">
+    <section id="marketing-strategy" className="mb-12">
       <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
         Marketing Strategy Packages
       </h2>
@@ -268,7 +268,7 @@ const RateCard = () => {
   );
 
   const SocialMediaMarketingSection = () => (
-    <section className="mb-12">
+    <section id="social-media" className="mb-12">
       <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
         {rateCardData.social_media_marketing.title}
       </h2>
@@ -377,7 +377,7 @@ const RateCard = () => {
   );
 
   const ConversionBasedMarketingSection = () => (
-    <section className="mb-12">
+    <section id="conversion-marketing" className="mb-12">
       <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
         {rateCardData.conversion_based_marketing_strategy.title}
       </h2>
@@ -455,7 +455,7 @@ const RateCard = () => {
   );
 
   const ReelsSection = () => (
-    <section className="mb-12">
+    <section id="reels" className="mb-12">
       <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
         Reel Strategy & Production
       </h2>
@@ -665,7 +665,7 @@ const RateCard = () => {
   );
 
   const CampaignSection = () => (
-    <section className="mb-12">
+    <section id="campaigns" className="mb-12">
       <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
         Campaign Shoots
       </h2>
@@ -779,7 +779,7 @@ const RateCard = () => {
   );
 
   const TemplateKitSection = () => (
-    <section className="mb-12">
+    <section id="template-kit" className="mb-12">
       <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
         Template Kits
       </h2>
@@ -909,6 +909,55 @@ const RateCard = () => {
             </p>
           </div>
 
+          {/* Mini Navigation */}
+          <div className="mb-8 bg-gray-50 rounded-lg p-6 sticky top-20 z-40">
+            <h3 className="text-lg font-serif font-semibold text-black mb-4">Quick Navigation</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+              <button 
+                onClick={() => document.getElementById('marketing-strategy')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+              >
+                Strategy Packages
+              </button>
+              <button 
+                onClick={() => document.getElementById('social-media')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+              >
+                Social Media
+              </button>
+              <button 
+                onClick={() => document.getElementById('conversion-marketing')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+              >
+                Conversion Marketing
+              </button>
+              <button 
+                onClick={() => document.getElementById('reels')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+              >
+                Reels
+              </button>
+              <button 
+                onClick={() => document.getElementById('campaigns')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+              >
+                Campaigns
+              </button>
+              <button 
+                onClick={() => document.getElementById('template-kit')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+              >
+                Template Kit
+              </button>
+              <button 
+                onClick={() => document.getElementById('kreator-activation')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+              >
+                Kreator Activation
+              </button>
+            </div>
+          </div>
+
           <div className="mb-8">
             <h2 className="text-2xl font-serif font-semibold text-tkh-orange mb-4">
               Our Services
@@ -927,7 +976,7 @@ const RateCard = () => {
           <TemplateKitSection />
           
           {/* Kreator Activation Service */}
-          <section className="mb-12">
+          <section id="kreator-activation" className="mb-12">
             <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
               Kreator Activation Service
             </h2>

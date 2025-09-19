@@ -1,8 +1,11 @@
 
 import { useAuth } from "./AuthProvider";
+import { useState } from "react";
+import AccessRequestModal from "./AccessRequestModal";
 
 const Header = () => {
   const { user } = useAuth();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
@@ -35,12 +38,12 @@ const Header = () => {
           >
             Work
           </a> */}
-          <a 
-            href="#contact" 
+          <button
+            onClick={() => setIsModalOpen(true)}
             className="text-black hover:text-tkh-purple transition-colors font-sans"
           >
             Request Rate Card
-          </a>
+          </button>
           <a 
             href="#contact" 
             className="text-black hover:text-tkh-purple transition-colors font-sans"
@@ -57,6 +60,11 @@ const Header = () => {
           )}
         </nav>
       </div>
+      
+      <AccessRequestModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </header>
   );
 };
