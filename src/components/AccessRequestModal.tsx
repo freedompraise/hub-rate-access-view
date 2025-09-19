@@ -192,7 +192,7 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
 
           <div className="space-y-2">
             <Label htmlFor="instagramHandle" className="text-black">
-              Instagram Handle *
+              Instagram Handle or Website Link*
             </Label>
             <Input
               id="instagramHandle"
