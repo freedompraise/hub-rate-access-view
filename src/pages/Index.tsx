@@ -28,10 +28,10 @@ const Index = () => {
           </p>
           
           <Button
-            onClick={scrollToServices}
+            onClick={() => window.location.href="https://www.canva.com/design/DAGyB5Rd3VE/MiZycaNOEuCzOk4yfb6tGg/edit?utm_content=DAGyB5Rd3VE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"}
             className="btn-gradient text-lg px-8 py-4 animate-scale-in font-semibold"
           >
-            Explore Our Services
+            View Our Portfolio
           </Button>
         </div>
       </section>
