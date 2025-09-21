@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import ServicesSection from "@/components/ServicesSection";
 import WorksSection from "@/components/WorksSection";
 import RateCardSection from "@/components/RateCardSection";
+import RateCardRequestSection from "@/components/RateCardRequestSection";
 import BrandHelpSection from "@/components/BrandHelpSection";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -45,7 +46,10 @@ const Index = () => {
       {/* Works Section - Navy Background */}
       {/* <WorksSection /> */}
 
-      {/* Rate Card Section - White Background */}
+      {/* Rate Card Request Section - White Background */}
+      <RateCardRequestSection />
+
+      {/* Contact Section - White Background */}
       <RateCardSection />
 
       {/* Footer - Navy Background */}

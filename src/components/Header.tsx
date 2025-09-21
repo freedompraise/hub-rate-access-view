@@ -1,21 +1,21 @@
 
 import { useAuth } from "./AuthProvider";
-import { useState } from "react";
-import AccessRequestModal from "./AccessRequestModal";
 
 const Header = () => {
   const { user } = useAuth();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-3">
+          <a href="/">
           <img 
             src="/logo/dark.PNG" 
             alt="The Kontent Hub Logo" 
             className="w-12 h-12"
           />
+          </a>
+
 
         </div>
         
@@ -38,12 +38,12 @@ const Header = () => {
           >
             Work
           </a> */}
-          <button
-            onClick={() => setIsModalOpen(true)}
+          <a 
+            href="#rate-card-request" 
             className="text-black hover:text-tkh-purple transition-colors font-sans"
           >
-            Request Rate Card
-          </button>
+            Rate Card
+          </a>
           <a 
             href="#contact" 
             className="text-black hover:text-tkh-purple transition-colors font-sans"
@@ -60,11 +60,6 @@ const Header = () => {
           )}
         </nav>
       </div>
-      
-      <AccessRequestModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
     </header>
   );
 };

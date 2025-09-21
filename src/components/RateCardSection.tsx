@@ -1,12 +1,12 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import AccessRequestModal from "./AccessRequestModal";
 
 const RateCardSection = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const handleCalendlyClick = () => {
     window.open('https://calendly.com/thecreativekontenthub/30min', '_blank');
+  };
+
+  const handleWhatsAppClick = () => {
+    window.open('https://wa.me/2347025277328', '_blank');
   };
 
   return (
@@ -20,7 +20,7 @@ const RateCardSection = () => {
           Together, we'll craft a plan that makes your brand stand out.
         </p>
         
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-8">
           {/* Strategy Session Card */}
           <div className="bg-white p-6 rounded-lg border border-border shadow-md hover:border-tkh-yellow transition-all duration-300">
             <h3 className="font-serif font-semibold text-lg mb-3">Book a Meeting</h3>
@@ -33,21 +33,9 @@ const RateCardSection = () => {
             </Button>
           </div>
 
-          {/* Rate Card Access */}
-          <div className="bg-white p-6 rounded-lg border border-border shadow-md hover:border-tkh-yellow transition-all duration-300">
-            <h3 className="font-serif font-semibold text-lg mb-3">View Rate Card</h3>
-            <p className="text-sm text-black/70 mb-4">Get detailed pricing information for our services</p>
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              className="btn-gradient w-full"
-            >
-              Request Access
-            </Button>
-          </div>
-
           {/* Direct Contact Card */}
           <div className="bg-white p-6 rounded-lg border border-border shadow-md hover:border-tkh-yellow transition-all duration-300">
-            <h3 className="font-serif font-semibold text-lg mb-3">Call Us</h3>
+            <h3 className="font-serif font-semibold text-lg mb-3">Get in Touch</h3>
             <div className="space-y-2 mb-4">
               <p className="text-sm">
                 <span className="text-black/70">Nigeria: </span>
@@ -62,20 +50,23 @@ const RateCardSection = () => {
                 </a>
               </p>
             </div>
-            <Button
-              asChild
-              className="btn-gradient w-full"
-            >
-              <a href="tel:+2347025277328">Call Now</a>
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                asChild
+                className="btn-gradient flex-1"
+              >
+                <a href="tel:+2347025277328">Call Now</a>
+              </Button>
+              <Button
+                onClick={handleWhatsAppClick}
+                className="btn-gradient flex-1"
+              >
+                WhatsApp
+              </Button>
+            </div>
           </div>
         </div>
       </div>
-      
-      <AccessRequestModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
     </section>
   );
 };
