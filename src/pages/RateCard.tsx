@@ -48,6 +48,30 @@ const RateCard = () => {
     window.open('https://calendly.com/thecreativekontenthub/30min', '_blank');
   };
 
+  const scrollToSection = (sectionId: string) => {
+    // Small delay to ensure DOM is ready
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        // Get the actual height of the sticky navigation element
+        const navigationElement = document.querySelector('.sticky.top-20');
+        const navigationHeight = navigationElement ? navigationElement.getBoundingClientRect().height : 100;
+        
+        // Calculate the offset needed to account for both header and sticky navigation
+        // Header height: ~80px (pt-20), plus navigation height
+        const headerHeight = 80; // pt-20 = 5rem = 80px
+        const offset = headerHeight + navigationHeight + 20; // Extra 20px for breathing room
+        
+        const elementPosition = element.offsetTop - offset;
+        
+        window.scrollTo({
+          top: Math.max(0, elementPosition), // Ensure we don't scroll to negative position
+          behavior: 'smooth'
+        });
+      }
+    }, 10);
+  };
+
   const validateToken = async (token: string) => {
     setLoading(true);
     setError(null);
@@ -914,43 +938,43 @@ const RateCard = () => {
             <h3 className="text-lg font-serif font-semibold text-black mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               <button 
-                onClick={() => document.getElementById('marketing-strategy')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToSection('marketing-strategy')}
                 className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
               >
                 Strategy Packages
               </button>
               <button 
-                onClick={() => document.getElementById('social-media')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToSection('social-media')}
                 className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
               >
                 Social Media Marketing
               </button>
               <button 
-                onClick={() => document.getElementById('conversion-marketing')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToSection('conversion-marketing')}
                 className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
               >
                 Digital Marketing
               </button>
               <button 
-                onClick={() => document.getElementById('reels')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToSection('reels')}
                 className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
               >
                 Reel Strategy & Production
               </button>
               <button 
-                onClick={() => document.getElementById('campaigns')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToSection('campaigns')}
                 className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
               >
                 Campaigns Ads (Videography and Photography)
               </button>
               <button 
-                onClick={() => document.getElementById('template-kit')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToSection('template-kit')}
                 className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
               >
                 Template Kit
               </button>
               <button 
-                onClick={() => document.getElementById('kreator-activation')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToSection('kreator-activation')}
                 className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
               >
                 Kreator Activation
