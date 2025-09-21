@@ -923,25 +923,25 @@ const RateCard = () => {
                 onClick={() => document.getElementById('social-media')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
               >
-                Social Media
+                Social Media Marketing
               </button>
               <button 
                 onClick={() => document.getElementById('conversion-marketing')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
               >
-                Conversion Marketing
+                Digital Marketing
               </button>
               <button 
                 onClick={() => document.getElementById('reels')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
               >
-                Reels
+                Reel Strategy & Production
               </button>
               <button 
                 onClick={() => document.getElementById('campaigns')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
               >
-                Campaigns
+                Campaigns Ads (Videography and Photography)
               </button>
               <button 
                 onClick={() => document.getElementById('template-kit')?.scrollIntoView({ behavior: 'smooth' })}
