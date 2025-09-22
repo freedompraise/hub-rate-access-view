@@ -9,7 +9,7 @@ const RateCardRequestSection = () => {
     <section id="rate-card-request" className="section-white py-20 px-6">
       <div className="container mx-auto text-center">
         <h2 className="text-2xl md:text-3xl font-serif font-bold text-black mb-4">
-          Get Our Rate Card
+        Ready to Make Your Brand Impossible to Ignore?
         </h2>
         <p className="text-lg text-black/70 max-w-3xl mx-auto mb-8">
         Get detailed pricing information for our services.

@@ -12,11 +12,11 @@ const RateCardSection = () => {
   return (
     <section id="contact" className="section-white py-20 px-6">
       <div className="container mx-auto text-center">
-        <h2 className="text-2xl md:text-3xl font-serif font-bold text-black mb-4">
-          Ready to Make Your Brand Impossible to Ignore?
-        </h2>
+        <h3 className="text-xl md:text-3xl font-serif font-bold text-black mb-4">
+        Book a strategy session with Becca, our Creative and Marketing Lead.
+        </h3>
         <p className="text-lg text-black/70 max-w-3xl mx-auto mb-8">
-          Book a strategy session with Becca, our Creative and Marketing Lead.
+         
           Together, we'll craft a plan that makes your brand stand out.
         </p>
         
