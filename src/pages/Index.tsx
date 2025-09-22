@@ -29,7 +29,7 @@ const Index = () => {
           </p>
           
           <Button
-            onClick={() => window.location.href="https://www.canva.com/design/DAGyB5Rd3VE/MiZycaNOEuCzOk4yfb6tGg/edit?utm_content=DAGyB5Rd3VE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"}
+            onClick={() => window.location.href="https://hillarythecreative.my.canva.site/the-kontent-hub-portfolio"}
             className="btn-gradient text-lg px-8 py-4 animate-scale-in font-semibold"
           >
             View Our Portfolio
