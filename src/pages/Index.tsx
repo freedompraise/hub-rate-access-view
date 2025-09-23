@@ -19,7 +19,7 @@ const Index = () => {
     const handleHashNavigation = () => {
       const hash = window.location.hash;
       if (hash) {
-        // Remove the # symbol
+  
         const sectionId = hash.substring(1);
         const element = document.getElementById(sectionId);
         
