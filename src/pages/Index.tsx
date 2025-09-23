@@ -73,7 +73,7 @@ const Index = () => {
           </p>
           
           <Button
-            onClick={() => window.location.href="https://hillarythecreative.my.canva.site/the-kontent-hub-portfolio"}
+            onClick={() => window.location.href="https://hillarythecreative.my.canva.site/thekontenthubportfolio"}
             className="btn-gradient text-lg px-8 py-4 animate-scale-in font-semibold"
           >
             View Our Portfolio
