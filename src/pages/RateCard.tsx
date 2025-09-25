@@ -974,6 +974,24 @@ const RateCard = () => {
                 Template Kit
               </button>
               <button 
+                onClick={() => scrollToSection('strategic-launch')}
+                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+              >
+                Strategic Launch
+              </button>
+              <button 
+                onClick={() => scrollToSection('campaign-management')}
+                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+              >
+                Campaign Management
+              </button>
+              <button 
+                onClick={() => scrollToSection('strategic-launch-execution')}
+                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+              >
+                Launch &amp; Execution
+              </button>
+              <button 
                 onClick={() => scrollToSection('kreator-activation')}
                 className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
               >
@@ -1251,6 +1269,247 @@ const RateCard = () => {
                     </AccordionItem>
                   </Accordion>
                 </div>
+              </CardContent>
+            </Card>
+          </section>
+
+          {/* Strategic Launch Kit */}
+          <section id="strategic-launch" className="mb-12">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
+              Strategic Launch Kit
+            </h2>
+            <Card className="p-6">
+              <CardHeader className="px-0">
+                <CardDescription className="text-base">
+                  Our Strategic Launch Kits are designed for entrepreneurs, small businesses, and established brands who want to launch or relaunch their products with clarity, consistency, and impact. <strong>We provide a complete roadmap and the creative assets you need to confidently introduce your brand to your audience.</strong> From strategy and brand guidelines to product/label design, social media assets, and optional influencer guidance, we ensure your launch is professional, cohesive, and designed to get results.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="px-0 pt-6 space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Who it’s for</h3>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Entrepreneurs launching their first product</li>
+                    <li>Small to medium businesses expanding their product line</li>
+                    <li>Established brands seeking a high-end, multi-product launch</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Packages</h3>
+                  <div className="grid gap-6 md:grid-cols-3">
+                    <Card className="p-4">
+                      <CardHeader className="px-0">
+                        <CardTitle className="text-lg">Standard Launch &amp; Branding Kit</CardTitle>
+                        <CardDescription className="text-lg font-bold text-tkh-orange">₦800,000</CardDescription>
+                      </CardHeader>
+                      <CardContent className="px-0">
+                        <ul className="space-y-2">
+                          <li><strong>Strategic Launch Plan / Marketing Plan</strong></li>
+                          <li><strong>Brand Guidelines</strong> (visual identity, brand voice)</li>
+                          <li><strong>Product/Label Design</strong> for up to 3 products</li>
+                          <li>Basic consultation &amp; 2 rounds of revisions</li>
+                          <li className="text-sm text-muted-foreground">Delivery: 25–30 days</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="p-4">
+                      <CardHeader className="px-0">
+                        <CardTitle className="text-lg">Growth Launch &amp; Branding Kit</CardTitle>
+                        <CardDescription className="text-lg font-bold text-tkh-orange">₦1,000,000 – ₦1,200,000</CardDescription>
+                      </CardHeader>
+                      <CardContent className="px-0">
+                        <ul className="space-y-2">
+                          <li><strong>Strategic Launch Plan / Marketing Plan</strong></li>
+                          <li><strong>Brand Guidelines</strong> (visual identity, messaging)</li>
+                          <li><strong>Product/Label Design</strong> for 4–6 products</li>
+                          <li>Full consultation + 3 rounds of revisions</li>
+                          <li className="text-sm text-muted-foreground">Delivery: 30–35 days</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="p-4">
+                      <CardHeader className="px-0">
+                        <CardTitle className="text-lg">Premium Launch &amp; Branding Kit</CardTitle>
+                        <CardDescription className="text-lg font-bold text-tkh-orange">₦1,500,000+</CardDescription>
+                      </CardHeader>
+                      <CardContent className="px-0">
+                        <ul className="space-y-2">
+                          <li><strong>Comprehensive Brand Guidelines</strong> &amp; Product/Label Design for 6+ products</li>
+                          <li>Full consultation + unlimited revisions</li>
+                          <li><strong>Social media assets</strong> + campaign guidance</li>
+                          <li className="text-sm text-muted-foreground">Delivery: 35–45 days</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </section>
+
+          {/* Campaign Management Service */}
+          <section id="campaign-management" className="mb-12">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">Campaign Management Service</h2>
+            <Card className="p-6">
+              <CardHeader className="px-0">
+                <CardDescription className="text-base">Whether it’s a relaunch, product launch, seasonal promo, or brand awareness drive — we design and manage end-to-end campaigns that deliver visibility, engagement, and growth.</CardDescription>
+              </CardHeader>
+              <CardContent className="px-0 pt-6 space-y-4">
+                <h3 className="text-lg font-semibold">What You Get</h3>
+
+                <h4 className="font-semibold">1. <strong>Campaign Strategy &amp; Direction</strong> <span className="text-sm text-muted-foreground">(Duration: 2–3 weeks)</span></h4>
+                <ul className="list-disc list-inside space-y-2 mb-4">
+                  <li>Full campaign plan (pre-launch → launch → post-campaign).</li>
+                  <li>Messaging, creative direction &amp; audience targeting.</li>
+                  <li>Playbook your internal team can execute daily.</li>
+                </ul>
+
+                <h4 className="font-semibold">2. <strong>Content Strategy &amp; Assets</strong> <span className="text-sm text-muted-foreground">(Duration: 4–8 weeks depending on scope)</span></h4>
+                <ul className="list-disc list-inside space-y-2 mb-4">
+                  <li>Complete campaign-focused content calendar.</li>
+                  <li>Professionally designed graphics, reels &amp; video.</li>
+                  <li>Copywriting for posts, ads, email &amp; SMS.</li>
+                  <li>Branded templates for ongoing use.</li>
+                </ul>
+
+                <h4 className="font-semibold">3. <strong>Paid Media (Ads Management)</strong> <span className="text-sm text-muted-foreground">(Ongoing throughout campaign)</span></h4>
+                <ul className="list-disc list-inside space-y-2 mb-4">
+                  <li>Targeted ads on Facebook, Instagram &amp; Google.</li>
+                  <li>Retargeting for warm audiences.</li>
+                  <li>Weekly optimization to maximize ROI.</li>
+                </ul>
+
+                <p className="font-medium">Please Note:</p>
+                <p><strong>Ad spend is not included</strong> and will be based on the client’s budget.</p>
+
+                <h4 className="font-semibold mt-4">4. <strong>Influencer &amp; Creator Partnerships</strong> <span className="text-sm text-muted-foreground">(Duration: 6–10 weeks depending on tier)</span></h4>
+                <ul className="list-disc list-inside space-y-2 mb-4">
+                  <li>Partnerships with lifestyle, beauty, wellness &amp; niche creators.</li>
+                  <li>Influencer-generated content, reviews &amp; shoutouts.</li>
+                  <li>Tracking performance (reach, engagement, conversions).</li>
+                </ul>
+
+                <h4 className="font-semibold">5. <strong>Email &amp; SMS Marketing</strong> <span className="text-sm text-muted-foreground">(Duration: 2–4 weeks per campaign cycle)</span></h4>
+                <ul className="list-disc list-inside space-y-2 mb-4">
+                  <li>Announcement campaigns.</li>
+                  <li>Exclusive offers &amp; loyalty promos.</li>
+                  <li>Automated follow-up flows.</li>
+                </ul>
+
+                <h4 className="font-semibold">6. <strong>Analytics &amp; Reporting</strong> <span className="text-sm text-muted-foreground">(Weekly &amp; Final Report)</span></h4>
+                <ul className="list-disc list-inside space-y-2 mb-4">
+                  <li>Weekly updates on performance.</li>
+                  <li>End-of-campaign report with reach, engagement, leads, bookings &amp; ROI.</li>
+                  <li>Actionable recommendations for the next campaign.</li>
+                </ul>
+
+                <h3 className="text-lg font-semibold">Packages &amp; Pricing</h3>
+                <h4 className="font-semibold">Essential Campaign (₦1.5M – ₦2.5M / 6 weeks)</h4>
+                <p>For small/medium brands who want structure, content, and ads.</p>
+
+                <h4 className="font-semibold">Growth Campaign (₦3M – ₦5M / 8–10 weeks)</h4>
+                <p>For brands ready to scale visibility and drive conversions.</p>
+
+                <h4 className="font-semibold">Dominance Campaign (₦6M – ₦8M+ / 10–12 weeks)</h4>
+                <p>For established/luxury brands looking to own their category.</p>
+
+                <h3 className="text-lg font-semibold">The Outcome</h3>
+                <ul className="list-disc list-inside space-y-2">
+                  <li>Buzz &amp; visibility around your campaign.</li>
+                  <li>Premium, consistent content that excites audiences.</li>
+                  <li>Conversions: more bookings, sales, or sign-ups.</li>
+                  <li>Influencer/community-driven trust &amp; credibility.</li>
+                  <li>A clear understanding of what drives your growth.</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </section>
+
+          {/* Strategic Launch & Campaign Execution Kit */}
+          <section id="strategic-launch-execution" className="mb-12">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">Strategic Launch &amp; Campaign Execution Kit</h2>
+            <Card className="p-6">
+              <CardContent className="px-0 pt-6 space-y-4">
+                <p><strong>Who it’s for:</strong><br />Entrepreneurs, small businesses, and brands ready to launch or promote products/services on social media with a <strong>clear strategy and full execution support</strong>.</p>
+
+                <h3 className="text-lg font-semibold">What’s Included</h3>
+
+                <h4 className="font-semibold">1. <strong>Strategy &amp; Planning</strong></h4>
+                <ul className="list-disc list-inside space-y-2 mb-4">
+                  <li><strong>Marketing Plan:</strong> Define target audience, goals, platforms, and success metrics.</li>
+                  <li><strong>Launch Plan:</strong> Step-by-step pre-launch → launch → post-launch roadmap.</li>
+                  <li><strong>Brand Guidelines:</strong> Visual identity, logo, colors, fonts, and messaging.</li>
+                  <li><strong>Social Media Strategy:</strong> Platform-specific content, posting schedule, growth tactics.</li>
+                  <li><strong>Budget Breakdown:</strong> Ads, content, and tools allocation for maximum ROI.</li>
+                </ul>
+
+                <h4 className="font-semibold">2. <strong>Content Creation &amp; Campaign Assets</strong></h4>
+                <ul className="list-disc list-inside space-y-2 mb-4">
+                  <li>Professional photoshoot &amp; product visuals.</li>
+                  <li>Reels, short videos, and campaign graphics.</li>
+                  <li>Product/label design included (number of products depends on package).</li>
+                </ul>
+
+                <h4 className="font-semibold">3. <strong>Influencer &amp; Creator Activation</strong></h4>
+                <ul className="list-disc list-inside space-y-2 mb-4">
+                  <li>Collaborations with micro, mid-tier, or top-tier creators depending on package.</li>
+                  <li>Influencer-generated content and reviews to build awareness.</li>
+                  <li>Tracking performance metrics (reach, engagement, conversions).</li>
+                </ul>
+
+                <h4 className="font-semibold">4. <strong>Paid Media &amp; Marketing Support</strong></h4>
+                <ul className="list-disc list-inside space-y-2 mb-4">
+                  <li>Ads strategy and targeted campaigns on Facebook, Instagram, and other relevant platforms.</li>
+                  <li>Retargeting and optimization to maximize ROI.</li>
+                  <li>Optional email/SMS marketing if the client has a database.</li>
+                </ul>
+
+                <p className="font-medium">Please Note:</p>
+                <p><strong>Ad spend is not included</strong> and will be based on the client’s budget.</p>
+
+                <h4 className="font-semibold">5. <strong>Analytics &amp; Reporting</strong></h4>
+                <ul className="list-disc list-inside space-y-2 mb-4">
+                  <li>Weekly campaign updates.</li>
+                  <li>Full end-of-campaign report with insights and recommendations.</li>
+                </ul>
+
+                <h3 className="text-lg font-semibold">Packages &amp; Pricing</h3>
+                <h4 className="font-semibold">1. Essential Launch &amp; Campaign Kit – ₦1.5M – ₦2.5M</h4>
+                <ul className="list-disc list-inside space-y-2 mb-2">
+                  <li>Strategy + brand guidelines</li>
+                  <li>Content creation: photos/reels</li>
+                  <li>1–3 micro-influencer activations</li>
+                  <li>Paid media guidance</li>
+                  <li>Duration: 4–6 weeks</li>
+                </ul>
+
+                <h4 className="font-semibold">2. Growth Launch &amp; Campaign Kit – ₦3M – ₦5M</h4>
+                <ul className="list-disc list-inside space-y-2 mb-2">
+                  <li>Full strategy &amp; brand guidelines</li>
+                  <li>Content creation: 5–10 photos/reels/videos</li>
+                  <li>3–5 mid-tier influencer collaborations</li>
+                  <li>Paid media management &amp; optimization</li>
+                  <li>Duration: 6–8 weeks</li>
+                </ul>
+
+                <h4 className="font-semibold">3. Premium Launch &amp; Campaign Kit – ₦6M – ₦8M+</h4>
+                <ul className="list-disc list-inside space-y-2 mb-4">
+                  <li>Complete strategy + comprehensive brand guidelines</li>
+                  <li>High-volume content creation (photos, reels, lifestyle videos)</li>
+                  <li>Product/label design for multiple products</li>
+                  <li>5+ top-tier influencer activations</li>
+                  <li>Paid media + email/SMS marketing support</li>
+                  <li>Duration: 8–12 weeks</li>
+                </ul>
+
+                <h3 className="text-lg font-semibold">Why Clients Love This Kit</h3>
+                <ul className="list-disc list-inside space-y-2">
+                  <li>Combines <strong>strategy + execution</strong> — they don’t just get a plan, they get it implemented.</li>
+                  <li>Covers <strong>all aspects of a launch/campaign</strong>: content, branding, influencers, ads, reporting.</li>
+                  <li>Flexible tiers allow businesses to scale according to <strong>budget and goals</strong>.</li>
+                </ul>
               </CardContent>
             </Card>
           </section>

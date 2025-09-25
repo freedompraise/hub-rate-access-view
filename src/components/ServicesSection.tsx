@@ -38,6 +38,24 @@ const ServicesSection = () => {
       investment: "Minimum Investment: ₦500,000 / $500"
     },
     {
+      icon: "📈",
+      title: "Campaign Management Service",
+      description: "Full campaign planning and execution — strategy, content, paid media management, influencer coordination, email/SMS flows, and analytics to drive visibility and conversions.",
+      investment: "Starting from: ₦1.5M"
+    },
+    {
+      icon: "🎯",
+      title: "Strategic Launch Kit",
+      description: "Complete roadmap and creative assets to launch or relaunch products: strategy, brand guidelines, product/label design, social media assets, and optional influencer guidance.",
+      investment: "Starting from: ₦800,000"
+    },
+    {
+      icon: "🚀",
+      title: "Strategic Launch & Campaign Execution Kit",
+      description: "Everything you need to launch or promote a product/service: strategy, brand guidelines, high-quality content, creator activations, paid media & reporting — from planning to full execution.",
+      investment: "Packages from: ₦1.5M – ₦8M+"
+    },
+    {
       icon: "🤝",
       title: "Work with TKH kREATORS",
       description: "Looking to collaborate with beginner or early-stage trained creatives such as content creators or social media managers? This package connects you with vetted kREATORS ready to support your brand.",
