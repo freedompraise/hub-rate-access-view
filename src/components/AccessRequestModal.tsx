@@ -254,6 +254,9 @@ const AccessRequestModal = ({ isOpen, onClose }: AccessRequestModalProps) => {
               <option value="Working with Kreators">Working with Kreators</option>
               <option value="Event Marketing">Event Marketing</option>
               <option value="Digital Marketing">Digital Marketing</option>
+              <option value="Campaign Management Service">Campaign Management Service</option>
+              <option value="Strategic Launch Kit">Strategic Launch Kit</option>
+              <option value="Strategic Launch & Campaign Execution Kit">Strategic Launch & Campaign Execution Kit</option>
             </select>
           </div>
 
