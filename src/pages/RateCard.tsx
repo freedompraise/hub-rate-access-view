@@ -948,16 +948,18 @@ const RateCard = () => {
             </p>
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Mobile Navigation - Fixed Button */}
           {isMobile ? (
-            <div className="mb-8">
-              <Sheet open={isNavOpen} onOpenChange={setIsNavOpen}>
-                <SheetTrigger asChild>
-                  <Button variant="outline" className="w-full mb-4" size="lg">
-                    <Menu className="mr-2 h-4 w-4" />
-                    Quick Navigation
-                  </Button>
-                </SheetTrigger>
+            <Sheet open={isNavOpen} onOpenChange={setIsNavOpen}>
+              <SheetTrigger asChild>
+                <Button 
+                  variant="outline" 
+                  className="fixed bottom-6 right-6 z-50 shadow-lg bg-white border-2 border-tkh-purple hover:bg-tkh-purple hover:text-white"
+                  size="sm"
+                >
+                  <Menu className="h-4 w-4" />
+                </Button>
+              </SheetTrigger>
                 <SheetContent side="left" className="w-[300px] sm:w-[400px]">
                   <SheetHeader>
                     <SheetTitle className="text-left">Navigate to Section</SheetTitle>
@@ -1026,76 +1028,108 @@ const RateCard = () => {
                   </div>
                 </SheetContent>
               </Sheet>
-            </div>
           ) : (
-            /* Desktop Navigation */
-            <div className="mb-8 bg-gray-50 rounded-lg p-6 sticky top-20 z-40">
-              <h3 className="text-lg font-serif font-semibold text-black mb-4">Quick Navigation</h3>
-              <div className="grid grid-cols-3 lg:grid-cols-5 gap-3">
-                <button 
-                  onClick={() => scrollToSection('marketing-strategy')}
-                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+            /* Desktop Navigation - Collapsible */
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button 
+                  variant="outline" 
+                  className="fixed top-24 right-6 z-50 shadow-lg bg-white border-2 border-tkh-purple hover:bg-tkh-purple hover:text-white mb-8"
+                  size="sm"
                 >
-                  Strategy Packages
-                </button>
-                <button 
-                  onClick={() => scrollToSection('social-media')}
-                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                >
-                  Social Media Marketing
-                </button>
-                <button 
-                  onClick={() => scrollToSection('conversion-marketing')}
-                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                >
-                  Digital Marketing
-                </button>
-                <button 
-                  onClick={() => scrollToSection('reels')}
-                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                >
-                  Reel Strategy & Production
-                </button>
-                <button 
-                  onClick={() => scrollToSection('campaigns')}
-                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                >
-                  Campaigns Ads (Videography and Photography)
-                </button>
-                <button 
-                  onClick={() => scrollToSection('template-kit')}
-                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                >
-                  Template Kit
-                </button>
-                <button 
-                  onClick={() => scrollToSection('strategic-launch')}
-                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                >
-                  Strategic Launch Kit
-                </button>
-                <button 
-                  onClick={() => scrollToSection('campaign-management')}
-                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                >
-                  Campaign Management Service
-                </button>
-                <button 
-                  onClick={() => scrollToSection('strategic-launch-execution')}
-                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                >
-                  Launch & Campaign Execution Kit
-                </button>
-                <button 
-                  onClick={() => scrollToSection('kreator-activation')}
-                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                >
-                  Kreator Activation Service
-                </button>
-              </div>
-            </div>
+                  <Menu className="h-4 w-4 mr-2" />
+                  Quick Navigation
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-80">
+                <SheetHeader>
+                  <SheetTitle>Navigate to Section</SheetTitle>
+                </SheetHeader>
+                <div className="mt-8 space-y-3">
+                  <button 
+                    onClick={() => scrollToSection('marketing-strategy')}
+                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                  >
+                    Strategy Packages
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('social-media')}
+                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                  >
+                    Social Media Marketing
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('branding')}
+                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                  >
+                    Branding Services
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('photography')}
+                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                  >
+                    Photography Services
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('copywriting')}
+                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                  >
+                    Copywriting Services
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('ad-management')}
+                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                  >
+                    Ad Management
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('influencer')}
+                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                  >
+                    Influencer Marketing
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('video-photography')}
+                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                  >
+                    Video & Photography
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('pr-events')}
+                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                  >
+                    PR & Events
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('web-development')}
+                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                  >
+                    Web Development
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('strategic-launch-execution')}
+                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                  >
+                    Strategic Launch & Campaign
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('campaign-management')}
+                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                  >
+                    Campaign Management
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('kreator-activation')}
+                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                  >
+                    Kreator Activation Service
+                  </button>
+                </div>
+              </SheetContent>
+            </Sheet>
           )}
 
+          {/* Main Content */}
           <div className="mb-8">
             <h2 className="text-2xl font-serif font-semibold text-tkh-orange mb-4">
               Our Services
