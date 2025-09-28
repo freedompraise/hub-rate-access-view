@@ -24,6 +24,15 @@ import {
   DropdownMenuContent,
   DropdownMenuItem
 } from '@/components/ui/dropdown-menu';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+import { Menu } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 import rateCardData from '@/constants/rate-card.json';
 
 const RateCard = () => {
@@ -32,7 +41,8 @@ const RateCard = () => {
   const [isValid, setIsValid] = useState<boolean | null>(null);
   const [userName, setUserName] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  // Removed dropdown state for social media options
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const token = searchParams.get('token');
@@ -49,13 +59,18 @@ const RateCard = () => {
   };
 
   const scrollToSection = (sectionId: string) => {
-    // Small delay to ensure DOM is ready
+    // Close mobile navigation if open
+    if (isMobile && isNavOpen) {
+      setIsNavOpen(false);
+    }
+    
+    // Small delay to ensure DOM is ready and nav closes
     setTimeout(() => {
       const element = document.getElementById(sectionId);
       if (element) {
-        // Get the actual height of the sticky navigation element
-        const navigationElement = document.querySelector('.sticky.top-20');
-        const navigationHeight = navigationElement ? navigationElement.getBoundingClientRect().height : 100;
+        // Get the actual height of the sticky navigation element (only for desktop)
+        const navigationElement = !isMobile ? document.querySelector('.sticky.top-20') : null;
+        const navigationHeight = navigationElement ? navigationElement.getBoundingClientRect().height : 0;
         
         // Calculate the offset needed to account for both header and sticky navigation
         // Header height: ~80px (pt-20), plus navigation height
@@ -69,7 +84,7 @@ const RateCard = () => {
           behavior: 'smooth'
         });
       }
-    }, 10);
+    }, isMobile ? 150 : 10); // Longer delay for mobile to allow sheet to close
   };
 
   const validateToken = async (token: string) => {
@@ -933,72 +948,153 @@ const RateCard = () => {
             </p>
           </div>
 
-          {/* Mini Navigation */}
-          <div className="mb-8 bg-gray-50 rounded-lg p-6 sticky top-20 z-40">
-            <h3 className="text-lg font-serif font-semibold text-black mb-4">Quick Navigation</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-              <button 
-                onClick={() => scrollToSection('marketing-strategy')}
-                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-              >
-                Strategy Packages
-              </button>
-              <button 
-                onClick={() => scrollToSection('social-media')}
-                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-              >
-                Social Media Marketing
-              </button>
-              <button 
-                onClick={() => scrollToSection('conversion-marketing')}
-                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-              >
-                Digital Marketing
-              </button>
-              <button 
-                onClick={() => scrollToSection('reels')}
-                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-              >
-                Reel Strategy & Production
-              </button>
-              <button 
-                onClick={() => scrollToSection('campaigns')}
-                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-              >
-                Campaigns Ads (Videography and Photography)
-              </button>
-              <button 
-                onClick={() => scrollToSection('template-kit')}
-                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-              >
-                Template Kit
-              </button>
-              <button 
-                onClick={() => scrollToSection('strategic-launch')}
-                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-              >
-                Strategic Launch
-              </button>
-              <button 
-                onClick={() => scrollToSection('campaign-management')}
-                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-              >
-                Campaign Management
-              </button>
-              <button 
-                onClick={() => scrollToSection('strategic-launch-execution')}
-                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-              >
-                Launch &amp; Execution
-              </button>
-              <button 
-                onClick={() => scrollToSection('kreator-activation')}
-                className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-              >
-                Kreator Activation
-              </button>
+          {/* Mobile Navigation */}
+          {isMobile ? (
+            <div className="mb-8">
+              <Sheet open={isNavOpen} onOpenChange={setIsNavOpen}>
+                <SheetTrigger asChild>
+                  <Button variant="outline" className="w-full mb-4" size="lg">
+                    <Menu className="mr-2 h-4 w-4" />
+                    Quick Navigation
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+                  <SheetHeader>
+                    <SheetTitle className="text-left">Navigate to Section</SheetTitle>
+                  </SheetHeader>
+                  <div className="mt-8 space-y-4">
+                    <button 
+                      onClick={() => scrollToSection('marketing-strategy')}
+                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
+                    >
+                      Strategy Packages
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('social-media')}
+                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
+                    >
+                      Social Media Marketing
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('conversion-marketing')}
+                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
+                    >
+                      Digital Marketing
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('reels')}
+                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
+                    >
+                      Reel Strategy & Production
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('campaigns')}
+                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
+                    >
+                      Campaigns Ads (Videography and Photography)
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('template-kit')}
+                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
+                    >
+                      Template Kit
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('strategic-launch')}
+                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
+                    >
+                      Strategic Launch Kit
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('campaign-management')}
+                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
+                    >
+                      Campaign Management Service
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('strategic-launch-execution')}
+                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
+                    >
+                      Strategic Launch & Campaign Execution Kit
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('kreator-activation')}
+                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
+                    >
+                      Kreator Activation Service
+                    </button>
+                  </div>
+                </SheetContent>
+              </Sheet>
             </div>
-          </div>
+          ) : (
+            /* Desktop Navigation */
+            <div className="mb-8 bg-gray-50 rounded-lg p-6 sticky top-20 z-40">
+              <h3 className="text-lg font-serif font-semibold text-black mb-4">Quick Navigation</h3>
+              <div className="grid grid-cols-3 lg:grid-cols-5 gap-3">
+                <button 
+                  onClick={() => scrollToSection('marketing-strategy')}
+                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                >
+                  Strategy Packages
+                </button>
+                <button 
+                  onClick={() => scrollToSection('social-media')}
+                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                >
+                  Social Media Marketing
+                </button>
+                <button 
+                  onClick={() => scrollToSection('conversion-marketing')}
+                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                >
+                  Digital Marketing
+                </button>
+                <button 
+                  onClick={() => scrollToSection('reels')}
+                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                >
+                  Reel Strategy & Production
+                </button>
+                <button 
+                  onClick={() => scrollToSection('campaigns')}
+                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                >
+                  Campaigns Ads (Videography and Photography)
+                </button>
+                <button 
+                  onClick={() => scrollToSection('template-kit')}
+                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                >
+                  Template Kit
+                </button>
+                <button 
+                  onClick={() => scrollToSection('strategic-launch')}
+                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                >
+                  Strategic Launch Kit
+                </button>
+                <button 
+                  onClick={() => scrollToSection('campaign-management')}
+                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                >
+                  Campaign Management Service
+                </button>
+                <button 
+                  onClick={() => scrollToSection('strategic-launch-execution')}
+                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                >
+                  Launch & Campaign Execution Kit
+                </button>
+                <button 
+                  onClick={() => scrollToSection('kreator-activation')}
+                  className="text-xs px-3 py-2 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                >
+                  Kreator Activation Service
+                </button>
+              </div>
+            </div>
+          )}
 
           <div className="mb-8">
             <h2 className="text-2xl font-serif font-semibold text-tkh-orange mb-4">
