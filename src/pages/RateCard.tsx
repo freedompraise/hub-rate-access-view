@@ -44,6 +44,19 @@ const RateCard = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const isMobile = useIsMobile();
 
+  // Shared navigation items for both mobile and desktop
+  const navItems: { id: string; label: string }[] = [
+    { id: 'marketing-strategy', label: 'Marketing' },
+    { id: 'reels', label: 'Reel Strategy & Production' },
+    { id: 'campaigns', label: 'Campaigns (Videography & Photography)' },
+    { id: 'template-kit', label: 'Template Kits' },
+       { id: 'kreator-activation', label: 'Kreator Activation Service' },
+    { id: 'strategic-launch', label: 'Strategic Launch Kit' },
+    { id: 'campaign-management', label: 'Campaign Management Service' },
+    { id: 'strategic-launch-execution', label: 'Strategic Launch & Campaign Execution Kit' },
+
+  ];
+
   useEffect(() => {
     const token = searchParams.get('token');
     if (token) {
@@ -931,7 +944,7 @@ const RateCard = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <div className="pt-20 px-6">
+      <div className="pt-20">
         <div className="container mx-auto py-8 max-w-4xl">
           <div className="text-center mb-12">
             <img src="/logo/light.png" alt="The Kontent Hub Logo" className="w-20 h-20 mx-auto mb-6" />
@@ -965,66 +978,15 @@ const RateCard = () => {
                     <SheetTitle className="text-left">Navigate to Section</SheetTitle>
                   </SheetHeader>
                   <div className="mt-8 space-y-4">
-                    <button 
-                      onClick={() => scrollToSection('marketing-strategy')}
-                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
-                    >
-                      Strategy Packages
-                    </button>
-                    <button 
-                      onClick={() => scrollToSection('social-media')}
-                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
-                    >
-                      Social Media Marketing
-                    </button>
-                    <button 
-                      onClick={() => scrollToSection('conversion-marketing')}
-                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
-                    >
-                      Digital Marketing
-                    </button>
-                    <button 
-                      onClick={() => scrollToSection('reels')}
-                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
-                    >
-                      Reel Strategy & Production
-                    </button>
-                    <button 
-                      onClick={() => scrollToSection('campaigns')}
-                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
-                    >
-                      Campaigns Ads (Videography and Photography)
-                    </button>
-                    <button 
-                      onClick={() => scrollToSection('template-kit')}
-                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
-                    >
-                      Template Kit
-                    </button>
-                    <button 
-                      onClick={() => scrollToSection('strategic-launch')}
-                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
-                    >
-                      Strategic Launch Kit
-                    </button>
-                    <button 
-                      onClick={() => scrollToSection('campaign-management')}
-                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
-                    >
-                      Campaign Management Service
-                    </button>
-                    <button 
-                      onClick={() => scrollToSection('strategic-launch-execution')}
-                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
-                    >
-                      Strategic Launch & Campaign Execution Kit
-                    </button>
-                    <button 
-                      onClick={() => scrollToSection('kreator-activation')}
-                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
-                    >
-                      Kreator Activation Service
-                    </button>
+                    {navItems.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => scrollToSection(item.id)}
+                        className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded-lg hover:bg-tkh-orange hover:text-white transition-colors text-sm"
+                      >
+                        {item.label}
+                      </button>
+                    ))}
                   </div>
                 </SheetContent>
               </Sheet>
@@ -1046,84 +1008,15 @@ const RateCard = () => {
                   <SheetTitle>Navigate to Section</SheetTitle>
                 </SheetHeader>
                 <div className="mt-8 space-y-3">
-                  <button 
-                    onClick={() => scrollToSection('marketing-strategy')}
-                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                  >
-                    Strategy Packages
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('social-media')}
-                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                  >
-                    Social Media Marketing
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('branding')}
-                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                  >
-                    Branding Services
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('photography')}
-                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                  >
-                    Photography Services
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('copywriting')}
-                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                  >
-                    Copywriting Services
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('ad-management')}
-                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                  >
-                    Ad Management
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('influencer')}
-                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                  >
-                    Influencer Marketing
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('video-photography')}
-                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                  >
-                    Video & Photography
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('pr-events')}
-                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                  >
-                    PR & Events
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('web-development')}
-                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                  >
-                    Web Development
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('strategic-launch-execution')}
-                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                  >
-                    Strategic Launch & Campaign
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('campaign-management')}
-                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                  >
-                    Campaign Management
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('kreator-activation')}
-                    className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
-                  >
-                    Kreator Activation Service
-                  </button>
+                  {navItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className="w-full text-left px-4 py-3 bg-white border border-tkh-orange text-tkh-orange rounded hover:bg-tkh-orange hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </button>
+                  ))}
                 </div>
               </SheetContent>
             </Sheet>
