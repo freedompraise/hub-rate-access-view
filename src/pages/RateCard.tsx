@@ -46,11 +46,13 @@ const RateCard = () => {
 
   // Shared navigation items for both mobile and desktop
   const navItems: { id: string; label: string }[] = [
-    { id: 'marketing-strategy', label: 'Marketing' },
+    { id: 'marketing-strategy', label: 'Marketing Strategy' },
+    { id: 'social-media', label: 'Social Media Management' },
+    { id: 'conversion-marketing', label: 'Conversion Based Strategy' },
     { id: 'reels', label: 'Reel Strategy & Production' },
     { id: 'campaigns', label: 'Campaigns (Videography & Photography)' },
     { id: 'template-kit', label: 'Template Kits' },
-       { id: 'kreator-activation', label: 'Kreator Activation Service' },
+    { id: 'kreator-activation', label: 'Kreators Activation' },
     { id: 'strategic-launch', label: 'Strategic Launch Kit' },
     { id: 'campaign-management', label: 'Campaign Management Service' },
     { id: 'strategic-launch-execution', label: 'Strategic Launch & Campaign Execution Kit' },
@@ -1000,7 +1002,7 @@ const RateCard = () => {
                   size="sm"
                 >
                   <Menu className="h-4 w-4 mr-2" />
-                  Quick Navigation
+                  Check out our services
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-80">
