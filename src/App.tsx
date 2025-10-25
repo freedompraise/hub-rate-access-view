@@ -8,6 +8,7 @@ import { AuthProvider } from "./components/AuthProvider";
 import Index from "./pages/Index";
 import RateCard from "./pages/RateCard";
 import Admin from "./pages/Admin";
+import CareersAdmin from './pages/CareersAdmin';
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/rate-card" element={<RateCard />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/careers" element={<CareersAdmin />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

@@ -6,6 +6,7 @@ import RateCardSection from "@/components/RateCardSection";
 import RateCardRequestSection from "@/components/RateCardRequestSection";
 import BrandHelpSection from "@/components/BrandHelpSection";
 import Footer from "@/components/Footer";
+import CareersSection from '@/components/CareersSection';
 import { Button } from "@/components/ui/button";
 import FeaturedBrands from '@/components/FeaturedBrands';
 
@@ -97,6 +98,8 @@ const Index = () => {
       <RateCardSection />
 
       {/* Footer - Navy Background */}
+    {/* Careers / Job Application Section */}
+    <CareersSection />
       <Footer />
     </div>
   );

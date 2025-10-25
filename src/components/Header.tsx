@@ -32,6 +32,12 @@ const Header = () => {
           >
             Services
           </a>
+          <a
+            href="#careers"
+            className="text-black hover:text-tkh-purple transition-colors font-sans"
+          >
+            Career
+          </a>
           {/* <a 
             href="#work" 
             className="text-black hover:text-tkh-purple transition-colors font-sans"
