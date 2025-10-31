@@ -24,8 +24,19 @@ import {
   GraduationCap,
   Users,
   CheckCircle2,
-  XCircle
+  XCircle,
+  Trash2
 } from 'lucide-react';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 interface ApplicationRow {
   id: string;
@@ -57,6 +68,9 @@ const CareersAdmin = () => {
   const [selectedCategory, setSelectedCategory] = useState<FilterCategory>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedApplication, setSelectedApplication] = useState<ApplicationRow | null>(null);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [applicationToDelete, setApplicationToDelete] = useState<ApplicationRow | null>(null);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     if (user) fetchApplications();
@@ -101,6 +115,65 @@ const CareersAdmin = () => {
 
     return matchesCategory && matchesSearch;
   });
+
+  const handleDeleteClick = (app: ApplicationRow, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setApplicationToDelete(app);
+    setDeleteDialogOpen(true);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (!applicationToDelete) return;
+
+    setDeleting(true);
+    try {
+      // Delete resume file from storage if it exists
+      if (applicationToDelete.resume_path) {
+        const { error: storageError } = await supabase.storage
+          .from('Careers')
+          .remove([applicationToDelete.resume_path]);
+        
+        if (storageError) {
+          console.error('Error deleting resume file:', storageError);
+          // Continue with database deletion even if storage deletion fails
+        }
+      }
+
+      // Delete from database
+      const { error } = await supabase
+        .from('job_applications')
+        .delete()
+        .eq('id', applicationToDelete.id);
+
+      if (error) {
+        throw error;
+      }
+
+      // Remove from local state
+      setApplications(prev => prev.filter(app => app.id !== applicationToDelete.id));
+      
+      // Close dialog and clear selection if deleted
+      if (selectedApplication?.id === applicationToDelete.id) {
+        setSelectedApplication(null);
+      }
+
+      toast({
+        title: 'Success',
+        description: 'Application deleted successfully.',
+      });
+
+      setDeleteDialogOpen(false);
+      setApplicationToDelete(null);
+    } catch (error: any) {
+      toast({
+        title: 'Error',
+        description: error.message || 'Failed to delete application.',
+        variant: 'destructive',
+      });
+    } finally {
+      setDeleting(false);
+    }
+  };
 
   const categoryCounts = {
     all: applications.length,
@@ -360,6 +433,14 @@ const CareersAdmin = () => {
                                 Portfolio
                               </Button>
                             )}
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={(e) => handleDeleteClick(app, e)}
+                              className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
                           </div>
                         </div>
                       </CardContent>
@@ -512,11 +593,48 @@ const CareersAdmin = () => {
                         </Button>
                       )}
                     </div>
+
+                    <Separator />
+
+                    <Button
+                      variant="destructive"
+                      className="w-full"
+                      onClick={() => {
+                        setApplicationToDelete(selectedApplication);
+                        setDeleteDialogOpen(true);
+                      }}
+                    >
+                      <Trash2 className="h-4 w-4 mr-2" />
+                      Delete Application
+                    </Button>
                   </div>
                 </div>
               </ScrollArea>
             </aside>
           )}
+
+          {/* Delete Confirmation Dialog */}
+          <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Delete Application</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Are you sure you want to delete the application for <strong>{applicationToDelete?.full_name}</strong>? 
+                  This action cannot be undone and will also delete the associated resume file.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel disabled={deleting}>Cancel</AlertDialogCancel>
+                <AlertDialogAction
+                  onClick={handleDeleteConfirm}
+                  disabled={deleting}
+                  className="bg-red-500 hover:bg-red-600"
+                >
+                  {deleting ? 'Deleting...' : 'Delete'}
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </div>
     </div>
