@@ -8,6 +8,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { ResumeUploadService } from '@/services/ResumeUploadService';
 
 const CareersSection = () => {
   const { toast } = useToast();
@@ -34,9 +35,49 @@ const CareersSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate required fields
     if (!consent) {
       toast({ title: 'Consent required', description: 'Please give consent to proceed.', variant: 'destructive' });
       return;
+    }
+
+    if (!fullName.trim()) {
+      toast({ title: 'Name required', description: 'Please enter your full name.', variant: 'destructive' });
+      return;
+    }
+
+    if (!email.trim()) {
+      toast({ title: 'Email required', description: 'Please enter your email address.', variant: 'destructive' });
+      return;
+    }
+
+    if (!phone.trim()) {
+      toast({ title: 'Phone required', description: 'Please enter your phone number.', variant: 'destructive' });
+      return;
+    }
+
+    if (!resumeFile) {
+      toast({ title: 'Resume Required', description: 'Please upload your resume to continue with the application.', variant: 'destructive' });
+      return;
+    }
+
+    // Client-side file validation
+    const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4MB
+    if (resumeFile) {
+      if (resumeFile.size > MAX_FILE_SIZE) {
+        toast({ title: 'File too large', description: 'Please upload a resume smaller than 4 MB.', variant: 'destructive' });
+        return;
+      }
+      const allowed = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      if (resumeFile.type && !allowed.includes(resumeFile.type)) {
+        // Fallback to extension check if MIME type is not reliable
+        const ext = resumeFile.name.split('.').pop()?.toLowerCase();
+        if (!['pdf', 'doc', 'docx'].includes(ext || '')) {
+          toast({ title: 'Invalid file type', description: 'Please upload a PDF or Word document.', variant: 'destructive' });
+          return;
+        }
+      }
     }
 
     setSubmitting(true);
@@ -45,52 +86,82 @@ const CareersSection = () => {
       let resume_path: string | null = null;
       let resume_url: string | null = null;
 
-      if (resumeFile) {
-        const filePath = `resumes/${Date.now()}_${resumeFile.name}`;
-        const { error: uploadError } = await supabase.storage
-          .from('Careers')
-          .upload(filePath, resumeFile);
-
-        if (uploadError) throw uploadError;
-
-        resume_path = filePath;
-        const { data } = supabase.storage.from('Careers').getPublicUrl(filePath);
-        resume_url = data.publicUrl;
+      // Upload resume file (required)
+      const uploadResult = await ResumeUploadService.uploadResume(resumeFile);
+      
+      if (!uploadResult.success) {
+        toast({
+          title: 'File upload failed',
+          description: uploadResult.error || 'Please try uploading your resume again.',
+          variant: 'destructive'
+        });
+        setSubmitting(false);
+        return;
       }
 
+      resume_path = uploadResult.path || null;
+      resume_url = uploadResult.url || null;
+
+      // Prepare the payload
       const payload = {
-        full_name: fullName,
-        email,
-        phone,
+        full_name: fullName.trim(),
+        email: email.trim(),
+        phone: phone.trim(),
         resume_path,
         resume_url,
-        portfolio_link: portfolioLink,
+        portfolio_link: portfolioLink.trim() || null,
         can_resume_immediately: canResumeImmediately === 'yes',
         based_in_lagos: basedInLagos === 'yes',
-        lagos_area: lagosArea || null,
+        lagos_area: lagosArea.trim() || null,
         nysc_completed: nyscCompleted === 'yes',
-        tools_email_marketing: toolsEmailMarketing || null,
-        influencer_experience: influencerExperience || null,
+        tools_email_marketing: toolsEmailMarketing.trim() || null,
+        influencer_experience: influencerExperience.trim() || null,
         platforms_managed: platforms,
-        why_fit: whyFit || null,
-        consent_given: consent,
+        why_fit: whyFit.trim() || null,
+        consent_given: true, // Explicitly set to true boolean
       };
 
-      const { error } = await supabase.from('job_applications').insert(payload);
+      // Insert the application
+      const { error: insertError } = await supabase
+        .from('job_applications')
+        .insert(payload);
 
-      if (error) throw error;
+      if (insertError) {
+        throw new Error(insertError.message || 'Failed to submit application');
+      }
 
-      toast({ title: 'Application submitted', description: 'Thank you — we will review your application.' });
+      // Success - show toast and reset form
+      toast({ 
+        title: 'Application submitted',
+        description: 'Thank you — we will review your application.'
+      });
 
       // Reset form
-      setFullName(''); setEmail(''); setPhone(''); setPortfolioLink(''); setCanResumeImmediately('');
-      setBasedInLagos(''); setLagosArea(''); setNyscCompleted(''); setToolsEmailMarketing('');
-      setInfluencerExperience(''); setPlatforms([]); setWhyFit(''); setConsent(false); setResumeFile(null);
-      // close modal
+      setFullName(''); 
+      setEmail(''); 
+      setPhone(''); 
+      setPortfolioLink(''); 
+      setCanResumeImmediately('');
+      setBasedInLagos(''); 
+      setLagosArea(''); 
+      setNyscCompleted(''); 
+      setToolsEmailMarketing('');
+      setInfluencerExperience(''); 
+      setPlatforms([]); 
+      setWhyFit(''); 
+      setConsent(false); 
+      setResumeFile(null);
+      
+      // Close modal
       setOpen(false);
+
     } catch (err: any) {
-      console.error(err);
-      toast({ title: 'Submission failed', description: err.message || 'Something went wrong', variant: 'destructive' });
+      const message = err?.message || 'Failed to submit application';
+      toast({ 
+        title: 'Submission failed', 
+        description: message, 
+        variant: 'destructive' 
+      });
     } finally {
       setSubmitting(false);
     }
@@ -101,7 +172,7 @@ const CareersSection = () => {
       <Card className="p-6">
         <CardHeader>
           <CardTitle className="text-2xl text-center md:text-3xl">Join Our Team</CardTitle>
-          <CardDescription className="text-black/80">We craft memorable brands and measurable growth. If you bring curiosity, craft, and commercial smarts, we'd love to meet you. Click the button below to apply.</CardDescription>
+          <CardDescription className="text-black/80 text-center">We craft memorable brands and measurable growth. If you bring curiosity, craft, and commercial smarts, we'd love to meet you. Click the button below to apply.</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="max-w-2xl mx-auto text-center">

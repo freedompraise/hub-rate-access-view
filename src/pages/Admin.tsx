@@ -257,13 +257,22 @@ const Admin = () => {
         <div className="container mx-auto py-8">
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-4xl font-serif font-bold text-black">Admin Dashboard</h1>
-            <Button
-              onClick={() => signOut()}
-              variant="outline"
-              className="border-tkh-orange text-tkh-orange hover:bg-tkh-orange hover:text-white"
-            >
-              Sign Out
-            </Button>
+            <div className="flex items-center gap-3">
+              <Button
+                onClick={() => window.location.href = '/admin/careers'}
+                variant="outline"
+                className="border-tkh-teal text-tkh-teal hover:bg-tkh-teal hover:text-white"
+              >
+                View Applications
+              </Button>
+              <Button
+                onClick={() => signOut()}
+                variant="outline"
+                className="border-tkh-orange text-tkh-orange hover:bg-tkh-orange hover:text-white"
+              >
+                Sign Out
+              </Button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">

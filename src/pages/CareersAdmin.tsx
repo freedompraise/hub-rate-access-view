@@ -23,7 +23,17 @@ interface ApplicationRow {
   phone: string | null;
   portfolio_link: string | null;
   resume_url: string | null;
-  submitted_at: string | null;
+  resume_path: string | null;
+  can_resume_immediately: boolean | null;
+  based_in_lagos: boolean | null;
+  lagos_area: string | null;
+  nysc_completed: boolean | null;
+  tools_email_marketing: string | null;
+  influencer_experience: string | null;
+  platforms_managed: string[] | null;
+  why_fit: string | null;
+  consent_given: boolean | null;
+  created_at: string | null;
 }
 
 const CareersAdmin = () => {
@@ -94,7 +104,7 @@ const CareersAdmin = () => {
                       <TableCell>{app.phone || 'N/A'}</TableCell>
                       <TableCell>{app.portfolio_link ? <a href={app.portfolio_link} target="_blank" rel="noreferrer" className="text-tkh-orange">Open</a> : 'N/A'}</TableCell>
                       <TableCell>{app.resume_url ? <a href={app.resume_url} target="_blank" rel="noreferrer" className="text-tkh-orange">Download</a> : 'N/A'}</TableCell>
-                      <TableCell>{app.submitted_at ? new Date(app.submitted_at).toLocaleString() : 'N/A'}</TableCell>
+                      <TableCell>{app.created_at ? new Date(app.created_at).toLocaleString() : 'N/A'}</TableCell>
                     </TableRow>
                   ))
                 )}

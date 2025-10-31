@@ -14,6 +14,66 @@ export type Database = {
   }
   public: {
     Tables: {
+      job_applications: {
+        Row: {
+          id: string
+          full_name: string
+          email: string | null
+          phone: string | null
+          resume_path: string | null
+          resume_url: string | null
+          portfolio_link: string | null
+          can_resume_immediately: boolean | null
+          based_in_lagos: boolean | null
+          lagos_area: string | null
+          nysc_completed: boolean | null
+          tools_email_marketing: string | null
+          influencer_experience: string | null
+          platforms_managed: string[] | null
+          why_fit: string | null
+          consent_given: boolean | null
+          created_at: string | null
+        }
+        Insert: {
+          id?: string
+          full_name: string
+          email?: string | null
+          phone?: string | null
+          resume_path?: string | null
+          resume_url?: string | null
+          portfolio_link?: string | null
+          can_resume_immediately?: boolean | null
+          based_in_lagos?: boolean | null
+          lagos_area?: string | null
+          nysc_completed?: boolean | null
+          tools_email_marketing?: string | null
+          influencer_experience?: string | null
+          platforms_managed?: string[] | null
+          why_fit?: string | null
+          consent_given?: boolean | null
+          created_at?: string | null
+        }
+        Update: {
+          id?: string
+          full_name?: string
+          email?: string | null
+          phone?: string | null
+          resume_path?: string | null
+          resume_url?: string | null
+          portfolio_link?: string | null
+          can_resume_immediately?: boolean | null
+          based_in_lagos?: boolean | null
+          lagos_area?: string | null
+          nysc_completed?: boolean | null
+          tools_email_marketing?: string | null
+          influencer_experience?: string | null
+          platforms_managed?: string[] | null
+          why_fit?: string | null
+          consent_given?: boolean | null
+          created_at?: string | null
+        }
+        Relationships: []
+      }
       rate_card_requests: {
         Row: {
           about_business: string | null
