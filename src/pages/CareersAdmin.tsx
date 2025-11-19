@@ -54,6 +54,7 @@ interface ApplicationRow {
   influencer_experience: string | null;
   platforms_managed: string[] | null;
   why_fit: string | null;
+  role: string | null;
   consent_given: boolean | null;
   created_at: string | null;
 }
@@ -111,7 +112,8 @@ const CareersAdmin = () => {
       app.full_name?.toLowerCase().includes(searchLower) ||
       app.email?.toLowerCase().includes(searchLower) ||
       app.phone?.toLowerCase().includes(searchLower) ||
-      app.lagos_area?.toLowerCase().includes(searchLower);
+      app.lagos_area?.toLowerCase().includes(searchLower) ||
+      app.role?.toLowerCase().includes(searchLower);
 
     return matchesCategory && matchesSearch;
   });
@@ -351,7 +353,12 @@ const CareersAdmin = () => {
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <div className="flex items-center gap-3 mb-3">
-                              <h3 className="text-xl font-bold text-black">{app.full_name}</h3>
+                              <div className="flex items-start gap-3">
+                                <h3 className="text-xl font-bold text-black">{app.full_name}</h3>
+                                {app.role && (
+                                  <Badge className="text-sm bg-gray-100 text-gray-800 mt-1">{app.role}</Badge>
+                                )}
+                              </div>
                               <div className="flex gap-2">
                                 {app.can_resume_immediately && (
                                   <Badge className="bg-green-100 text-green-800">Immediate</Badge>
@@ -502,6 +509,12 @@ const CareersAdmin = () => {
 
                     <div>
                       <label className="text-sm font-medium text-gray-500">Availability & Location</label>
+
+                    <div>
+                      <label className="text-sm font-medium text-gray-500">Role Applied For</label>
+                      <p className="mt-2 text-black">{selectedApplication.role || 'N/A'}</p>
+                    </div>
+
                       <div className="mt-2 space-y-2">
                         <div className="flex items-center justify-between">
                           <span className="text-black">Can resume immediately</span>

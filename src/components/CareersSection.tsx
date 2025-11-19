@@ -16,22 +16,20 @@ const CareersSection = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [portfolioLink, setPortfolioLink] = useState('');
+  const [role, setRole] = useState('');
   const [canResumeImmediately, setCanResumeImmediately] = useState<'yes' | 'no' | ''>('');
   const [basedInLagos, setBasedInLagos] = useState<'yes' | 'no' | ''>('');
   const [lagosArea, setLagosArea] = useState('');
   const [nyscCompleted, setNyscCompleted] = useState<'yes' | 'no' | ''>('');
   const [toolsEmailMarketing, setToolsEmailMarketing] = useState('');
   const [influencerExperience, setInfluencerExperience] = useState('');
-  const [platforms, setPlatforms] = useState<string[]>([]);
   const [whyFit, setWhyFit] = useState('');
   const [consent, setConsent] = useState(false);
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const togglePlatform = (p: string) => {
-    setPlatforms(prev => prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p]);
-  };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -110,13 +108,13 @@ const CareersSection = () => {
         resume_path,
         resume_url,
         portfolio_link: portfolioLink.trim() || null,
+        role: role || null,
         can_resume_immediately: canResumeImmediately === 'yes',
         based_in_lagos: basedInLagos === 'yes',
         lagos_area: lagosArea.trim() || null,
         nysc_completed: nyscCompleted === 'yes',
         tools_email_marketing: toolsEmailMarketing.trim() || null,
         influencer_experience: influencerExperience.trim() || null,
-        platforms_managed: platforms,
         why_fit: whyFit.trim() || null,
         consent_given: true, // Explicitly set to true boolean
       };
@@ -141,13 +139,13 @@ const CareersSection = () => {
       setEmail(''); 
       setPhone(''); 
       setPortfolioLink(''); 
+      setRole('');
       setCanResumeImmediately('');
       setBasedInLagos(''); 
       setLagosArea(''); 
       setNyscCompleted(''); 
       setToolsEmailMarketing('');
       setInfluencerExperience(''); 
-      setPlatforms([]); 
       setWhyFit(''); 
       setConsent(false); 
       setResumeFile(null);
@@ -207,6 +205,26 @@ const CareersSection = () => {
                     </div>
                   </div>
 
+                  <div>
+                    <Label>Role</Label>
+                    <select
+                      className="w-full mt-2 p-2 border rounded"
+                      value={role}
+                      onChange={e => setRole(e.target.value)}
+                    >
+                      <option value="">Select a role</option>
+                      <option>Growth Marketing Manager</option>
+                      <option>Creative and Marketing Strategist</option>
+                      <option>Content Manager</option>
+                      <option>Videographer</option>
+                      <option>Operations Intern</option>
+                      <option>Canva Designer</option>
+                      <option>Social Media Manager</option>
+                      <option>Social Media Intern</option>
+                      <option>Content Strategist</option>
+                    </select>
+                  </div>
+
                   <div className="grid md:grid-cols-3 gap-4">
                     <div>
                       <Label>Can you resume immediately?</Label>
@@ -251,14 +269,6 @@ const CareersSection = () => {
                     <Textarea value={influencerExperience} onChange={e => setInfluencerExperience(e.target.value)} />
                   </div>
 
-                  <div>
-                    <Label>Which social media platforms have you managed ads for?</Label>
-                    <div className="flex gap-4 mt-2">
-                      <label className="flex items-center gap-2"><input type="checkbox" checked={platforms.includes('Linkedin')} onChange={() => togglePlatform('Linkedin')} /> Linkedin</label>
-                      <label className="flex items-center gap-2"><input type="checkbox" checked={platforms.includes('Instagram')} onChange={() => togglePlatform('Instagram')} /> Instagram</label>
-                      <label className="flex items-center gap-2"><input type="checkbox" checked={platforms.includes('Tiktok')} onChange={() => togglePlatform('Tiktok')} /> Tiktok</label>
-                    </div>
-                  </div>
 
                   <div>
                     <Label>Why are you a good fit for this role?</Label>
