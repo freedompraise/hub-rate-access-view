@@ -246,7 +246,7 @@ const CareersSection = () => {
                   </div>
 
                   <div>
-                    <Label>Have you worked on any project you’d like to share 
+                    <Label>Have you worked on any project you’d like to share?
 </Label>
                     <Textarea value={influencerExperience} onChange={e => setInfluencerExperience(e.target.value)} />
                   </div>
