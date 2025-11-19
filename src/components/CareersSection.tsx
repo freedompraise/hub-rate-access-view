@@ -241,12 +241,13 @@ const CareersSection = () => {
                   )}
 
                   <div>
-                    <Label>Which tools or software do you use for email marketing?</Label>
+                    <Label>Which tools or software do you use for Jobs?</Label>
                     <Input value={toolsEmailMarketing} onChange={e => setToolsEmailMarketing(e.target.value)} />
                   </div>
 
                   <div>
-                    <Label>Have you managed influencer or content creator marketing campaigns? If yes, describe your role</Label>
+                    <Label>Have you worked on any project you’d like to share 
+</Label>
                     <Textarea value={influencerExperience} onChange={e => setInfluencerExperience(e.target.value)} />
                   </div>
 
