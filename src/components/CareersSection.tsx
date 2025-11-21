@@ -170,7 +170,7 @@ const CareersSection = () => {
       <Card className="p-6">
         <CardHeader>
           <CardTitle className="text-2xl text-center md:text-3xl">Join Our Team</CardTitle>
-          <CardDescription className="text-black/80 text-center">We craft memorable brands and measurable growth. If you bring curiosity, craft, and commercial smarts, we'd love to meet you. Click the button below to apply.</CardDescription>
+          <CardDescription className="text-black/80 text-center">We love working with creative, passionate, and curious minds. If you’re excited about making an impact, collaborating with a fun and driven team, and bringing ideas to life, we’d love to have you on the team!</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="max-w-2xl mx-auto text-center">
@@ -206,7 +206,7 @@ const CareersSection = () => {
                   </div>
 
                   <div>
-                    <Label>Role</Label>
+                    <Label>What role are you applying for?</Label>
                     <select
                       className="w-full mt-2 p-2 border rounded"
                       value={role}
@@ -222,6 +222,11 @@ const CareersSection = () => {
                       <option>Social Media Manager</option>
                       <option>Social Media Intern</option>
                       <option>Content Strategist</option>
+                      <option>Content creator</option>
+                      <option>Content strategy intern</option>
+                      <option>Creative intern</option>
+                      <option>Canva design intern</option>
+                      <option>Paid Ads Specialist</option>
                     </select>
                   </div>
 
