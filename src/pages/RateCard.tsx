@@ -48,7 +48,7 @@ const RateCard = () => {
   const navItems: { id: string; label: string }[] = [
     { id: 'marketing-strategy', label: 'Marketing Strategy' },
     { id: 'social-media', label: 'Social Media Management' },
-    { id: 'conversion-marketing', label: 'Conversion Based Strategy' },
+    { id: 'conversion-marketing', label: 'Digital Marketing Management' },
     { id: 'reels', label: 'Reel Strategy & Production' },
     { id: 'campaigns', label: 'Campaigns (Videography & Photography)' },
     { id: 'template-kit', label: 'Template Kits' },
@@ -464,7 +464,7 @@ const RateCard = () => {
               <AccordionContent>
                 <div className="prose max-w-none p-6 bg-white rounded-lg shadow">
                   <h2 className="font-bold text-2xl mb-4">
-                    Terms and Conditions for Conversion-Based Marketing Strategy Package
+                    Terms and Conditions for Digital Marketing Management Package
                   </h2>
                   <ol className="list-decimal list-inside space-y-4">
                     <li>
