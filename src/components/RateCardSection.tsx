@@ -10,19 +10,21 @@ const RateCardSection = () => {
   };
 
   return (
-    <section id="contact" className="section-white py-20 px-6">
+    <section id="contact" className="section-white py-16 px-6 bg-gray-50 border-t border-gray-200">
       <div className="container mx-auto text-center">
-        <h3 className="text-xl md:text-3xl font-serif font-bold text-black mb-4">
-        Book a strategy session with Becca, our Creative and Marketing Lead.
+        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
+          Other Ways to Connect
+        </p>
+        <h3 className="text-2xl md:text-3xl font-serif font-bold text-black mb-4">
+          Book a strategy session with Becca, our Creative and Marketing Lead.
         </h3>
-        <p className="text-lg text-black/70 max-w-3xl mx-auto mb-8">
-         
+        <p className="text-base text-black/60 max-w-3xl mx-auto mb-8">
           Together, we'll craft a plan that makes your brand stand out.
         </p>
         
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-8">
+        <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {/* Strategy Session Card */}
-          <div className="bg-white p-6 rounded-lg border border-border shadow-md hover:border-tkh-yellow transition-all duration-300">
+          <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
             <h3 className="font-serif font-semibold text-lg mb-3">Book a Meeting</h3>
             <p className="text-sm text-black/70 mb-4">Schedule a 30-minute strategy session to discuss your brand's needs</p>
             <Button
@@ -34,7 +36,7 @@ const RateCardSection = () => {
           </div>
 
           {/* Direct Contact Card */}
-          <div className="bg-white p-6 rounded-lg border border-border shadow-md hover:border-tkh-yellow transition-all duration-300">
+          <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
             <h3 className="font-serif font-semibold text-lg mb-3">Get in Touch</h3>
             <div className="space-y-2 mb-4">
               <p className="text-sm">

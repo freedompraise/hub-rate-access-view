@@ -53,11 +53,12 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Header />
 
+{/* Rate Card Request Section - White Background */}
+      <RateCardRequestSection />
       {/* Services Section - White Background */}
       <ServicesSection />
 
-      {/* Rate Card Request Section - White Background */}
-      <RateCardRequestSection />
+      
 
       {/* Contact Section - White Background */}
       <RateCardSection />
