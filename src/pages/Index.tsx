@@ -52,20 +52,15 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
-      {/* Hero Section - Navy Background */}
 
-  
+      {/* Services Section - White Background */}
+      <ServicesSection />
 
       {/* Rate Card Request Section - White Background */}
       <RateCardRequestSection />
 
       {/* Contact Section - White Background */}
       <RateCardSection />
-
-          {/* Services Section - White Background */}
-      <ServicesSection />
-
 
       <Footer />
     </div>
