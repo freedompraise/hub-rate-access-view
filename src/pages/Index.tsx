@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
-import ServicesSection from "@/components/ServicesSection";
-import RateCardSection from "@/components/RateCardSection";
 import RateCardRequestSection from "@/components/RateCardRequestSection";
 import Footer from "@/components/Footer";
 
@@ -56,10 +54,7 @@ const Index = () => {
 {/* Rate Card Request Section - White Background */}
       <RateCardRequestSection />
 
-      
-
-      {/* Contact Section - White Background */}
-      <RateCardSection />
+  
 
       <Footer />
     </div>
