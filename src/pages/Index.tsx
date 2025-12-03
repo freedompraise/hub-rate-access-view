@@ -55,8 +55,6 @@ const Index = () => {
 
 {/* Rate Card Request Section - White Background */}
       <RateCardRequestSection />
-      {/* Services Section - White Background */}
-      <ServicesSection />
 
       
 
