@@ -20,30 +20,7 @@ const Header = () => {
         </div>
         
         <nav className="flex items-center space-x-6">
-          <a 
-            href="#hero" 
-            className="text-black hover:text-tkh-purple transition-colors font-sans"
-          >
-            Home
-          </a>
-          <a 
-            href="#services" 
-            className="text-black hover:text-tkh-purple transition-colors font-sans"
-          >
-            Services
-          </a>
-          <a
-            href="#careers"
-            className="text-black hover:text-tkh-purple transition-colors font-sans"
-          >
-            Career
-          </a>
-          {/* <a 
-            href="#work" 
-            className="text-black hover:text-tkh-purple transition-colors font-sans"
-          >
-            Work
-          </a> */}
+         
           <a 
             href="#rate-card-request" 
             className="text-black hover:text-tkh-purple transition-colors font-sans"
