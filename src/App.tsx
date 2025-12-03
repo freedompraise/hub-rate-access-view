@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import RateCard from "./pages/RateCard";
 import Admin from "./pages/Admin";
 import CareersAdmin from './pages/CareersAdmin';
+import ApplyNow from './pages/ApplyNow';
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/rate-card" element={<RateCard />} />
+            <Route path="/apply" element={<ApplyNow />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/admin/careers" element={<CareersAdmin />} />
             <Route path="*" element={<NotFound />} />
