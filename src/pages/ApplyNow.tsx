@@ -166,8 +166,12 @@ const ApplyNow = () => {
                 <CheckCircle2 className="h-16 w-16 text-tkh-teal mx-auto mb-4" />
                 <h2 className="text-3xl font-serif font-bold text-black mb-2">Application Submitted!</h2>
                 <p className="text-lg text-black/70 mb-6">
-                  Thank you for your interest. We'll review your application and contact you via WhatsApp within 24 hours.
+                 Thank you for applying to The Kontent Hub. We appreciate your interest and the time taken to submit your application. Our team is reviewing it, and we’ll be in touch if you’re shortlisted.
+                  <span className="block text-sm text-black/60 mb-8">Cheers,
+The Kontent Hub Hiring Team</span>
                 </p>
+               
+                
                 <Button
                   onClick={() => window.location.href = '/'}
                   className="btn-gradient"
@@ -262,9 +266,10 @@ const ApplyNow = () => {
                     id="role"
                     className="w-full mt-2 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-tkh-purple/50"
                     value={role}
+                    required
                     onChange={e => setRole(e.target.value)}
                   >
-                    <option value="">Select a role (optional)</option>
+                    <option value="">Select a role </option>
                  <option>Growth Marketing Manager</option>
                       <option>Creative and Marketing Strategist</option>
                       <option>Content Manager</option>
