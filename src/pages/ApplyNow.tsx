@@ -279,6 +279,7 @@ const ApplyNow = () => {
                       <option>Creative intern</option>
                       <option>Canva design intern</option>
                       <option>Paid Ads Specialist</option>
+                      <option> Business Development Executive </option>
                   </select>
                 </div>
 
