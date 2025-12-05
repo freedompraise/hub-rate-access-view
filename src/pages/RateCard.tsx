@@ -52,10 +52,11 @@ const RateCard = () => {
     { id: 'reels', label: 'Reel Strategy & Production' },
     { id: 'campaigns', label: 'Campaigns (Videography & Photography)' },
     { id: 'template-kit', label: 'Template Kits' },
-    { id: 'kreator-activation', label: 'Kreators Activation' },
+    { id: 'kreator-activation', label: 'Kreator Activation' },
     { id: 'strategic-launch', label: 'Strategic Launch Kit' },
     { id: 'campaign-management', label: 'Campaign Management Service' },
     { id: 'strategic-launch-execution', label: 'Strategic Launch & Campaign Execution Kit' },
+    { id: 'paid-ads-management', label: 'Paid Ads Management Service' },
 
   ];
 
@@ -975,11 +976,11 @@ const RateCard = () => {
                   <Menu className="h-4 w-4" />
                 </Button>
               </SheetTrigger>
-                <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+                <SheetContent side="left" className="w-[300px] sm:w-[400px] flex flex-col">
                   <SheetHeader>
                     <SheetTitle className="text-left">Navigate to Section</SheetTitle>
                   </SheetHeader>
-                  <div className="mt-8 space-y-4">
+                  <div className="mt-8 space-y-4 overflow-y-auto flex-1">
                     {navItems.map((item) => (
                       <button
                         key={item.id}
@@ -1005,11 +1006,11 @@ const RateCard = () => {
                   Check out our services
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80">
+              <SheetContent side="right" className="w-80 flex flex-col">
                 <SheetHeader>
                   <SheetTitle>Navigate to Section</SheetTitle>
                 </SheetHeader>
-                <div className="mt-8 space-y-3">
+                <div className="mt-8 space-y-3 overflow-y-auto flex-1">
                   {navItems.map((item) => (
                     <button
                       key={item.id}
@@ -1535,6 +1536,100 @@ const RateCard = () => {
                   <li>Covers <strong>all aspects of a launch/campaign</strong>: content, branding, influencers, ads, reporting.</li>
                   <li>Flexible tiers allow businesses to scale according to <strong>budget and goals</strong>.</li>
                 </ul>
+              </CardContent>
+            </Card>
+          </section>
+
+          {/* Paid Ads Management Service */}
+          <section id="paid-ads-management" className="mb-12">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-black mb-4 md:mb-6 px-2 md:px-0">
+              Paid Ads Management Service
+            </h2>
+            <Card className="p-6">
+              <CardHeader className="px-0">
+                <CardDescription className="text-base text-black">
+                  Our Ads Management service helps businesses grow online by creating, running, and optimizing paid campaigns across platforms like Facebook, Snapchat, Instagram, Linkedin, Google, and TikTok. We focus on maximizing results while minimizing wasted ad spend.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="px-0 pt-6 space-y-8">
+                {/* Trial Period Section */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-3"><strong>Trial Period: 1 Month</strong></h3>
+                  <p className="text-sm">
+                    We offer a <strong>1-month trial</strong> to manage and optimize your paid ad campaigns across Facebook, Snapchat, Instagram, Linkedin, Google, and TikTok, providing full support and actionable insights to help grow your brand online.
+                  </p>
+                </div>
+
+                {/* Management Fee & Ad Budget */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-3"><strong>Management Fee & Ad Budget</strong></h3>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange font-bold">•</span>
+                      <span><strong>Minimum Management Fee:</strong> ₦500,000/month</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange font-bold">•</span>
+                      <span><strong>Minimum Ad Budget:</strong> ₦2,000,000/month</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange font-bold">•</span>
+                      <span><strong>Optional Add-On:</strong> For higher ad budgets, we can charge a percentage of ad spend on top of the base fee to scale your campaigns efficiently.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* What's Included */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-3"><strong>What's Included</strong></h3>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange">•</span>
+                      <span>Campaign strategy and setup</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange">•</span>
+                      <span>Ad creation guidance and copy recommendations</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange">•</span>
+                      <span>Daily/weekly monitoring and optimization</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange">•</span>
+                      <span>Audience targeting and management across platforms</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange">•</span>
+                      <span>Detailed performance reports</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* How It Works */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-3"><strong>How It Works</strong></h3>
+                  <ol className="space-y-2 text-sm list-decimal list-inside">
+                    <li>You pay the <strong>₦500,000 trial fee</strong> for the first month.</li>
+                    <li>We manage, optimize, and report on your campaigns throughout the month.</li>
+                    <li>At the end of the trial, we review results and discuss a long-term plan based on performance and your business goals.</li>
+                  </ol>
+                </div>
+
+                {/* Optional Packages */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-3"><strong>Optional Packages</strong></h3>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange font-bold">•</span>
+                      <span><strong>Medium Ad Spend (₦2M–₦5M/month):</strong> ₦500k + % of ad spend</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-tkh-orange font-bold">•</span>
+                      <span><strong>Large Ad Spend (&gt;₦5M/month):</strong> Custom package tailored to your needs</span>
+                    </li>
+                  </ul>
+                </div>
               </CardContent>
             </Card>
           </section>
